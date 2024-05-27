@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backtest Results - Zephyr Alpha</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container-backtest">
+        <img src="/static/logos/zephyr_alpha_logo_transparent.png" alt="Logo" class="logo-backtest">
+        <h1>Backtest Results for {{ stock_ticker }} on {{ target_date }}</h1>
+        {% if results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>% Recovery</th>
+                        <th>Days</th>
+                        <th>% Gain</th>
+                        <th>Absolute Gain</th>
+                        <th>S&P Return</th>
+                        <th>Alpha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result.recovery_percentage }}%</td>
+                            <td>{{ result.days }}</td>
+                            <td>{{ "%.2f"|format(result.stock_gain) }}%</td>
+                            <td>${{ "%.2f"|format(result.absolute_gain) }}</td>
+                            <td>${{ "%.2f"|format(result.sp500_return) }}</td>
+                            <td>{{ "%.2f"|format(result.alpha) }}%</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No results to display.</p>
+        {% endif %}
+        <a href="/backtest" class="button">Back to Backtest</a>
+    </div>
+</body>
+</html>

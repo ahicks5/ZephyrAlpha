@@ -1,0 +1,65 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #FFFDD0; /* Cream background for a warm, inviting feel */
+}
+
+.game-button {
+    width: 100%;
+    white-space: normal;
+    margin-bottom: 10px;
+    border: 1px solid #FF7F50; /* Coral border for a pop of color */
+    color: #FFFFFF; /* White text for contrast */
+    background-color: #008080; /* Teal background for buttons */
+    transition: background-color 0.3s ease;
+}
+
+.game-button:hover {
+    background-color: #36454F; /* Charcoal Gray for a subtle hover effect */
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    background: #003366; /* Midnight Blue for the header */
+    color: white;
+    font-size: 30px;
+}
+
+.sport-section {
+    padding-top: 10px;
+}
+
+.sport-title {
+    padding: 10px;
+    background-color: #FF7F50; /* Coral for titles, making them stand out */
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.col-sm-4 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px; /* Increased left padding */
+    padding-right: 15px; /* Increased right padding */
+}
+
+
+.container {
+    padding-bottom: 25px;
+    background-color: #E6E6E6; /* Cream to maintain a cohesive look */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1); /* Soften the shadow for a lighter feel */
+    margin-top: 30px;
+}
+
+h2 {
+    color: #36454F; /* Charcoal Gray for readability and elegance */
+}
+
+.mt-5.text-center {
+    padding-top: 15px; /* Adds 5px padding to the top */
+    text-align: center; /* Centers the text horizontally */
+}

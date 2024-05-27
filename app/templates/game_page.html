@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ game.description }}</title>
+    <link rel="stylesheet" href="/static/css/game_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="header">
+    BetChat.io
+</div>
+
+<div id="roomId" data-id="{{ game.id }}"></div>
+
+<div class="container">
+    <div id="connectionStatus" class="alert alert-danger" role="alert" style="display: none;">
+        Connecting...
+    </div>
+    <div class="back-to-home mt-3 mb-4">
+        <a href="/" class="btn btn-back">Back to Home</a>
+    </div>
+
+    <div class="chat-container">
+        {% if live_data %}
+        <div class="live-score-container d-flex justify-content-center mb-3">
+            <div class="score-cell mr-2">
+                <div class="team-name">{{ game.awayTeam }}</div>
+                <div class="team-score">{{ live_data[0].latestScore.visitor }}</div>
+            </div>
+            <div class="score-cell ml-2">
+                <div class="team-name">{{ game.homeTeam }}</div>
+                <div class="team-score">{{ live_data[0].latestScore.home }}</div>
+            </div>
+        </div>
+        <!-- Conditional display based on gameStatus -->
+        {% if live_data[0].gameStatus != 'PRE_GAME' %}
+        <div class="game-time">Period: {{ live_data[0].clock.period }} ({{ live_data[0].clock.gameTime }} left)</div>
+        {% else %}
+        <!-- Content to display if gameStatus is 'PRE_GAME' -->
+        <div class="game-time">Pre-Game</div>
+        {% endif %}
+        <div class="sport-name">{{ game.sport }}</div>
+        {% endif %}
+
+        <!-- Projected Score Container -->
+        <div class="projected-score-container d-flex justify-content-center mb-3">
+            <div class="projected-score-box">
+                <div class="projected-score-title">Projected Score</div>
+                <div class="projected-scores">{{ betting_data.assumed_final_score.proj_away_score }} - {{ betting_data.assumed_final_score.proj_home_score }}</div>
+            </div>
+        </div>
+
+        {% if betting_data %}
+        <div class="betting-info mt-3">
+            <div class="row">
+                <!-- Moneyline Bets -->
+                <div class="col-sm-4">
+                    <div class="bet-box">
+                        <h5>Moneyline</h5>
+                        <div class="bet-odds-container">
+                            <span class="bet-odds away-odds">{{ betting_data.moneyline_bets.away.odds }}</span>
+                            <span class="bet-odds home-odds">{{ betting_data.moneyline_bets.home.odds }}</span>
+                        </div>
+                        <div class="probability-bar" id="moneylineJuiceAdjusted"
+                             data-away-prob="{{ betting_data.moneyline_bets.away.probability }}"
+                             data-home-prob="{{ betting_data.moneyline_bets.home.probability }}"
+                             data-juice="{{ betting_data.moneyline_bets.away.juice }}"> <!-- Assuming juice is the same for home and away, otherwise you might need separate data attributes -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Spread Bets -->
+                <div class="col-sm-4">
+                    <div class="bet-box">
+                        <h5>Spread</h5>
+                        <div class="bet-odds-container">
+                            <span class="bet-odds away-spread">{{ betting_data.spread_bets.away.spread }} ({{ betting_data.spread_bets.away.odds }})</span>
+                            <span class="bet-odds home-spread">{{ betting_data.spread_bets.home.spread }} ({{ betting_data.spread_bets.home.odds }})</span>
+                        </div>
+                        <div class="probability-bar" id="spreadJuiceAdjusted"
+                             data-away-prob="{{ betting_data.spread_bets.away.probability }}"
+                             data-home-prob="{{ betting_data.spread_bets.home.probability }}"
+                             data-juice="{{ betting_data.spread_bets.away.juice }}"> <!-- Assuming juice is the same for home and away, otherwise you might need separate data attributes -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Over/Under Bets -->
+                <div class="col-sm-4">
+                    <div class="bet-box">
+                        <h5>Total</h5>
+                        <div class="bet-odds-container">
+                            <span class="bet-odds under-odds">u{{ betting_data.over_under_bets.under.total }} ({{ betting_data.over_under_bets.under.odds }})</span>
+                            <span class="bet-odds over-odds">o{{ betting_data.over_under_bets.over.total }} ({{ betting_data.over_under_bets.over.odds }})</span>
+                        </div>
+                        <div class="probability-bar" id="overUnderJuiceAdjusted"
+                             data-away-prob="{{ betting_data.over_under_bets.under.probability }}"
+                             data-home-prob="{{ betting_data.over_under_bets.over.probability }}"
+                             data-juice="{{ betting_data.over_under_bets.under.juice }}"> <!-- Assuming juice is the same for home and away, otherwise you might need separate data attributes -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <!-- Add this div to encapsulate the chat messages -->
+        <div class="chat-box-header">Game Chat</div>
+        <div class="chat-box">
+            <ul id="messages">
+                {% for message in messages %}
+                    <li>{{ message.text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="input-group">
+            <input type="text" id="myMessage" class="form-control" placeholder="Type your message here...">
+            <button onclick="sendMessage()" class="btn btn-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <div class="input-group">
+            <span id="countdown"></span>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="/static/js/socketEvents.js"></script>
+<script src="/static/js/uiUpdates.js"></script>
+<script src="/static/js/utils.js"></script>
+
+</body>
+</html>

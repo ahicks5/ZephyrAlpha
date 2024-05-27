@@ -1,0 +1,299 @@
+/* Refreshed game_page.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #FAFAFA; /* Light grey for a clean look */
+}
+.header {
+    padding: 20px;
+    text-align: center;
+    background: #003366; /* Teal */
+    color: #FFFFFF; /* White */
+    font-size: 25px;
+}
+.chat-container {
+    max-width: 90%; /* Shrinks chat width by half */
+    margin: auto; /* Centers the chat container */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 6px 10px rgba(0,0,0,.1);
+    background-color: #F2F2F2;
+}
+/* Adjustments for the messages list */
+#messages {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+    overflow-y: auto; /* Enables scrolling */
+}
+
+/* Adjustments for individual messages */
+#messages li {
+    margin-bottom: 1px; /* Keeps a small space between messages */
+    padding: 2px; /* Pads the message text */
+    word-wrap: break-word; /* Ensures text wraps within the bubble */
+    font-size: 12px; /* Adjust font size as needed */
+    border: 1px solid #B2DFDB; /* Adds a subtle border to the message bubbles */
+    background-color: #E0F2F1; /* Light teal for message bubbles */
+    border-radius: 1px; /* Rounded corners for message bubbles */
+}
+button, .btn-success {
+    background: #FFA500; /* Orange for buttons */
+    color: #FFFFFF; /* White text */
+    border: none;
+}
+button:hover, .btn-success:hover {
+    background: #FB8C00; /* Darker orange on hover */
+    color: #FFFFFF;
+}
+.btn-primary {
+    background: #00695C; /* Darker teal for contrast */
+    color: #FFFFFF;
+}
+.btn-primary:hover {
+    background: #004D40; /* Even darker teal on hover */
+}
+/* Ensures the live score and other elements are visually distinct and sharp */
+.matchup, .live-score {
+    background-color: #00796B; /* A sharper, darker teal for the background */
+    color: #FFFFFF; /* Maintains white text for contrast */
+    border-radius: 5px;
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    margin: 10px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+}
+.live-score h3, .live-score p {
+    margin: 5px 0; /* Optimized spacing */
+}
+#gameStats p {
+    color: #00695C; /* Dark teal for text */
+}
+.form-control, button.btn-success {
+    margin-top: 10px; /* Adjusted spacing */
+    flex-grow: 1; /* Allows input to fill available space */
+    margin-right: 5px; /* Adds space between input and button */
+    height: 30px; /* Smaller input and button for compact look */
+    font-size: 12px; /* Smaller font size for input */
+}
+/* New styles for the reorganized layout */
+.btn-back {
+    background-color: #FFA500; /* Orange, for contrast */
+    color: white;
+}
+
+.btn-send {
+    background-color: #003366; /* Teal, to match header */
+    color: white;
+    margin-top: 10px;
+    white-space: nowrap; /* Prevents wrapping text inside button */
+    padding: 0 10px; /* Adjust padding for icon */
+    flex-grow: 0;
+}
+
+.matchup-title {
+    font-size: 24px;
+    text-align: center;
+    color: #004D40; /* Dark teal for title */
+}
+
+.live-score-container {
+    display: flex;
+    justify-content: center; /* Centers the score cells within the container */
+    align-items: stretch; /* Stretches the score cells to fill the container height */
+    width: 90%; /* Allows some padding on the sides for mobile screens */
+    max-width: 600px; /* Maximum width to maintain layout integrity on larger screens */
+    margin: auto; /* Center the container */
+    padding: 10px; /* Adjust padding for spacing inside the container */
+    box-sizing: border-box; /* Ensures padding does not affect the total width */
+    background-color: transparent; /* No background to emphasize individual score cells */
+    border-radius: 4px; /* Rounded corners for the container */
+}
+
+.score-cell {
+    flex: 1; /* Allows cells to grow and ensures they take up equal space */
+    display: flex;
+    flex-direction: column; /* Organizes content vertically */
+    justify-content: center; /* Centers content vertically within each cell */
+    align-items: center; /* Centers content horizontally within each cell */
+    text-align: center;
+    padding: 8px; /* Adjust padding for content */
+    margin: 0 5px; /* Space between the cells */
+    box-sizing: border-box; /* Ensures padding does not affect the total width */
+    background-color: #008080; /* Sharp teal for the background of each score cell */
+    color: #FFFFFF; /* White text color for better readability */
+    border-radius: 4px; /* Rounded corners for each score cell */
+    min-width: 100px; /* Minimum width to ensure cells do not become too small */
+    height: 100px; /* Fixed height to ensure uniformity */
+}
+
+.team-name, .team-score {
+    margin: 1px 0; /* Adds a little space between the name and score */
+}
+
+.team-name {
+    font-size: 15px; /* Adjusted font size */
+}
+
+.team-score {
+    font-size: 24px; /* Larger font size for scores */
+    color: #FFD700; /* Yellow for scores */
+    font-weight: bold;
+}
+
+.game-time {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #00695C; /* Adjusted color for visibility */
+}
+
+.back-to-home {
+    margin-top: 20px; /* Added space above the Back to Home button */
+    margin-bottom: 20px; /* Ensures consistent spacing around elements */
+}
+
+/* Styling for the sport name below period/timing */
+.sport-name {
+    text-align: center;
+    font-size: 14px; /* Smaller font for the sport name */
+    color: #00695C; /* Dark teal for a subtle appearance */
+    margin-top: 5px; /* Space between the timing and the sport name */
+}
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px; /* Reduced padding within input group */
+}
+.betting-info {
+    padding: 15px;
+    margin-top: 20px; /* Space from the live score section */
+    background-color: #FFFFFF; /* White background for contrast */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+}
+.bet-box {
+    padding: 10px;
+    background-color: #F2F2F2; /* Slightly off-white for subtle contrast */
+    border: 1px solid #DDDDDD; /* Light grey border */
+    border-radius: 3px;
+    margin-bottom: 10px; /* Space between boxes if necessary */
+    text-align: center; /* Center-aligns the text within the box */
+}
+
+.bet-box h5, .bet-box p {
+    margin: 0 auto; /* Centers the element within the box */
+    padding: 5px 0; /* Adds padding for spacing */
+    font-size: 14px;
+}
+.bet-box p {
+    color: #333; /* Darker text for better readability */
+    font-size: 14px; /* Optimal size for detail text */
+    margin-bottom: 4px; /* Tighter spacing between lines */
+}
+.probability-bar {
+    height: 20px; /* Reduced height */
+    width: 100%; /* Ensure it's full-width */
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 5px; /* Add space below the bar */
+}
+.probability-bar .away {
+    height: 100%;
+    background-color: red;
+    transition: width 0.5s ease-in-out;
+}
+
+.probability-bar .home {
+    height: 100%;
+    background-color: green;
+    transition: width 0.5s ease-in-out;
+}
+
+.probability-bar .under {
+    height: 100%;
+    background-color: red; /* Or any color intended for 'Under' */
+    transition: width 0.5s ease-in-out;
+}
+
+.probability-bar .over {
+    height: 100%;
+    background-color: green; /* Or any color intended for 'Over' */
+    transition: width 0.5s ease-in-out;
+}
+.probability-text {
+    font-size: 11px; /* Reduced font size for percentage text */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 5px;
+}
+.probability-text.left-align {
+    left: 0;
+}
+
+.probability-text.right-align {
+    right: 0;
+}
+/* New styles for the chat box */
+.chat-box {
+    border: 1px solid #ccc; /* Adds a border around the chat area */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds a subtle shadow for depth */
+    background-color: #fff; /* Sets a white background for the chat area */
+    margin-top: 5px; /* Adjusted space between the chat box and the betting info */
+    overflow-y: scroll; /* Always allows scrolling within the chat box */
+    height: 300px; /* Fixed height to enable scrolling from the start */
+    padding: 5px; /* Adds padding inside the chat box */
+}
+
+.bet-odds-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px; /* Space above the probability bar */
+}
+.bet-odds {
+    font-size: 12px; /* Smaller font for odds */
+}
+/* New chat box header styling */
+.chat-box-header {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #004D40; /* Dark teal */
+    color: #FFFFFF; /* White */
+    text-align: center;
+    font-size: 16px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.projected-score-container {
+    text-align: center;
+    margin: 20px auto; /* Centered with automatic margins */
+    padding: 8px 0; /* Slightly reduced padding */
+    background-color: #E6E6E6; /* A slightly darker grey for a bit more contrast */
+    border-radius: 4px; /* Softened corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Slightly darker shadow for more depth */
+}
+
+.projected-score-box {
+    display: inline-block;
+    padding: 8px 18px; /* Slightly reduced padding for a slimmer look */
+    border: 1px solid #CCCCCC; /* A bit darker border for more definition */
+    border-radius: 4px; /* Consistent with container's rounded corners */
+    background-color: #FFFFFF; /* Pure white for the inner box for sharper contrast */
+}
+
+.projected-score-title {
+    font-weight: normal; /* Less emphasis on the title */
+    margin-bottom: 4px; /* Tighter spacing */
+    color: #888888; /* A bit darker grey for more readability */
+    font-size: 16px; /* Reduced size for a more understated look */
+}
+
+.projected-scores {
+    font-size: 1.4rem; /* Adjusted size for balance */
+    color: #555555; /* Darker grey for more emphasis yet subtle */
+}

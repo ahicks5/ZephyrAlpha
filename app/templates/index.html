@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetChat.io</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="header">
+    BetChat.io
+</div>
+
+<div class="container">
+    <h2 class="mt-5 text-center">Live Matchups</h2>
+
+    <div class="container mt-3">
+        <input type="text" id="searchBox" class="form-control" placeholder="Search games...">
+    </div>
+
+    <div id="noResults" style="display: none;" class="alert alert-info text-center">
+        No results found.
+    </div>
+
+    {% set sports = {'NBA': [], 'College Basketball': [], 'WNCAA': [], 'NHL': [], 'Belarus NBBL': []} %}
+    {% for game in games %}
+        {% if game.sport in sports %}
+            {% set _dummy = sports[game.sport].append(game) %}
+        {% endif %}
+    {% endfor %}
+
+    {% for sport, games_in_sport in sports.items() %}
+        {% if games_in_sport %}
+            <div class="sport-section">
+                <div class="sport-title">{{ sport }}</div>
+                <div class="row">
+                    {% for game in games_in_sport %}
+                        <div class="col-sm-4">
+                            <button class="btn game-button" onclick="location.href='/game/{{ game.id }}';">{{ game.homeTeam }} vs {{ game.awayTeam }}</button>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<!-- Optional JavaScript and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/static/js/home_page.js"></script>
+
+</body>
+</html>
