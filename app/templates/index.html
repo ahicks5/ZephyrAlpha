@@ -17,22 +17,26 @@
 <div class="container">
     <h2 class="mt-5 text-center">Live Matchups</h2>
 
-    <div class="container mt-3">
-        <input type="text" id="searchBox" class="form-control" placeholder="Search games...">
+    <div class="search-container mt-3">
+        <input type="text" id="searchBox" class="form-control search-box" placeholder="Search games...">
     </div>
 
     <div id="noResults" style="display: none;" class="alert alert-info text-center">
         No results found.
     </div>
 
-    {% set sports = {'NBA': [], 'College Basketball': [], 'WNCAA': [], 'NHL': [], 'Belarus NBBL': []} %}
+    {% set sports_dict = {} %}
+    {% for sport in sports %}
+        {% set _dummy = sports_dict.update({sport: []}) %}
+    {% endfor %}
+
     {% for game in games %}
-        {% if game.sport in sports %}
-            {% set _dummy = sports[game.sport].append(game) %}
+        {% if game.sport in sports_dict %}
+            {% set _dummy = sports_dict[game.sport].append(game) %}
         {% endif %}
     {% endfor %}
 
-    {% for sport, games_in_sport in sports.items() %}
+    {% for sport, games_in_sport in sports_dict.items() %}
         {% if games_in_sport %}
             <div class="sport-section">
                 <div class="sport-title">{{ sport }}</div>
@@ -47,6 +51,7 @@
         {% endif %}
     {% endfor %}
 </div>
+
 
 <!-- Optional JavaScript and Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

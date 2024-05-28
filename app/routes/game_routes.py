@@ -8,9 +8,13 @@ game_bp = Blueprint('game', __name__)
 
 @game_bp.route('/')
 def index():
-    # Directly call the function without passing cache
     games_list = pull_all_games_cached().to_dict(orient='records')
-    return render_template('index.html', games=games_list)
+
+    # Extract unique sports
+    unique_sports = {game['sport'] for game in games_list}
+
+    return render_template('index.html', games=games_list, sports=unique_sports)
+
 
 @game_bp.route('/game/<int:game_id>')
 def game_page(game_id):

@@ -10,6 +10,13 @@ body {
     color: #FFFFFF; /* White */
     font-size: 25px;
 }
+
+.header-link {
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+    font-family: 'Roboto', sans-serif; /* Consistent font style */
+}
+
 .chat-container {
     max-width: 90%; /* Shrinks chat width by half */
     margin: auto; /* Centers the chat container */
@@ -78,8 +85,18 @@ button:hover, .btn-success:hover {
 }
 /* New styles for the reorganized layout */
 .btn-back {
-    background-color: #FFA500; /* Orange, for contrast */
-    color: white;
+    background-color: #008000; /* Medium green background */
+    color: #FFFFFF; /* White text */
+    border: 1px solid #008000; /* Medium green border */
+    padding: 10px 20px; /* Padding for the button */
+    font-family: 'Roboto', sans-serif; /* Consistent font style */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.btn-back:hover {
+    background-color: #FFFFFF; /* White background on hover */
+    color: #006400; /* Dark green text on hover */
+    border: 1px solid #006400; /* Dark green border on hover */
 }
 
 .btn-send {
@@ -151,6 +168,7 @@ button:hover, .btn-success:hover {
 .back-to-home {
     margin-top: 20px; /* Added space above the Back to Home button */
     margin-bottom: 20px; /* Ensures consistent spacing around elements */
+    text-align: left; /* Center the button horizontally */
 }
 
 /* Styling for the sport name below period/timing */

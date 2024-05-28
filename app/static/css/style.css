@@ -1,26 +1,27 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #FFFDD0; /* Cream background for a warm, inviting feel */
+    background-color: #f8f9fa; /* Light grey for a clean and neutral look */
 }
 
 .game-button {
     width: 100%;
     white-space: normal;
     margin-bottom: 10px;
-    border: 1px solid #FF7F50; /* Coral border for a pop of color */
-    color: #FFFFFF; /* White text for contrast */
-    background-color: #008080; /* Teal background for buttons */
+    border: 1px solid #008000; /* Medium green border */
+    color: #FFFFFF; /* White text for readability */
+    background-color: #008000; /* Medium green background */
     transition: background-color 0.3s ease;
+    font-family: 'Georgia', serif; /* Serif font for a different look */
 }
 
 .game-button:hover {
-    background-color: #36454F; /* Charcoal Gray for a subtle hover effect */
+    background-color: #FFFFFF; /* White background for hover effect */
+    color: #006400; /* Dark green text for hover effect */
 }
 
 .header {
     padding: 20px;
     text-align: center;
-    background: #003366; /* Midnight Blue for the header */
+    background: #004d00; /* Dark Green for the header */
     color: white;
     font-size: 30px;
 }
@@ -31,35 +32,53 @@ body {
 
 .sport-title {
     padding: 10px;
-    background-color: #FF7F50; /* Coral for titles, making them stand out */
+    background-color: #006400; /* Dark Green */
     color: white;
     border-radius: 5px;
     font-size: 20px;
     margin-bottom: 10px;
     text-align: center;
+    font-family: 'Georgia', serif; /* Serif font for a different look */
+    font-style: italic; /* Italics */
 }
+
 
 .col-sm-4 {
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 15px; /* Increased left padding */
-    padding-right: 15px; /* Increased right padding */
+    padding-left: 10px; /* Increased left padding */
+    padding-right: 10px; /* Increased right padding */
 }
 
 
 .container {
     padding-bottom: 25px;
-    background-color: #E6E6E6; /* Cream to maintain a cohesive look */
+    background-color: #e0e0e0; /* Slightly darker grey for better contrast */
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,.1); /* Soften the shadow for a lighter feel */
     margin-top: 30px;
 }
+
 
 h2 {
     color: #36454F; /* Charcoal Gray for readability and elegance */
 }
 
 .mt-5.text-center {
-    padding-top: 15px; /* Adds 5px padding to the top */
+    padding-top: 30px; /* Adds 5px padding to the top */
     text-align: center; /* Centers the text horizontally */
+    font-family: 'Georgia', serif; /* Serif font for a different look */
+    font-style: bold
 }
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0; /* Add padding to center vertically */
+}
+
+.search-box {
+    box-shadow: none; /* Remove the shadow */
+}
+
