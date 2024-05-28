@@ -1,0 +1,84 @@
+body {
+    background-color: #C8C8C8; /* Light grey for a clean and neutral look */
+}
+
+.game-button {
+    width: 100%;
+    white-space: normal;
+    margin-bottom: 10px;
+    border: 1px solid #8C9CAA; /* Medium green border */
+    color: #FFFFFF; /* White text for readability */
+    background-color: #8C9CAA; /* Medium green background */
+    transition: background-color 0.3s ease;
+    font-family: 'Georgia', serif; /* Serif font for a different look */
+}
+
+.game-button:hover {
+    background-color: #FFFFFF; /* White background for hover effect */
+    color: #8C9CAA; /* Dark green text for hover effect */
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    background: #7C8981; /* Dark Green for the header */
+    color: white;
+    font-size: 30px;
+}
+
+.sport-section {
+    padding-top: 10px;
+}
+
+.sport-title {
+    padding: 10px;
+    background-color: #424F5C; /* Dark Green */
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Georgia', serif; /* Serif font for a different look */
+    font-style: italic; /* Italics */
+}
+
+
+.col-sm-4 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px; /* Increased left padding */
+    padding-right: 10px; /* Increased right padding */
+}
+
+
+.container {
+    padding-bottom: 25px;
+    background-color: #e0e0e0; /* Slightly darker grey for better contrast */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1); /* Soften the shadow for a lighter feel */
+    margin-top: 30px;
+}
+
+
+h2 {
+    color: #36454F; /* Charcoal Gray for readability and elegance */
+}
+
+.mt-5.text-center {
+    padding-top: 30px; /* Adds 5px padding to the top */
+    text-align: center; /* Centers the text horizontally */
+    font-family: 'Georgia', serif; /* Serif font for a different look */
+    font-style: bold
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0; /* Add padding to center vertically */
+}
+
+.search-box {
+    box-shadow: none; /* Remove the shadow */
+}
+
