@@ -12,14 +12,14 @@ def organize_game_data(data):
 
     for event in data[0]['events']:
         for displayGroup in event['displayGroups']:
-            if displayGroup['description'] == 'Game Lines':
+            if displayGroup['description'] in ['Game Lines', 'Draw No Bet']:
                 for market in displayGroup['markets']:
-                    if market['period']['abbreviation'] == 'G':
+                    if market['period']['abbreviation'] in ['G', 'RT']:
                         odds_list = [outcome['price']['american'] for outcome in market['outcomes']]
                         juice, total_market_probability = calculate_juice(odds_list)  # Calculate juice for the market
                         implied_probabilities = adjust_probabilities_for_juice(odds_list)  # Adjust probabilities for juice
 
-                        if ('Point Spread' in market['description']) or ('Puck Line' in market['description']):
+                        if 'Spread' in market['description'] or 'Line' in market['description']:
                             for i, outcome in enumerate(market['outcomes']):
                                 key = "home" if outcome['type'] == 'H' else "away"
                                 relevant_data["spread_bets"][key] = {
@@ -37,7 +37,7 @@ def organize_game_data(data):
                                     "probability": implied_probabilities[i],
                                     "juice": juice
                                 }
-                        elif 'Moneyline' in market['description']:
+                        elif 'Moneyline' in market['description'] or 'Draw No Bet' in market['description']:
                             for i, outcome in enumerate(market['outcomes']):
                                 key = "home" if outcome['type'] == 'H' else "away"
                                 relevant_data["moneyline_bets"][key] = {
@@ -78,8 +78,6 @@ def get_organize_bet_data(link):
     final_score_assumption = calculate_assumed_final_score(organized_data['spread_bets'],
                                                            organized_data['over_under_bets'])
     organized_data['assumed_final_score'] = final_score_assumption
-
-    print(organized_data)
 
     return organized_data
 
