@@ -3,6 +3,8 @@ import requests
 import json
 import pandas as pd
 from .chosen_sports import sport_types
+import pytz
+from datetime import datetime, timedelta
 
 def get_json(url):
     headers = {
@@ -40,22 +42,54 @@ def parse_json(response):
     df = pd.DataFrame(all_games)
     return df
 
+
 def pull_games(sport_types):
-    all_dataframes = []
+    sport_data = []
+
     for sport_type in sport_types:
         print(f'Pulling in {sport_type}...')
         bovada_link = f'https://www.bovada.lv/services/sports/event/coupon/events/A/description/{sport_type}?marketFilterId=def&preMatchOnly=false&eventsLimit=5000&lang=en'
         fin_json = get_json(bovada_link)
         if fin_json:
             df = parse_json(fin_json)
-            all_dataframes.append(df)
+            sport_data.append(df)
             print('Sport pulled successfully.')
-    if all_dataframes:
-        return pd.concat(all_dataframes, ignore_index=True)
+
+    if sport_data:
+        # Concatenate all DataFrames
+        combined_df = pd.concat(sport_data, ignore_index=True)
+        # Sort by 'sport' column
+        combined_df = combined_df.sort_values(by='sport', ascending=True).reset_index(drop=True)
+        return combined_df
     else:
-        print('Error is pulling sport data.')
+        print('Error in pulling sport data.')
         return None
+
+
+def split_games_by_upcoming(games_list):
+    central_tz = pytz.timezone('America/Chicago')
+    current_time = datetime.now(central_tz)
+    upcoming_time = current_time + timedelta(hours=24)
+
+    all_games = []
+    upcoming_games = []
+    not_upcoming_games = []
+
+    for game in games_list:
+        game_time = datetime.fromtimestamp(game['startTime'] / 1000, tz=central_tz)
+        game['formatted_start_time'] = game_time.strftime('%-m/%-d %-I:%M%p').lower()
+        game['upcoming_game'] = game_time <= upcoming_time
+        all_games.append(game)
+        if game['upcoming_game']:
+            upcoming_games.append(game)
+        else:
+            not_upcoming_games.append(game)
+
+    return all_games, upcoming_games, not_upcoming_games
 
 
 def pull_all_games():
     return pull_games(sport_types)
+
+
+

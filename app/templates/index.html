@@ -15,7 +15,11 @@
 </div>
 
 <div class="container">
-    <h2 class="mt-5 text-center">Live Matchups</h2>
+    <h2 class="mt-5 text-center">Upcoming Matchups</h2>
+
+    <div class="legend text-center mt-3">
+        <p><span role="img" aria-label="fire">🔥</span> indicates games that are live</p>
+    </div>
 
     <div class="search-container mt-3">
         <input type="text" id="searchBox" class="form-control search-box" placeholder="Search games...">
@@ -43,7 +47,12 @@
                 <div class="row">
                     {% for game in games_in_sport %}
                         <div class="col-sm-4">
-                            <button class="btn game-button" onclick="location.href='/game/{{ game.id }}';">{{ game.homeTeam }} vs {{ game.awayTeam }}</button>
+                            <button class="btn game-button" data-live="{{ game.live }}" onclick="location.href='/game/{{ game.id }}';">
+                                {{ game.homeTeam }} vs {{ game.awayTeam }}
+                                <div class="small text-center">
+                                    {{ game.formatted_start_time }}
+                                </div>
+                            </button>
                         </div>
                     {% endfor %}
                 </div>
@@ -52,6 +61,41 @@
     {% endfor %}
 </div>
 
+<div class="container mt-5">
+    <div class="later-games-title collapsible">Show Later Games <span class="arrow">&#9660;</span></div>
+    <div class="content" style="display: none;">
+        {% set later_sports_dict = {} %}
+        {% for sport in sports %}
+            {% set _dummy = later_sports_dict.update({sport: []}) %}
+        {% endfor %}
+
+        {% for game in later_games %}
+            {% if game.sport in later_sports_dict %}
+                {% set _dummy = later_sports_dict[game.sport].append(game) %}
+            {% endif %}
+        {% endfor %}
+
+        {% for sport, games_in_sport in later_sports_dict.items() %}
+            {% if games_in_sport %}
+                <div class="sport-section">
+                    <div class="sport-title">{{ sport }}</div>
+                    <div class="row">
+                        {% for game in games_in_sport %}
+                            <div class="col-sm-4">
+                                <button class="btn game-button" data-live="{{ game.live }}" onclick="location.href='/game/{{ game.id }}';">
+                                    {{ game.homeTeam }} vs {{ game.awayTeam }}
+                                    <div class="small text-center">
+                                        {{ game.formatted_start_time }}
+                                    </div>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
 
 <!-- Optional JavaScript and Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

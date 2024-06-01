@@ -2,6 +2,7 @@ from flask import Blueprint, render_template
 from app.utilities.data_fetching import get_live_game_data
 from app.utilities.cache_utils import pull_all_games_cached  # Adjusted to use the cache internally
 from app.utilities.bet_data_processing import get_organize_bet_data
+from app.utilities.game_data import split_games_by_upcoming
 from app.models.models import Message  # Ensure correct import path based on your app structure
 
 game_bp = Blueprint('game', __name__)
@@ -10,10 +11,12 @@ game_bp = Blueprint('game', __name__)
 def index():
     games_list = pull_all_games_cached().to_dict(orient='records')
 
+    all_games, upcoming_games, later_games = split_games_by_upcoming(games_list)
+
     # Extract unique sports
     unique_sports = {game['sport'] for game in games_list}
 
-    return render_template('index.html', games=games_list, sports=unique_sports)
+    return render_template('index.html', games=upcoming_games, later_games=later_games, sports=unique_sports)
 
 
 @game_bp.route('/game/<int:game_id>')
