@@ -4,6 +4,7 @@ sport_types = [
     'soccer/north-america/united-states/mls',
     'hockey/nhl',
     #'basketball/europe/belarus/belarus-nbbl',
-    'basketball/college-basketball'
+    'basketball/college-basketball',
+    'soccer/south-america/brazil/brasileirao-serie-a'
     # Add more sport types here if needed
 ]
