@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Team Performance Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #chart-container {
+            width: 30%; /* Adjusted to be half the size */
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="chart-container">
+        <canvas id="performanceChart"></canvas>
+    </div>
+    <script>
+        // Example JSON data structure
+        const jsonData = {
+            leagueAverages: {
+                goalsPerGame: 2.5,
+                shotsOnTargetPerGame: 5.5,
+                passingAccuracy: 80,
+                goalsConcededPerGame: 1.5,
+                tacklesPerGame: 20,
+                savesPerGame: 3
+            },
+            leagueStdDevs: {
+                goalsPerGame: 0.5,
+                shotsOnTargetPerGame: 1,
+                passingAccuracy: 5,
+                goalsConcededPerGame: 0.4,
+                tacklesPerGame: 5,
+                savesPerGame: 1
+            },
+            teams: [
+                {
+                    name: 'Team A',
+                    metrics: {
+                        goalsPerGame: { season: 2.5, last10: 2.8, last5: 3.0 },
+                        shotsOnTargetPerGame: { season: 5, last10: 5.5, last5: 6 },
+                        passingAccuracy: { season: 85, last10: 86, last5: 88 },
+                        goalsConcededPerGame: { season: 1.5, last10: 1.4, last5: 1.3 },
+                        tacklesPerGame: { season: 20, last10: 22, last5: 25 },
+                        savesPerGame: { season: 3, last10: 3.5, last5: 4 }
+                    }
+                },
+                {
+                    name: 'Team B',
+                    metrics: {
+                        goalsPerGame: { season: 3, last10: 3.2, last5: 3.4 },
+                        shotsOnTargetPerGame: { season: 6, last10: 6.5, last5: 7 },
+                        passingAccuracy: { season: 82, last10: 83, last5: 84 },
+                        goalsConcededPerGame: { season: 1.2, last10: 1.1, last5: 1.0 },
+                        tacklesPerGame: { season: 18, last10: 19, last5: 20 },
+                        savesPerGame: { season: 4, last10: 4.5, last5: 5 }
+                    }
+                }
+            ]
+        };
+
+        // Function to calculate weighted metric
+        function calculateWeightedMetric(metric) {
+            return (
+                metric.season * 0.5 +
+                metric.last10 * 0.3 +
+                metric.last5 * 0.2
+            );
+        }
+
+        // Function to normalize the metric value
+        function normalizeMetric(value, avg, stdDev) {
+            return (value - avg) / stdDev + 1; // Normalized to make average as 1
+        }
+
+        // Prepare data for the chart
+        const teamA = jsonData.teams[0];
+        const teamB = jsonData.teams[1];
+        const leagueAverages = jsonData.leagueAverages;
+        const leagueStdDevs = jsonData.leagueStdDevs;
+
+        const data = {
+            labels: [
+                'Goals per Game',
+                'Shots on Target per Game',
+                'Passing Accuracy',
+                'Goals Conceded per Game',
+                'Tackles per Game',
+                'Saves per Game'
+            ],
+            datasets: [
+                {
+                    label: teamA.name,
+                    data: [
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.goalsPerGame), leagueAverages.goalsPerGame, leagueStdDevs.goalsPerGame),
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.shotsOnTargetPerGame), leagueAverages.shotsOnTargetPerGame, leagueStdDevs.shotsOnTargetPerGame),
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.passingAccuracy), leagueAverages.passingAccuracy, leagueStdDevs.passingAccuracy),
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.goalsConcededPerGame), leagueAverages.goalsConcededPerGame, leagueStdDevs.goalsConcededPerGame),
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.tacklesPerGame), leagueAverages.tacklesPerGame, leagueStdDevs.tacklesPerGame),
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.savesPerGame), leagueAverages.savesPerGame, leagueStdDevs.savesPerGame)
+                    ],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 99, 132)'
+                },
+                {
+                    label: teamB.name,
+                    data: [
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.goalsPerGame), leagueAverages.goalsPerGame, leagueStdDevs.goalsPerGame),
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.shotsOnTargetPerGame), leagueAverages.shotsOnTargetPerGame, leagueStdDevs.shotsOnTargetPerGame),
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.passingAccuracy), leagueAverages.passingAccuracy, leagueStdDevs.passingAccuracy),
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.goalsConcededPerGame), leagueAverages.goalsConcededPerGame, leagueStdDevs.goalsConcededPerGame),
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.tacklesPerGame), leagueAverages.tacklesPerGame, leagueStdDevs.tacklesPerGame),
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.savesPerGame), leagueAverages.savesPerGame, leagueStdDevs.savesPerGame)
+                    ],
+                    fill: true,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgb(54, 162, 235)',
+                    pointBackgroundColor: 'rgb(54, 162, 235)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(54, 162, 235)'
+                }
+            ]
+        };
+
+        const options = {
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 2,
+                    stepSize: 0.5,
+                    callback: function(value) {
+                        if (value === 1) return 'Average';
+                        if (value < 1) return '-' + (1 - value).toFixed(1) + ' SD';
+                        return '+' + (value - 1).toFixed(1) + ' SD';
+                    }
+                },
+                pointLabels: {
+                    fontSize: 14
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                tooltip: {
+                    enabled: true
+                }
+            }
+        };
+
+        // Correctly define the ctx variable
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+
+        // Initialize the radar chart
+        new Chart(ctx, {
+            type: 'radar',
+            data: data,
+            options: options
+        });
+    </script>
+</body>
+</html>
