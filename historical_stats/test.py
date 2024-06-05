@@ -39,10 +39,12 @@ class MatchDataExtractor:
 
         # Split the string to extract home team, away team, and date
         home_team, away_team = match_info.split(' Match Report – ')[0].split(' vs. ')
-        date_part = match_info.split(' Match Report – ')[1]
-
         # Extract the date and format it
-        game_date = datetime.strptime(date_part, '%A %B %d, %Y').strftime('%Y-%m-%d')
+        date_part = match_info.split(' Match Report – ')[1]
+        # Find the comma and take the first 5 characters after it to isolate the year
+        comma_index = date_part.find(',')
+        date_str = date_part[:comma_index + 6]  # This includes the space and the 4-digit year
+        game_date = datetime.strptime(date_str, '%A %B %d, %Y').strftime('%Y-%m-%d')
 
         # Extract league name
         league_div = h1_tag.find_next_sibling('div')
@@ -180,7 +182,7 @@ class MatchDataExtractor:
 
 # Example usage
 base_url = "https://fbref.com"
-schedule_url = "https://fbref.com/en/comps/22/schedule/Major-League-Soccer-Scores-and-Fixtures"
+schedule_url = "https://fbref.com/en/comps/24/schedule/Serie-A-Scores-and-Fixtures"
 
 extractor = MatchDataExtractor(base_url, schedule_url)
 extractor.extract_and_save_all_data()
