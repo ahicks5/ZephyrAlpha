@@ -2,6 +2,18 @@ body {
     background-color: #C8C8C8; /* Light grey for a clean and neutral look */
 }
 
+.header .logo {
+    width: 50%; /* Shrink the logo by 50% */
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 767px) {
+    .header .logo {
+        width: 75%; /* Adjust the logo size for mobile devices */
+    }
+}
+
 .filter-buttons .filter-button {
     width: auto; /* Adjust width to be auto */
     margin: 0 5px; /* Add some margin for spacing */
