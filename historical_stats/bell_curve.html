@@ -7,55 +7,66 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         #chart-container {
-            width: 30%; /* Adjusted to be half the size */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 80%; /* Adjusted to accommodate both charts */
             margin: auto;
+        }
+        .chart {
+            width: 45%;
         }
     </style>
 </head>
 <body>
     <div id="chart-container">
-        <canvas id="performanceChart"></canvas>
+        <div class="chart">
+            <canvas id="performanceChart"></canvas>
+        </div>
+        <div class="chart">
+            <canvas id="barChart"></canvas>
+        </div>
     </div>
     <script>
         // Example JSON data structure
         const jsonData = {
             leagueAverages: {
-                goalsPerGame: 2.5,
-                shotsOnTargetPerGame: 5.5,
-                passingAccuracy: 80,
-                goalsConcededPerGame: 1.5,
-                tacklesPerGame: 20,
-                savesPerGame: 3
+                goals: 2.5,
+                goalsAllowed: 1.5,
+                shots: 15,
+                shotsOnTarget: 5.5,
+                saves: 3,
+                possession: 50
             },
             leagueStdDevs: {
-                goalsPerGame: 0.5,
-                shotsOnTargetPerGame: 1,
-                passingAccuracy: 5,
-                goalsConcededPerGame: 0.4,
-                tacklesPerGame: 5,
-                savesPerGame: 1
+                goals: 0.5,
+                goalsAllowed: 0.4,
+                shots: 3,
+                shotsOnTarget: 1,
+                saves: 1,
+                possession: 10
             },
             teams: [
                 {
                     name: 'Team A',
                     metrics: {
-                        goalsPerGame: { season: 2.5, last10: 2.8, last5: 3.0 },
-                        shotsOnTargetPerGame: { season: 5, last10: 5.5, last5: 6 },
-                        passingAccuracy: { season: 85, last10: 86, last5: 88 },
-                        goalsConcededPerGame: { season: 1.5, last10: 1.4, last5: 1.3 },
-                        tacklesPerGame: { season: 20, last10: 22, last5: 25 },
-                        savesPerGame: { season: 3, last10: 3.5, last5: 4 }
+                        goals: { season: 2.5, last10: 2.8, last5: 3.0 },
+                        goalsAllowed: { season: 1.5, last10: 1.4, last5: 1.3 },
+                        shots: { season: 15, last10: 16, last5: 17 },
+                        shotsOnTarget: { season: 5, last10: 5.5, last5: 6 },
+                        saves: { season: 3, last10: 3.5, last5: 4 },
+                        possession: { season: 55, last10: 56, last5: 57 }
                     }
                 },
                 {
                     name: 'Team B',
                     metrics: {
-                        goalsPerGame: { season: 3, last10: 3.2, last5: 3.4 },
-                        shotsOnTargetPerGame: { season: 6, last10: 6.5, last5: 7 },
-                        passingAccuracy: { season: 82, last10: 83, last5: 84 },
-                        goalsConcededPerGame: { season: 1.2, last10: 1.1, last5: 1.0 },
-                        tacklesPerGame: { season: 18, last10: 19, last5: 20 },
-                        savesPerGame: { season: 4, last10: 4.5, last5: 5 }
+                        goals: { season: 3, last10: 3.2, last5: 3.4 },
+                        goalsAllowed: { season: 1.2, last10: 1.1, last5: 1.0 },
+                        shots: { season: 18, last10: 19, last5: 20 },
+                        shotsOnTarget: { season: 6, last10: 6.5, last5: 7 },
+                        saves: { season: 4, last10: 4.5, last5: 5 },
+                        possession: { season: 52, last10: 53, last5: 54 }
                     }
                 }
             ]
@@ -75,31 +86,31 @@
             return (value - avg) / stdDev + 1; // Normalized to make average as 1
         }
 
-        // Prepare data for the chart
+        // Prepare data for the radar chart
         const teamA = jsonData.teams[0];
         const teamB = jsonData.teams[1];
         const leagueAverages = jsonData.leagueAverages;
         const leagueStdDevs = jsonData.leagueStdDevs;
 
-        const data = {
+        const radarData = {
             labels: [
-                'Goals per Game',
-                'Shots on Target per Game',
-                'Passing Accuracy',
-                'Goals Conceded per Game',
-                'Tackles per Game',
-                'Saves per Game'
+                'Goals',
+                'Goals Allowed',
+                'Shots',
+                'Shots on Target',
+                'Saves',
+                'Possession'
             ],
             datasets: [
                 {
                     label: teamA.name,
                     data: [
-                        normalizeMetric(calculateWeightedMetric(teamA.metrics.goalsPerGame), leagueAverages.goalsPerGame, leagueStdDevs.goalsPerGame),
-                        normalizeMetric(calculateWeightedMetric(teamA.metrics.shotsOnTargetPerGame), leagueAverages.shotsOnTargetPerGame, leagueStdDevs.shotsOnTargetPerGame),
-                        normalizeMetric(calculateWeightedMetric(teamA.metrics.passingAccuracy), leagueAverages.passingAccuracy, leagueStdDevs.passingAccuracy),
-                        normalizeMetric(calculateWeightedMetric(teamA.metrics.goalsConcededPerGame), leagueAverages.goalsConcededPerGame, leagueStdDevs.goalsConcededPerGame),
-                        normalizeMetric(calculateWeightedMetric(teamA.metrics.tacklesPerGame), leagueAverages.tacklesPerGame, leagueStdDevs.tacklesPerGame),
-                        normalizeMetric(calculateWeightedMetric(teamA.metrics.savesPerGame), leagueAverages.savesPerGame, leagueStdDevs.savesPerGame)
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.goals), leagueAverages.goals, leagueStdDevs.goals),
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.goalsAllowed), leagueAverages.goalsAllowed, leagueStdDevs.goalsAllowed),
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.shots), leagueAverages.shots, leagueStdDevs.shots),
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.shotsOnTarget), leagueAverages.shotsOnTarget, leagueStdDevs.shotsOnTarget),
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.saves), leagueAverages.saves, leagueStdDevs.saves),
+                        normalizeMetric(calculateWeightedMetric(teamA.metrics.possession), leagueAverages.possession, leagueStdDevs.possession)
                     ],
                     fill: true,
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -112,12 +123,12 @@
                 {
                     label: teamB.name,
                     data: [
-                        normalizeMetric(calculateWeightedMetric(teamB.metrics.goalsPerGame), leagueAverages.goalsPerGame, leagueStdDevs.goalsPerGame),
-                        normalizeMetric(calculateWeightedMetric(teamB.metrics.shotsOnTargetPerGame), leagueAverages.shotsOnTargetPerGame, leagueStdDevs.shotsOnTargetPerGame),
-                        normalizeMetric(calculateWeightedMetric(teamB.metrics.passingAccuracy), leagueAverages.passingAccuracy, leagueStdDevs.passingAccuracy),
-                        normalizeMetric(calculateWeightedMetric(teamB.metrics.goalsConcededPerGame), leagueAverages.goalsConcededPerGame, leagueStdDevs.goalsConcededPerGame),
-                        normalizeMetric(calculateWeightedMetric(teamB.metrics.tacklesPerGame), leagueAverages.tacklesPerGame, leagueStdDevs.tacklesPerGame),
-                        normalizeMetric(calculateWeightedMetric(teamB.metrics.savesPerGame), leagueAverages.savesPerGame, leagueStdDevs.savesPerGame)
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.goals), leagueAverages.goals, leagueStdDevs.goals),
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.goalsAllowed), leagueAverages.goalsAllowed, leagueStdDevs.goalsAllowed),
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.shots), leagueAverages.shots, leagueStdDevs.shots),
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.shotsOnTarget), leagueAverages.shotsOnTarget, leagueStdDevs.shotsOnTarget),
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.saves), leagueAverages.saves, leagueStdDevs.saves),
+                        normalizeMetric(calculateWeightedMetric(teamB.metrics.possession), leagueAverages.possession, leagueStdDevs.possession)
                     ],
                     fill: true,
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -130,7 +141,7 @@
             ]
         };
 
-        const options = {
+        const radarOptions = {
             scale: {
                 ticks: {
                     beginAtZero: true,
@@ -157,14 +168,79 @@
             }
         };
 
-        // Correctly define the ctx variable
-        const ctx = document.getElementById('performanceChart').getContext('2d');
-
         // Initialize the radar chart
-        new Chart(ctx, {
+        const radarCtx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(radarCtx, {
             type: 'radar',
-            data: data,
-            options: options
+            data: radarData,
+            options: radarOptions
+        });
+
+        // Prepare data for the bar chart
+        const barData = {
+            labels: [
+                'Goals',
+                'Goals Allowed',
+                'Shots',
+                'Shots on Target',
+                'Saves',
+                'Possession'
+            ],
+            datasets: [
+                {
+                    label: teamA.name,
+                    data: [
+                        calculateWeightedMetric(teamA.metrics.goals),
+                        calculateWeightedMetric(teamA.metrics.goalsAllowed),
+                        calculateWeightedMetric(teamA.metrics.shots),
+                        calculateWeightedMetric(teamA.metrics.shotsOnTarget),
+                        calculateWeightedMetric(teamA.metrics.saves),
+                        calculateWeightedMetric(teamA.metrics.possession)
+                    ],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    borderWidth: 1
+                },
+                {
+                    label: teamB.name,
+                    data: [
+                        calculateWeightedMetric(teamB.metrics.goals),
+                        calculateWeightedMetric(teamB.metrics.goalsAllowed),
+                        calculateWeightedMetric(teamB.metrics.shots),
+                        calculateWeightedMetric(teamB.metrics.shotsOnTarget),
+                        calculateWeightedMetric(teamB.metrics.saves),
+                        calculateWeightedMetric(teamB.metrics.possession)
+                    ],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgb(54, 162, 235)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        const barOptions = {
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                tooltip: {
+                    enabled: true
+                }
+            }
+        };
+
+        // Initialize the bar chart
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: barData,
+            options: barOptions
         });
     </script>
 </body>

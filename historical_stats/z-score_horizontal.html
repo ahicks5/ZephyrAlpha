@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Team Performance Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #chart-container {
+            width: 80%;
+            margin: auto;
+        }
+        .chart {
+            width: 100%;
+        }
+        #description {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="description">
+        <h2>Soccer Team Performance Comparison</h2>
+        <p>This chart shows the performance of two teams compared to the league average.</p>
+        <p>Bars extending to the right indicate better-than-average performance, while bars extending to the left indicate below-average performance.</p>
+        <p>Each team's performance is compared to the average using z-scores.</p>
+    </div>
+    <div id="chart-container">
+        <canvas id="barChart"></canvas>
+    </div>
+    <script>
+        // Example JSON data structure
+        const jsonData = {
+            leagueAverages: {
+                goals: 2.5,
+                goalsAllowed: 1.5,
+                shots: 15,
+                shotsOnTarget: 5.5,
+                saves: 3,
+                possession: 50
+            },
+            leagueStdDevs: {
+                goals: 0.5,
+                goalsAllowed: 0.4,
+                shots: 3,
+                shotsOnTarget: 1,
+                saves: 1,
+                possession: 10
+            },
+            teams: [
+                {
+                    name: 'Team A',
+                    metrics: {
+                        goals: { season: 2.5, last10: 2.8, last5: 3.0 },
+                        goalsAllowed: { season: 1.5, last10: 1.4, last5: 1.3 },
+                        shots: { season: 15, last10: 16, last5: 17 },
+                        shotsOnTarget: { season: 5, last10: 5.5, last5: 6 },
+                        saves: { season: 3, last10: 3.5, last5: 4 },
+                        possession: { season: 55, last10: 56, last5: 57 }
+                    }
+                },
+                {
+                    name: 'Team B',
+                    metrics: {
+                        goals: { season: 3, last10: 3.2, last5: 3.4 },
+                        goalsAllowed: { season: 1.2, last10: 1.1, last5: 1.0 },
+                        shots: { season: 18, last10: 19, last5: 20 },
+                        shotsOnTarget: { season: 6, last10: 6.5, last5: 7 },
+                        saves: { season: 4, last10: 4.5, last5: 5 },
+                        possession: { season: 52, last10: 53, last5: 54 }
+                    }
+                }
+            ]
+        };
+
+        // Function to calculate weighted metric
+        function calculateWeightedMetric(metric) {
+            return (
+                metric.season * 0.5 +
+                metric.last10 * 0.3 +
+                metric.last5 * 0.2
+            );
+        }
+
+        // Function to calculate z-score
+        function calculateZScore(value, avg, stdDev) {
+            return (value - avg) / stdDev;
+        }
+
+        // Prepare data for the chart
+        const teamA = jsonData.teams[0];
+        const teamB = jsonData.teams[1];
+        const leagueAverages = jsonData.leagueAverages;
+        const leagueStdDevs = jsonData.leagueStdDevs;
+
+        const labels = [
+            'Goals',
+            'Goals Allowed',
+            'Shots',
+            'Shots on Target',
+            'Saves',
+            'Possession'
+        ];
+
+        const teamAData = [
+            calculateZScore(calculateWeightedMetric(teamA.metrics.goals), leagueAverages.goals, leagueStdDevs.goals),
+            calculateZScore(calculateWeightedMetric(teamA.metrics.goalsAllowed), leagueAverages.goalsAllowed, leagueStdDevs.goalsAllowed),
+            calculateZScore(calculateWeightedMetric(teamA.metrics.shots), leagueAverages.shots, leagueStdDevs.shots),
+            calculateZScore(calculateWeightedMetric(teamA.metrics.shotsOnTarget), leagueAverages.shotsOnTarget, leagueStdDevs.shotsOnTarget),
+            calculateZScore(calculateWeightedMetric(teamA.metrics.saves), leagueAverages.saves, leagueStdDevs.saves),
+            calculateZScore(calculateWeightedMetric(teamA.metrics.possession), leagueAverages.possession, leagueStdDevs.possession)
+        ];
+
+        const teamBData = [
+            calculateZScore(calculateWeightedMetric(teamB.metrics.goals), leagueAverages.goals, leagueStdDevs.goals),
+            calculateZScore(calculateWeightedMetric(teamB.metrics.goalsAllowed), leagueAverages.goalsAllowed, leagueStdDevs.goalsAllowed),
+            calculateZScore(calculateWeightedMetric(teamB.metrics.shots), leagueAverages.shots, leagueStdDevs.shots),
+            calculateZScore(calculateWeightedMetric(teamB.metrics.shotsOnTarget), leagueAverages.shotsOnTarget, leagueStdDevs.shotsOnTarget),
+            calculateZScore(calculateWeightedMetric(teamB.metrics.saves), leagueAverages.saves, leagueStdDevs.saves),
+            calculateZScore(calculateWeightedMetric(teamB.metrics.possession), leagueAverages.possession, leagueStdDevs.possession)
+        ];
+
+        const barData = {
+            labels: labels,
+            datasets: [
+                {
+                    label: teamA.name,
+                    data: teamAData,
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    barPercentage: 0.5,
+                    categoryPercentage: 0.5
+                },
+                {
+                    label: teamB.name,
+                    data: teamBData,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    barPercentage: 0.5,
+                    categoryPercentage: 0.5
+                }
+            ]
+        };
+
+        const barOptions = {
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    max: 2,
+                    min: -2,
+                    title: {
+                        display: true,
+                        text: 'Standard Deviations from Average'
+                    },
+                    grid: {
+                        color: function(context) {
+                            if (context.tick.value === 0) {
+                                return '#000'; // Vertical line for average
+                            }
+                            return '#e0e0e0'; // Other grid lines
+                        }
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            if (value === 0) return 'Average';
+                            return value > 0 ? `+${value} SD` : `${value} SD`;
+                        }
+                    }
+                },
+                y: {
+                    stacked: false
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += context.raw.toFixed(2);
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        // Initialize the bar chart
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: barData,
+            options: barOptions
+        });
+    </script>
+</body>
+</html>

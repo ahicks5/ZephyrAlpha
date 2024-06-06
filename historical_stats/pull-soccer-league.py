@@ -4,7 +4,6 @@ import pandas as pd
 from datetime import datetime
 import time
 
-
 class MatchDataExtractor:
     def __init__(self, base_url, schedule_url):
         self.base_url = base_url
@@ -27,7 +26,7 @@ class MatchDataExtractor:
             if a_tag and 'href' in a_tag.attrs and a_tag.get_text(strip=True) == "Match Report":
                 match_report_links.append(self.base_url + a_tag['href'])
 
-        return match_report_links
+        return match_report_links[:5]
 
     def extract_game_id_from_url(self, url):
         return url.split('/')[-1]
@@ -128,16 +127,57 @@ class MatchDataExtractor:
                     # This is a stat header row
                     current_stat = ths[0].get_text(strip=True)
                 elif len(tds) == 2 and current_stat:
-                    # This is a stat value row
-                    home_team_stat = tds[0].find('strong').get_text(strip=True).replace('%', '') if tds[0].find(
-                        'strong') else tds[0].get_text(strip=True)
-                    away_team_stat = tds[1].find('strong').get_text(strip=True).replace('%', '') if tds[1].find(
-                        'strong') else tds[1].get_text(strip=True)
-                    stats_dict[f'home_{current_stat}'] = home_team_stat
-                    stats_dict[f'away_{current_stat}'] = away_team_stat
+                    home_team_stat_raw = tds[0].get_text(strip=True)
+                    away_team_stat_raw = tds[1].get_text(strip=True)
+
+                    home_team_value, home_team_attempts = None, None
+                    away_team_value, away_team_attempts = None, None
+
+                    if home_team_stat_raw:
+                        if "%" in home_team_stat_raw:
+                            if home_team_stat_raw.endswith("%"):
+                                home_team_stat_parts = home_team_stat_raw.split(" — ")
+                                home_team_value = home_team_stat_parts[0]
+                                home_team_attempts = home_team_stat_parts[1] if len(home_team_stat_parts) > 1 else None
+                            else:
+                                home_team_stat_parts = home_team_stat_raw.split(" — ")
+                                home_team_attempts = home_team_stat_parts[0]
+                                home_team_value = home_team_stat_parts[1] if len(home_team_stat_parts) > 1 else None
+
+                    if away_team_stat_raw:
+                        if "%" in away_team_stat_raw:
+                            if away_team_stat_raw.endswith("%"):
+                                away_team_stat_parts = away_team_stat_raw.split(" — ")
+                                away_team_value = away_team_stat_parts[0]
+                                away_team_attempts = away_team_stat_parts[1] if len(away_team_stat_parts) > 1 else None
+                            else:
+                                away_team_stat_parts = away_team_stat_raw.split(" — ")
+                                away_team_attempts = away_team_stat_parts[0]
+                                away_team_value = away_team_stat_parts[1] if len(away_team_stat_parts) > 1 else None
+
+                    if home_team_value and "of" in home_team_value:
+                        home_team_value_parts = home_team_value.split(" of ")
+                        home_team_value = home_team_value_parts[0]
+                        home_team_attempts = home_team_value_parts[1]
+
+                    if away_team_value and "of" in away_team_value:
+                        away_team_value_parts = away_team_value.split(" of ")
+                        away_team_value = away_team_value_parts[0]
+                        away_team_attempts = away_team_value_parts[1]
+
+                    stats_dict[f'home_{current_stat}_value'] = home_team_value
+                    stats_dict[f'home_{current_stat}_attempts'] = home_team_attempts
+                    stats_dict[f'away_{current_stat}_value'] = away_team_value
+                    stats_dict[f'away_{current_stat}_attempts'] = away_team_attempts
 
         # Extract team stats using the dynamic logic
         extract_team_stats(stats, team_stats)
+
+        # Extract goals and expected goals
+        stats['home_goals'] = soup.find_all('div', class_='score')[0].get_text(strip=True)
+        stats['away_goals'] = soup.find_all('div', class_='score')[1].get_text(strip=True)
+        stats['home_xg'] = soup.find_all('div', class_='score_xg')[0].get_text(strip=True)
+        stats['away_xg'] = soup.find_all('div', class_='score_xg')[1].get_text(strip=True)
 
         # Additional stats extraction
         team_stats_extra = soup.find('div', id='team_stats_extra')
@@ -175,15 +215,19 @@ class MatchDataExtractor:
             print(f"Successfully pulled data for {home_team} vs {away_team} on {game_date}")
             time.sleep(4)  # Wait for 4 seconds before making the next request
 
-    def save_data_to_csv(self):
-        self.shots_data.to_csv('shots_data_combined.csv', index=False)
-        self.team_stats_data.to_csv('team_stats_combined.csv', index=False)
+        # Save data to CSV with league name included in the filename
+        self.save_data_to_csv(league_name)
+
+    def save_data_to_csv(self, league_name):
+        # Format league name to be filename friendly
+        league_name_tag = league_name.replace(' ', '_').lower()
+        self.shots_data.to_csv(f'shots_data_{league_name_tag}.csv', index=False)
+        self.team_stats_data.to_csv(f'team_stats_{league_name_tag}.csv', index=False)
 
 
 # Example usage
 base_url = "https://fbref.com"
-schedule_url = "https://fbref.com/en/comps/24/schedule/Serie-A-Scores-and-Fixtures"
+schedule_url = "https://fbref.com/en/comps/22/schedule/Major-League-Soccer-Scores-and-Fixtures"
 
 extractor = MatchDataExtractor(base_url, schedule_url)
 extractor.extract_and_save_all_data()
-extractor.save_data_to_csv()
