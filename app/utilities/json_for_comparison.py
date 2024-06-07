@@ -1,3 +1,4 @@
+# self.csv_file = f'/var/www/html/season_stats/soccer/MLS/team_stats_{league}.csv'
 import pandas as pd
 import json
 import os
@@ -7,34 +8,25 @@ class TeamComparison:
         self.team1 = team1
         self.team2 = team2
         self.league = league
-        #self.csv_file = os.path.join('..', '..', 'season_stats', 'soccer', league, f'team_stats_{league}.csv')
-        self.csv_file = f'/var/www/html/season_stats/soccer/MLS/team_stats_{league}.csv'
-        #self.csv_file = os.path.join('var', 'www', 'html', 'season_stats', 'soccer', league, f'team_stats_{league}.csv')
+        self.csv_file = os.path.join('..', '..', 'season_stats', 'soccer', league, f'team_stats_{league}.csv')
+        #self.csv_file = f'/var/www/html/season_stats/soccer/MLS/team_stats_{league}.csv'
         self.team_stats = pd.read_csv(self.csv_file)
         self.league_averages = {}
         self.league_std_devs = {}
         self.teams = []
 
     def calculate_league_averages_and_std_devs(self):
-        metrics = ['home_goals', 'away_goals', 'home_Shots on Target_value', 'away_Shots on Target_value',
-                   'home_Passing Accuracy_value', 'away_Passing Accuracy_value', 'home_Saves_value', 'away_Saves_value',
-                   'home_Tackles', 'away_Tackles']
+        metrics = [
+            'home_goals', 'away_goals', 'home_Shots on Target_value', 'away_Shots on Target_value',
+            'home_Saves_value', 'away_Saves_value', 'home_Possession_value', 'away_Possession_value'
+        ]
 
         for metric in metrics:
-            self.league_averages[metric] = self.team_stats[metric].astype(float).mean()
-            self.league_std_devs[metric] = self.team_stats[metric].astype(float).std()
-
-    @staticmethod
-    def calculate_weighted_metric(metric):
-        return (
-            metric['season'] * 0.5 +
-            metric['last10'] * 0.3 +
-            metric['last5'] * 0.2
-        )
-
-    @staticmethod
-    def normalize_metric(value, avg, std_dev):
-        return (value - avg) / std_dev + 1
+            if 'Possession' in metric:
+                # Remove '%' and convert to float
+                self.team_stats[metric] = self.team_stats[metric].str.rstrip('%').astype('float') / 100.0
+            self.league_averages[metric] = self.team_stats[metric].mean()
+            self.league_std_devs[metric] = self.team_stats[metric].std()
 
     def process_team_data(self):
         teams_of_interest = [self.team1, self.team2]
@@ -47,66 +39,33 @@ class TeamComparison:
             team_data = pd.concat([home_team_data, away_team_data])
 
             metrics = {
-                'home_goals': {
-                    'season': team_data['home_goals'].mean(),
-                    'last10': team_data['home_goals'].tail(10).mean(),
-                    'last5': team_data['home_goals'].tail(5).mean()
-                },
-                'away_goals': {
-                    'season': team_data['away_goals'].mean(),
-                    'last10': team_data['away_goals'].tail(10).mean(),
-                    'last5': team_data['away_goals'].tail(5).mean()
-                },
-                'home_Shots on Target_value': {
-                    'season': team_data['home_Shots on Target_value'].mean(),
-                    'last10': team_data['home_Shots on Target_value'].tail(10).mean(),
-                    'last5': team_data['home_Shots on Target_value'].tail(5).mean()
-                },
-                'away_Shots on Target_value': {
-                    'season': team_data['away_Shots on Target_value'].mean(),
-                    'last10': team_data['away_Shots on Target_value'].tail(10).mean(),
-                    'last5': team_data['away_Shots on Target_value'].tail(5).mean()
-                },
-                'home_Passing Accuracy_value': {
-                    'season': team_data['home_Passing Accuracy_value'].mean(),
-                    'last10': team_data['home_Passing Accuracy_value'].tail(10).mean(),
-                    'last5': team_data['home_Passing Accuracy_value'].tail(5).mean()
-                },
-                'away_Passing Accuracy_value': {
-                    'season': team_data['away_Passing Accuracy_value'].mean(),
-                    'last10': team_data['away_Passing Accuracy_value'].tail(10).mean(),
-                    'last5': team_data['away_Passing Accuracy_value'].tail(5).mean()
-                },
-                'home_Saves_value': {
-                    'season': team_data['home_Saves_value'].mean(),
-                    'last10': team_data['home_Saves_value'].tail(10).mean(),
-                    'last5': team_data['home_Saves_value'].tail(5).mean()
-                },
-                'away_Saves_value': {
-                    'season': team_data['away_Saves_value'].mean(),
-                    'last10': team_data['away_Saves_value'].tail(10).mean(),
-                    'last5': team_data['away_Saves_value'].tail(5).mean()
-                },
-                'home_Tackles': {
-                    'season': team_data['home_Tackles'].mean(),
-                    'last10': team_data['home_Tackles'].tail(10).mean(),
-                    'last5': team_data['home_Tackles'].tail(5).mean()
-                },
-                'away_Tackles': {
-                    'season': team_data['away_Tackles'].mean(),
-                    'last10': team_data['away_Tackles'].tail(10).mean(),
-                    'last5': team_data['away_Tackles'].tail(5).mean()
-                }
+                'goals_scored': team_data.apply(lambda row: row['home_goals'] if row['home_team'] == team else row['away_goals'], axis=1).mean(),
+                'goals_allowed': team_data.apply(lambda row: row['away_goals'] if row['home_team'] == team else row['home_goals'], axis=1).mean(),
+                'shots_on_target': team_data.apply(lambda row: row['home_Shots on Target_value'] if row['home_team'] == team else row['away_Shots on Target_value'], axis=1).mean(),
+                'saves': team_data.apply(lambda row: row['home_Saves_value'] if row['home_team'] == team else row['away_Saves_value'], axis=1).mean(),
+                'possession': team_data.apply(lambda row: row['home_Possession_value'] if row['home_team'] == team else row['away_Possession_value'], axis=1).mean()
             }
 
-            weighted_metrics = {metric: self.calculate_weighted_metric(values) for metric, values in metrics.items()}
-            normalized_metrics = {metric: self.normalize_metric(value, self.league_averages[metric], self.league_std_devs[metric])
-                                  for metric, value in weighted_metrics.items()}
+            normalized_metrics = {
+                'goals_scored': self.normalize_metric(metrics['goals_scored'], self.league_averages['home_goals'], self.league_std_devs['home_goals']),
+                'goals_allowed': self.normalize_metric(metrics['goals_allowed'], self.league_averages['away_goals'], self.league_std_devs['away_goals']),
+                'shots_on_target': self.normalize_metric(metrics['shots_on_target'], self.league_averages['home_Shots on Target_value'], self.league_std_devs['home_Shots on Target_value']),
+                'saves': self.normalize_metric(metrics['saves'], self.league_averages['home_Saves_value'], self.league_std_devs['home_Saves_value']),
+                'possession': self.normalize_metric(metrics['possession'], self.league_averages['home_Possession_value'], self.league_std_devs['home_Possession_value'])
+            }
 
             self.teams.append({
                 'name': team,
                 'metrics': normalized_metrics
             })
+
+    @staticmethod
+    def calculate_weighted_metric(metric):
+        return metric  # Update this if weighting is needed
+
+    @staticmethod
+    def normalize_metric(value, avg, std_dev):
+        return (value - avg) / std_dev
 
     def generate_json(self):
         self.calculate_league_averages_and_std_devs()

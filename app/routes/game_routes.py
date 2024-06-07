@@ -75,5 +75,10 @@ def game_page(game_id):
 
     messages = Message.query.filter_by(game_id=game_id).order_by(Message.timestamp.asc()).all()
 
-    return render_template('game_page.html', game=game_details, live_data=live_data, messages=messages,
-                           betting_data=betting_data, comparison_data=json.dumps(comparison_data))
+    return render_template('game_page.html',
+                           game=game_details,
+                           live_data=live_data,
+                           messages=messages,
+                           betting_data=betting_data,
+                           comparison_data=comparison_data)
+
