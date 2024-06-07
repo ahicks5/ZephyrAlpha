@@ -1,0 +1,58 @@
+{
+    "leagueAverages": {
+        "home_goals": 1.6538461538461537,
+        "away_goals": 1.3247863247863247,
+        "home_Shots on Target_value": 4.995726495726496,
+        "away_Shots on Target_value": 3.8632478632478633,
+        "home_Passing Accuracy_value": 424.36752136752136,
+        "away_Passing Accuracy_value": 388.34615384615387,
+        "home_Saves_value": 2.6794871794871793,
+        "away_Saves_value": 3.5384615384615383,
+        "home_Tackles": 15.61111111111111,
+        "away_Tackles": 16.636752136752136
+    },
+    "leagueStdDevs": {
+        "home_goals": 1.2412120935635125,
+        "away_goals": 1.0751110119669163,
+        "home_Shots on Target_value": 2.224517815810249,
+        "away_Shots on Target_value": 1.9341342360397797,
+        "home_Passing Accuracy_value": 95.9597643051703,
+        "away_Passing Accuracy_value": 112.41918339990916,
+        "home_Saves_value": 1.6559964370148104,
+        "away_Saves_value": 1.9980181663175527,
+        "home_Tackles": 4.9684027843910465,
+        "away_Tackles": 6.033569869635764
+    },
+    "teams": [
+        {
+            "name": "Inter Miami",
+            "metrics": {
+                "home_goals": 1.0980568932099064,
+                "away_goals": 1.6290743735267392,
+                "home_Shots on Target_value": 0.8415867205519287,
+                "away_Shots on Target_value": 1.4556025971604059,
+                "home_Passing Accuracy_value": 1.1408024250497202,
+                "away_Passing Accuracy_value": 1.6123555672489294,
+                "home_Tackles": 0.4480676504655968,
+                "away_Tackles": 0.8532144244988263,
+                "home_Saves_value": 1.1237667306378585,
+                "away_Saves_value": 0.7271655411757824
+            }
+        },
+        {
+            "name": "Seattle Sounders FC",
+            "metrics": {
+                "home_goals": 0.8418109565123193,
+                "away_goals": 0.8653289537780495,
+                "home_Shots on Target_value": 0.852450498083809,
+                "away_Shots on Target_value": 0.8018504320400329,
+                "home_Passing Accuracy_value": 0.8413655819421266,
+                "away_Passing Accuracy_value": 1.0223057673789164,
+                "home_Tackles": 1.2312390799913184,
+                "away_Tackles": 1.0220844153837416,
+                "home_Saves_value": 0.9859678565920903,
+                "away_Saves_value": 0.917562542103854
+            }
+        }
+    ]
+}

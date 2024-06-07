@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Comparison Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="comparisonChart" width="400" height="400"></canvas>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log('DOM fully loaded and parsed');
+
+            // Hardcoded JSON data
+            const comparisonData = {
+                "leagueAverages": {
+                    "home_goals": 1.6538461538461537,
+                    "away_goals": 1.3247863247863247,
+                    "home_Shots_on_Target_value": 4.995726495726496,
+                    "away_Shots_on_Target_value": 3.8632478632478633,
+                    "home_Passing_Accuracy_value": 424.36752136752136,
+                    "away_Passing_Accuracy_value": 388.34615384615387,
+                    "home_Saves_value": 2.6794871794871793,
+                    "away_Saves_value": 3.5384615384615383,
+                    "home_Tackles": 15.61111111111111,
+                    "away_Tackles": 16.636752136752136
+                },
+                "leagueStdDevs": {
+                    "home_goals": 1.2412120935635134,
+                    "away_goals": 1.0751110119669174,
+                    "home_Shots_on_Target_value": 2.224517815810248,
+                    "away_Shots_on_Target_value": 1.9341342360397755,
+                    "home_Passing_Accuracy_value": 95.95976430517028,
+                    "away_Passing_Accuracy_value": 112.41918339990914,
+                    "home_Saves_value": 1.6559964370148097,
+                    "away_Saves_value": 1.9980181663175542,
+                    "home_Tackles": 4.968402784391045,
+                    "away_Tackles": 6.033569869635764
+                },
+                "teams": [
+                    {
+                        "name": "Seattle Sounders FC",
+                        "metrics": {
+                            "home_goals": 0.8418109565123194,
+                            "away_goals": 0.8653289537780496,
+                            "home_Shots_on_Target_value": 0.8524504980838089,
+                            "away_Shots_on_Target_value": 0.8018504320400325,
+                            "home_Passing_Accuracy_value": 0.8413655819421266,
+                            "away_Passing_Accuracy_value": 1.0223057673789164,
+                            "home_Saves_value": 0.9859678565920903,
+                            "away_Saves_value": 0.917562542103854,
+                            "home_Tackles": 1.2312390799913187,
+                            "away_Tackles": 1.0220844153837416
+                        }
+                    },
+                    {
+                        "name": "Minnesota United",
+                        "metrics": {
+                            "home_goals": 1.031813402150967,
+                            "away_goals": 1.221881280994961,
+                            "home_Shots_on_Target_value": 0.8266021998183004,
+                            "away_Shots_on_Target_value": 1.3068136597560331,
+                            "home_Passing_Accuracy_value": 0.5962802224310242,
+                            "away_Passing_Accuracy_value": 0.23480301216197885,
+                            "home_Saves_value": 1.149263296499035,
+                            "away_Saves_value": 0.7405120998388677,
+                            "home_Tackles": 0.918596687507892,
+                            "away_Tackles": 1.2811902792605956
+                        }
+                    }
+                ]
+            };
+
+            console.log('Comparison Data:', comparisonData); // Debugging line to check if the data is correctly passed
+
+            // Function to calculate z-score
+            function calculateZScore(value, avg, stdDev) {
+                console.log(`Calculating Z-Score for value: ${value}, avg: ${avg}, stdDev: ${stdDev}`);
+                return (value - avg) / stdDev;
+            }
+
+            // Ensure the data structure is as expected
+            if (comparisonData && comparisonData.teams && comparisonData.teams.length >= 2) {
+                console.log('Data structure is correct');
+
+                // Prepare data for the chart
+                const teamA = comparisonData.teams[0];
+                const teamB = comparisonData.teams[1];
+                const leagueAverages = comparisonData.leagueAverages;
+                const leagueStdDevs = comparisonData.leagueStdDevs;
+
+                console.log('Team A:', teamA.name);
+                console.log('Team B:', teamB.name);
+                console.log('League Averages:', leagueAverages);
+                console.log('League StdDevs:', leagueStdDevs);
+
+                const labels = [
+                    'Home Goals',
+                    'Away Goals',
+                    'Home Shots on Target',
+                    'Away Shots on Target',
+                    'Home Passing Accuracy',
+                    'Away Passing Accuracy',
+                    'Home Saves',
+                    'Away Saves',
+                    'Home Tackles',
+                    'Away Tackles'
+                ];
+
+                const teamAData = [
+                    calculateZScore(teamA.metrics.home_goals, leagueAverages.home_goals, leagueStdDevs.home_goals),
+                    calculateZScore(teamA.metrics.away_goals, leagueAverages.away_goals, leagueStdDevs.away_goals),
+                    calculateZScore(teamA.metrics.home_Shots_on_Target_value, leagueAverages.home_Shots_on_Target_value, leagueStdDevs.home_Shots_on_Target_value),
+                    calculateZScore(teamA.metrics.away_Shots_on_Target_value, leagueAverages.away_Shots_on_Target_value, leagueStdDevs.away_Shots_on_Target_value),
+                    calculateZScore(teamA.metrics.home_Passing_Accuracy_value, leagueAverages.home_Passing_Accuracy_value, leagueStdDevs.home_Passing_Accuracy_value),
+                    calculateZScore(teamA.metrics.away_Passing_Accuracy_value, leagueAverages.away_Passing_Accuracy_value, leagueStdDevs.away_Passing_Accuracy_value),
+                    calculateZScore(teamA.metrics.home_Saves_value, leagueAverages.home_Saves_value, leagueStdDevs.home_Saves_value),
+                    calculateZScore(teamA.metrics.away_Saves_value, leagueAverages.away_Saves_value, leagueStdDevs.away_Saves_value),
+                    calculateZScore(teamA.metrics.home_Tackles, leagueAverages.home_Tackles, leagueStdDevs.home_Tackles),
+                    calculateZScore(teamA.metrics.away_Tackles, leagueAverages.away_Tackles, leagueStdDevs.away_Tackles)
+                ];
+
+                const teamBData = [
+                    calculateZScore(teamB.metrics.home_goals, leagueAverages.home_goals, leagueStdDevs.home_goals),
+                    calculateZScore(teamB.metrics.away_goals, leagueAverages.away_goals, leagueStdDevs.away_goals),
+                    calculateZScore(teamB.metrics.home_Shots_on_Target_value, leagueAverages.home_Shots_on_Target_value, leagueStdDevs.home_Shots_on_Target_value),
+                    calculateZScore(teamB.metrics.away_Shots_on_Target_value, leagueAverages.away_Shots_on_Target_value, leagueStdDevs.away_Shots_on_Target_value),
+                    calculateZScore(teamB.metrics.home_Passing_Accuracy_value, leagueAverages.home_Passing_Accuracy_value, leagueStdDevs.home_Passing_Accuracy_value),
+                    calculateZScore(teamB.metrics.away_Passing_Accuracy_value, leagueAverages.away_Passing_Accuracy_value, leagueStdDevs.away_Passing_Accuracy_value),
+                    calculateZScore(teamB.metrics.home_Saves_value, leagueAverages.home_Saves_value, leagueStdDevs.home_Saves_value),
+                    calculateZScore(teamB.metrics.away_Saves_value, leagueAverages.away_Saves_value, leagueStdDevs.away_Saves_value),
+                    calculateZScore(teamB.metrics.home_Tackles, leagueAverages.home_Tackles, leagueStdDevs.home_Tackles),
+                    calculateZScore(teamB.metrics.away_Tackles, leagueAverages.away_Tackles, leagueStdDevs.away_Tackles)
+                ];
+
+                console.log('Team A Data:', teamAData);
+                console.log('Team B Data:', teamBData);
+
+                const barData = {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: teamA.name,
+                            data: teamAData,
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                            barPercentage: 0.5,
+                            categoryPercentage: 0.5
+                        },
+                        {
+                            label: teamB.name,
+                            data: teamBData,
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1,
+                            barPercentage: 0.5,
+                            categoryPercentage: 0.5
+                        }
+                    ]
+                };
+
+                const barOptions = {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 2,
+                            min: -2,
+                            title: {
+                                display: true,
+                                text: 'Standard Deviations from Average'
+                            },
+                            grid: {
+                                color: function(context) {
+                                    if (context.tick.value === 0) {
+                                        return '#000'; // Vertical line for average
+                                    }
+                                    return '#e0e0e0'; // Other grid lines
+                                }
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    if (value === 0) return 'Average';
+                                    return value > 0 ? `+${value} SD` : `${value} SD`;
+                                }
+                            }
+                        },
+                        y: {
+                            stacked: false
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    label += context.raw.toFixed(2);
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                };
+
+                // Initialize the bar chart
+                const barCtx = document.getElementById('comparisonChart').getContext('2d');
+                new Chart(barCtx, {
+                    type: 'bar',
+                    data: barData,
+                    options: barOptions
+                });
+                console.log('Chart initialized successfully');
+            } else {
+                console.error('Data structure is incorrect or incomplete');
+                console.log('Comparison Data:', comparisonData);
+            }
+        });
+    </script>
+</body>
+</html>

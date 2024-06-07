@@ -92,4 +92,5 @@ def pull_all_games():
     return pull_games(sport_types)
 
 
-
+if __name__ == '__main__':
+    pull_all_games().to_csv('games.csv')

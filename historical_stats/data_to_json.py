@@ -1,28 +1,21 @@
 import pandas as pd
 import json
 
-# Load the CSV files
-shots_data = pd.read_csv('shots_data_combined_mls.csv')
-team_stats = pd.read_csv('team_stats_combined_mls.csv')
+# Load the CSV file
+team_stats = pd.read_csv('team_stats_major_league_soccer.csv')
 
-# Define the league averages and standard deviations (example values, adjust as needed)
-league_averages = {
-    'goalsPerGame': 2.5,
-    'shotsOnTargetPerGame': 5.5,
-    'passingAccuracy': 80,
-    'goalsConcededPerGame': 1.5,
-    'tacklesPerGame': 20,
-    'savesPerGame': 3
-}
+# Adjust the metric names to match the actual column names in the DataFrame
+metrics = ['home_goals', 'away_goals', 'home_Shots on Target_value', 'away_Shots on Target_value',
+           'home_Passing Accuracy_value', 'away_Passing Accuracy_value', 'home_Saves_value', 'away_Saves_value',
+           'home_Tackles', 'away_Tackles']
 
-league_std_devs = {
-    'goalsPerGame': 0.5,
-    'shotsOnTargetPerGame': 1,
-    'passingAccuracy': 5,
-    'goalsConcededPerGame': 0.4,
-    'tacklesPerGame': 5,
-    'savesPerGame': 1
-}
+# Calculate league averages and standard deviations
+league_averages = {}
+league_std_devs = {}
+
+for metric in metrics:
+    league_averages[metric] = team_stats[metric].astype(float).mean()
+    league_std_devs[metric] = team_stats[metric].astype(float).std()
 
 # Function to calculate weighted metric
 def calculate_weighted_metric(metric):
@@ -36,42 +29,69 @@ def calculate_weighted_metric(metric):
 def normalize_metric(value, avg, std_dev):
     return (value - avg) / std_dev + 1
 
+# Extract data for Inter Miami and Seattle Sounders
+teams_of_interest = ["Inter Miami", "Seattle Sounders FC"]
+filtered_team_stats = team_stats[team_stats['home_team'].isin(teams_of_interest) | team_stats['away_team'].isin(teams_of_interest)]
+
 # Example teams data structure
 teams = []
 
-# Process the team stats
-for team in team_stats['Squad'].unique():
-    team_data = team_stats[team_stats['Squad'] == team]
+for team in teams_of_interest:
+    home_team_data = filtered_team_stats[filtered_team_stats['home_team'] == team]
+    away_team_data = filtered_team_stats[filtered_team_stats['away_team'] == team]
+
+    team_data = pd.concat([home_team_data, away_team_data])
+
     metrics = {
-        'goalsPerGame': {
-            'season': team_data['Goals'].mean(),
-            'last10': team_data['Goals'].tail(10).mean(),
-            'last5': team_data['Goals'].tail(5).mean()
+        'home_goals': {
+            'season': team_data['home_goals'].mean(),
+            'last10': team_data['home_goals'].tail(10).mean(),
+            'last5': team_data['home_goals'].tail(5).mean()
         },
-        'shotsOnTargetPerGame': {
-            'season': team_data['ShotsOnTarget'].mean(),
-            'last10': team_data['ShotsOnTarget'].tail(10).mean(),
-            'last5': team_data['ShotsOnTarget'].tail(5).mean()
+        'away_goals': {
+            'season': team_data['away_goals'].mean(),
+            'last10': team_data['away_goals'].tail(10).mean(),
+            'last5': team_data['away_goals'].tail(5).mean()
         },
-        'passingAccuracy': {
-            'season': team_data['PassAccuracy'].mean(),
-            'last10': team_data['PassAccuracy'].tail(10).mean(),
-            'last5': team_data['PassAccuracy'].tail(5).mean()
+        'home_Shots on Target_value': {
+            'season': team_data['home_Shots on Target_value'].mean(),
+            'last10': team_data['home_Shots on Target_value'].tail(10).mean(),
+            'last5': team_data['home_Shots on Target_value'].tail(5).mean()
         },
-        'goalsConcededPerGame': {
-            'season': team_data['GoalsConceded'].mean(),
-            'last10': team_data['GoalsConceded'].tail(10).mean(),
-            'last5': team_data['GoalsConceded'].tail(5).mean()
+        'away_Shots on Target_value': {
+            'season': team_data['away_Shots on Target_value'].mean(),
+            'last10': team_data['away_Shots on Target_value'].tail(10).mean(),
+            'last5': team_data['away_Shots on Target_value'].tail(5).mean()
         },
-        'tacklesPerGame': {
-            'season': team_data['Tackles'].mean(),
-            'last10': team_data['Tackles'].tail(10).mean(),
-            'last5': team_data['Tackles'].tail(5).mean()
+        'home_Passing Accuracy_value': {
+            'season': team_data['home_Passing Accuracy_value'].mean(),
+            'last10': team_data['home_Passing Accuracy_value'].tail(10).mean(),
+            'last5': team_data['home_Passing Accuracy_value'].tail(5).mean()
         },
-        'savesPerGame': {
-            'season': team_data['Saves'].mean(),
-            'last10': team_data['Saves'].tail(10).mean(),
-            'last5': team_data['Saves'].tail(5).mean()
+        'away_Passing Accuracy_value': {
+            'season': team_data['away_Passing Accuracy_value'].mean(),
+            'last10': team_data['away_Passing Accuracy_value'].tail(10).mean(),
+            'last5': team_data['away_Passing Accuracy_value'].tail(5).mean()
+        },
+        'home_Tackles': {
+            'season': team_data['home_Tackles'].mean(),
+            'last10': team_data['home_Tackles'].tail(10).mean(),
+            'last5': team_data['home_Tackles'].tail(5).mean()
+        },
+        'away_Tackles': {
+            'season': team_data['away_Tackles'].mean(),
+            'last10': team_data['away_Tackles'].tail(10).mean(),
+            'last5': team_data['away_Tackles'].tail(5).mean()
+        },
+        'home_Saves_value': {
+            'season': team_data['home_Saves_value'].mean(),
+            'last10': team_data['home_Saves_value'].tail(10).mean(),
+            'last5': team_data['home_Saves_value'].tail(5).mean()
+        },
+        'away_Saves_value': {
+            'season': team_data['away_Saves_value'].mean(),
+            'last10': team_data['away_Saves_value'].tail(10).mean(),
+            'last5': team_data['away_Saves_value'].tail(5).mean()
         }
     }
 
@@ -92,7 +112,7 @@ json_data = {
 }
 
 # Save the JSON data to a file
-with open('league_data.json', 'w') as json_file:
+with open('team_comparison_data.json', 'w') as json_file:
     json.dump(json_data, json_file, indent=4)
 
-print("JSON data has been successfully created and saved to 'league_data.json'.")
+print("JSON data has been successfully created and saved to 'team_comparison_data.json'.")

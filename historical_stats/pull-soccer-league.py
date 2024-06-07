@@ -26,7 +26,7 @@ class MatchDataExtractor:
             if a_tag and 'href' in a_tag.attrs and a_tag.get_text(strip=True) == "Match Report":
                 match_report_links.append(self.base_url + a_tag['href'])
 
-        return match_report_links[:5]
+        return match_report_links
 
     def extract_game_id_from_url(self, url):
         return url.split('/')[-1]
@@ -114,6 +114,9 @@ class MatchDataExtractor:
         stats = {'game_id': game_id, 'date': game_date, 'home_team': home_team, 'away_team': away_team,
                  'league': league_name}
 
+        def clean_text(text):
+            return text.replace(u'\xa0', u' ').replace('Â', '').replace('â€”', '—').strip()
+
         def extract_team_stats(stats_dict, team_stats_div):
             rows = team_stats_div.find_all('tr')
             current_stat = ""
@@ -127,43 +130,39 @@ class MatchDataExtractor:
                     # This is a stat header row
                     current_stat = ths[0].get_text(strip=True)
                 elif len(tds) == 2 and current_stat:
-                    home_team_stat_raw = tds[0].get_text(strip=True)
-                    away_team_stat_raw = tds[1].get_text(strip=True)
+                    home_team_stat_raw = clean_text(tds[0].get_text(strip=True))
+                    away_team_stat_raw = clean_text(tds[1].get_text(strip=True))
 
                     home_team_value, home_team_attempts = None, None
                     away_team_value, away_team_attempts = None, None
 
-                    if home_team_stat_raw:
-                        if "%" in home_team_stat_raw:
-                            if home_team_stat_raw.endswith("%"):
-                                home_team_stat_parts = home_team_stat_raw.split(" — ")
-                                home_team_value = home_team_stat_parts[0]
-                                home_team_attempts = home_team_stat_parts[1] if len(home_team_stat_parts) > 1 else None
-                            else:
-                                home_team_stat_parts = home_team_stat_raw.split(" — ")
-                                home_team_attempts = home_team_stat_parts[0]
-                                home_team_value = home_team_stat_parts[1] if len(home_team_stat_parts) > 1 else None
+                    ## In cases of possession, just a pure %
+                    if len(home_team_stat_raw) == 0:
+                        continue
 
-                    if away_team_stat_raw:
-                        if "%" in away_team_stat_raw:
-                            if away_team_stat_raw.endswith("%"):
-                                away_team_stat_parts = away_team_stat_raw.split(" — ")
-                                away_team_value = away_team_stat_parts[0]
-                                away_team_attempts = away_team_stat_parts[1] if len(away_team_stat_parts) > 1 else None
-                            else:
-                                away_team_stat_parts = away_team_stat_raw.split(" — ")
-                                away_team_attempts = away_team_stat_parts[0]
-                                away_team_value = away_team_stat_parts[1] if len(away_team_stat_parts) > 1 else None
+                    if (len(home_team_stat_raw) < 5) and (home_team_stat_raw[-1] == '%') and \
+                            (len(away_team_stat_raw) < 5) and (away_team_stat_raw[-1] == '%'):
+                        stats_dict[f'home_{current_stat}_value'] = home_team_stat_raw.strip()
+                        stats_dict[f'away_{current_stat}_value'] = away_team_stat_raw.strip()
+                        continue
 
-                    if home_team_value and "of" in home_team_value:
-                        home_team_value_parts = home_team_value.split(" of ")
-                        home_team_value = home_team_value_parts[0]
-                        home_team_attempts = home_team_value_parts[1]
+                    ## Normal cases
+                    if '%' == home_team_stat_raw[-1]:
+                        home_team_value = home_team_stat_raw.split('of')[0].strip()
+                        home_team_attempts = home_team_stat_raw.split('of')[1].split('—')[0].strip()
+                    elif '—' in home_team_stat_raw[:5]:
+                        home_team_value = home_team_stat_raw.split('—')[1].split('of')[0].strip()
+                        home_team_attempts = home_team_stat_raw.split('of')[1].strip()
+                    else:
+                        continue
 
-                    if away_team_value and "of" in away_team_value:
-                        away_team_value_parts = away_team_value.split(" of ")
-                        away_team_value = away_team_value_parts[0]
-                        away_team_attempts = away_team_value_parts[1]
+                    ## Normal cases
+                    if '%' == away_team_stat_raw[-1]:
+                        away_team_value = away_team_stat_raw.split('of')[0].strip()
+                        away_team_attempts = away_team_stat_raw.split('of')[1].split('—')[0].strip()
+                    elif '—' in away_team_stat_raw[:5]:
+                        away_team_value = away_team_stat_raw.split('—')[1].split('of')[0].strip()
+                        away_team_attempts = away_team_stat_raw.split('of')[1].strip()
 
                     stats_dict[f'home_{current_stat}_value'] = home_team_value
                     stats_dict[f'home_{current_stat}_attempts'] = home_team_attempts
@@ -188,8 +187,8 @@ class MatchDataExtractor:
             for i in range(3, len(stat_divs), 3):
                 try:
                     stat_name = stat_divs[i + 1].get_text(strip=True)
-                    home_team_stat = stat_divs[i].get_text(strip=True)
-                    away_team_stat = stat_divs[i + 2].get_text(strip=True)
+                    home_team_stat = clean_text(stat_divs[i].get_text(strip=True))
+                    away_team_stat = clean_text(stat_divs[i + 2].get_text(strip=True))
                     stats[f'home_{stat_name}'] = home_team_stat
                     stats[f'away_{stat_name}'] = away_team_stat
                 except IndexError:

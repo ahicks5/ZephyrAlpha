@@ -1,0 +1,32 @@
+,id,description,link,sport,startTime,live,competitionId,lastModified,awayTeam,homeTeam
+0,13537684,Palmeiras vs Vasco da Gama,/soccer/south-america/brazil/brasileirao-serie-a/palmeiras-vasco-da-gama-202406132030,Brasileirão Série A,1718325000000,False,6672701,1717587639312,Vasco da Gama,Palmeiras
+1,13537663,Internacional vs São Paulo,/soccer/south-america/brazil/brasileirao-serie-a/internacional-sao-paulo-202406131900,Brasileirão Série A,1718319600000,False,6672701,1717378505110,São Paulo,Internacional
+2,13527303,Flamengo vs Grêmio,/soccer/south-america/brazil/brasileirao-serie-a/flamengo-gremio-202406131900,Brasileirão Série A,1718319600000,False,6672701,1717587786794,Grêmio,Flamengo
+3,13537639,Athletico Paranaense vs Criciúma SC,/soccer/south-america/brazil/brasileirao-serie-a/athletico-paranaense-criciuma-sc-202406131900,Brasileirão Série A,1718319600000,False,6672701,1717587639857,Criciúma SC,Athletico Paranaense
+4,13537631,Cruzeiro MG vs Cuiabá,/soccer/south-america/brazil/brasileirao-serie-a/cruzeiro-mg-cuiaba-202406131800,Brasileirão Série A,1718316000000,False,6672701,1717620958284,Cuiabá,Cruzeiro MG
+5,13531607,RB Bragantino vs Atlético Mineiro,/soccer/south-america/brazil/brasileirao-serie-a/rb-bragantino-atletico-mineiro-202406112030,Brasileirão Série A,1718152200000,False,6672701,1717620900536,Atlético Mineiro,RB Bragantino
+6,13537595,Botafogo vs Fluminense,/soccer/south-america/brazil/brasileirao-serie-a/botafogo-fluminense-202406111900,Brasileirão Série A,1718146800000,False,6672701,1717577304681,Fluminense,Botafogo
+7,13527305,Juventude vs Vitória BA,/soccer/south-america/brazil/brasileirao-serie-a/juventude-vitoria-ba-202406111800,Brasileirão Série A,1718143200000,False,6672701,1717649519671,Vitória BA,Juventude
+8,13531606,Atlético Goianiense vs Corinthians,/soccer/south-america/brazil/brasileirao-serie-a/atletico-goianiense-corinthians-202406111800,Brasileirão Série A,1718143200000,False,6672701,1717634544222,Corinthians,Atlético Goianiense
+9,13549664,Criciúma SC vs Cuiabá,/soccer/south-america/brazil/brasileirao-serie-a/criciuma-sc-cuiaba-202406091500,Brasileirão Série A,1717959600000,False,6672701,1717635218084,Cuiabá,Criciúma SC
+10,13527304,Bahia vs Fortaleza,/soccer/south-america/brazil/brasileirao-serie-a/bahia-fortaleza-202406132030,Brasileirão Série A,1718325000000,False,6672701,1717156518115,Fortaleza,Bahia
+11,13569677,Seattle Sounders vs Minnesota United,/soccer/north-america/united-states/mls/seattle-sounders-minnesota-united-202406152230,MLS,1718505000000,False,6687357,1717562945519,Minnesota United,Seattle Sounders
+12,13569678,San Jose Earthquakes vs FC Cincinnati,/soccer/north-america/united-states/mls/san-jose-earthquakes-fc-cincinnati-202406152230,MLS,1718505000000,False,6687357,1717468248981,FC Cincinnati,San Jose Earthquakes
+13,13569675,Los Angeles Galaxy vs Sporting Kansas City,/soccer/north-america/united-states/mls/los-angeles-galaxy-sporting-kansas-city-202406152230,MLS,1718505000000,False,6687357,1717649797505,Sporting Kansas City,LA Galaxy
+14,13569684,Colorado Rapids vs Austin FC,/soccer/north-america/united-states/mls/colorado-rapids-austin-fc-202406152130,MLS,1718501400000,False,6687357,1717497555572,Austin FC,Colorado Rapids
+15,13483716,Toronto FC vs Chicago Fire,/soccer/north-america/united-states/mls/toronto-fc-chicago-fire-202406151930,MLS,1718494200000,False,6687357,1717337990323,Chicago Fire,Toronto FC
+16,13483715,Philadelphia Union vs Inter Miami,/soccer/north-america/united-states/mls/philadelphia-union-inter-miami-202406151930,MLS,1718494200000,False,6687357,1717489315914,Inter Miami,Philadelphia Union
+17,13483714,Orlando City SC vs Los Angeles FC,/soccer/north-america/united-states/mls/orlando-city-sc-los-angeles-fc-202406151930,MLS,1718494200000,False,6687357,1717337989359,Los Angeles FC,Orlando City
+18,13483712,New England Revolution vs Vancouver Whitecaps,/soccer/north-america/united-states/mls/new-england-revolution-vancouver-whitecaps-202406151930,MLS,1718494200000,False,6687357,1717460216017,Vancouver Whitecaps,New England Revolution
+19,13483713,NY Red Bulls vs Nashville SC,/soccer/north-america/united-states/mls/ny-red-bulls-nashville-sc-202406151930,MLS,1718494200000,False,6687357,1717337982421,Nashville SC,New York Red Bulls
+20,13483710,Charlotte FC vs DC United,/soccer/north-america/united-states/mls/charlotte-fc-dc-united-202406151930,MLS,1718494200000,False,6687357,1717337981930,DC United,Charlotte FC
+21,13483711,CF Montréal vs Real Salt Lake,/soccer/north-america/united-states/mls/cf-montreal-real-salt-lake-202406151930,MLS,1718494200000,False,6687357,1717337981436,Real Salt Lake,CF Montréal
+22,13483709,Atlanta United vs Houston Dynamo,/soccer/north-america/united-states/mls/atlanta-united-houston-dynamo-202406151930,MLS,1718494200000,False,6687357,1717629949878,Houston Dynamo,Atlanta United
+23,13479184,New York City FC vs Columbus Crew,/soccer/north-america/united-states/mls/new-york-city-fc-columbus-crew-202406141930,MLS,1718407800000,False,6687357,1717337966201,Columbus Crew,New York City FC
+24,13561420,St. Louis City SC vs Portland Timbers,/soccer/north-america/united-states/mls/st-louis-city-sc-portland-timbers-202406082030,MLS,1717893000000,False,6687357,1717649800981,Portland Timbers,St. Louis City SC
+25,13561415,Sporting Kansas City vs Seattle Sounders,/soccer/north-america/united-states/mls/sporting-kansas-city-seattle-sounders-202406082030,MLS,1717893000000,False,6687357,1717594299116,Seattle Sounders,Sporting Kansas City
+26,13561416,Minnesota United vs FC Dallas,/soccer/north-america/united-states/mls/minnesota-united-fc-dallas-202406082030,MLS,1717893000000,False,6687357,1717579344076,FC Dallas,Minnesota United
+27,13453631,New England Revolution vs NY Red Bulls,/soccer/north-america/united-states/mls/new-england-revolution-ny-red-bulls-202406081930,MLS,1717889400000,False,6687357,1717621359588,New York Red Bulls,New England Revolution
+28,13569674,FC Dallas vs St. Louis City SC,/soccer/north-america/united-states/mls/fc-dallas-st-louis-city-sc-202406152030,MLS,1718497800000,False,6687357,1717337990774,St. Louis City SC,FC Dallas
+29,13559334,Dallas Mavericks @ Boston Celtics,/basketball/nba/dallas-mavericks-boston-celtics-202406062030,NBA,1717720200000,False,2958468,1717649482378,Dallas Mavericks,Boston Celtics
+30,13572609,Edmonton Oilers @ Florida Panthers,/hockey/nhl/edmonton-oilers-florida-panthers-202406082010,NHL,1717891800000,False,23142,1717648575145,Edmonton Oilers,Florida Panthers
