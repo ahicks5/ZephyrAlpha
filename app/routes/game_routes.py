@@ -32,46 +32,17 @@ def game_page(game_id):
     home_team = game_details['homeTeam']
     away_team = game_details['awayTeam']
     league = game_details['sport']
-
-    team_name_mapping = {
-        'Minnesota United': 'Minnesota United',
-        'FC Cincinnati': 'FC Cincinnati',
-        'Sporting Kansas City': 'Sporting Kansas City',
-        'Austin FC': 'Austin FC',
-        'Chicago Fire': 'Chicago Fire',
-        'Inter Miami': 'Inter Miami',
-        'Los Angeles FC': 'Los Angeles FC',
-        'Vancouver Whitecaps': 'Vancouver Whitecaps FC',
-        'Nashville SC': 'Nashville SC',
-        'DC United': 'D.C. United',
-        'Real Salt Lake': 'Real Salt Lake',
-        'Houston Dynamo': 'Houston Dynamo',
-        'Columbus Crew': 'Columbus Crew',
-        'Portland Timbers': 'Portland Timbers',
-        'Seattle Sounders': 'Seattle Sounders FC',
-        'FC Dallas': 'FC Dallas',
-        'New York Red Bulls': 'New York Red Bulls',
-        'St. Louis City SC': 'St. Louis City',
-        'San Jose Earthquakes': 'San Jose Earthquakes',
-        'LA Galaxy': 'LA Galaxy',
-        'Colorado Rapids': 'Colorado Rapids',
-        'Toronto FC': 'Toronto FC',
-        'Philadelphia Union': 'Philadelphia Union',
-        'Orlando City': 'Orlando City',
-        'New England Revolution': 'New England Revolution',
-        'Charlotte FC': 'Charlotte FC',
-        'CF Montréal': 'CF Montréal',
-        'Atlanta United': 'Atlanta United',
-        'New York City FC': 'New York City FC'
-    }
+    print(home_team, away_team, league)
 
     comparison_data = None
     try:
-        comparison = TeamComparison(team_name_mapping[home_team], team_name_mapping[away_team], league)
+        print(home_team, away_team, league)
+        comparison = TeamComparison(home_team, away_team, league)
         comparison_data = comparison.generate_json()
-        print(comparison_data)
     except Exception as e:
         print(f"Error generating comparison data: {e}")
+
+    print(comparison_data)
 
     messages = Message.query.filter_by(game_id=game_id).order_by(Message.timestamp.asc()).all()
 

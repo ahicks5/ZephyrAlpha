@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime
 import time
+import os
 
 class MatchDataExtractor:
     def __init__(self, base_url, schedule_url):
@@ -220,8 +221,20 @@ class MatchDataExtractor:
     def save_data_to_csv(self, league_name):
         # Format league name to be filename friendly
         league_name_tag = league_name.replace(' ', '_').lower()
-        self.shots_data.to_csv(f'shots_data_{league_name_tag}.csv', index=False)
-        self.team_stats_data.to_csv(f'team_stats_{league_name_tag}.csv', index=False)
+
+        # Define the directory path
+        directory = os.path.join('..', 'season_stats', league_name_tag)
+
+        # Create the directory if it doesn't exist
+        os.makedirs(directory, exist_ok=True)
+
+        # Define file paths
+        shots_file_path = os.path.join(directory, f'shots_data_{league_name_tag}.csv')
+        team_stats_file_path = os.path.join(directory, f'team_stats_{league_name_tag}.csv')
+
+        # Save data to CSV files
+        #self.shots_data.to_csv(shots_file_path, index=False)
+        self.team_stats_data.to_csv(team_stats_file_path, index=False)
 
 
 # Example usage

@@ -315,3 +315,52 @@ button:hover, .btn-success:hover {
     font-size: 1.4rem; /* Adjusted size for balance */
     color: #555555; /* Darker grey for more emphasis yet subtle */
 }
+
+
+/* Ensure the chart container matches the styling of other containers */
+#comparison-chart-container {
+    background-color: #FFFFFF; /* White background */
+    border: 1px solid #CCCCCC; /* Light grey border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    margin: 20px auto; /* Centered and spaced out */
+    padding: 20px; /* Padding inside the container */
+    width: 90%; /* Ensure it spans across the container */
+    max-width: 800px; /* Limit the maximum width */
+    text-align: center; /* Center align content */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Add styles for the comparison header to match .bet-box h5 and .bet-box p */
+.comparison-header {
+    margin: 0 auto; /* Centers the element within the box */
+    padding: 5px 0; /* Adds padding for spacing */
+    font-size: 14px; /* Match font size */
+    text-align: center; /* Center the text */
+}
+
+
+#comparison-chart-container canvas {
+    width: 100% !important; /* Ensure the chart spans the full width of the container */
+    height: auto; /* Adjust height automatically */
+    margin: 0 auto; /* Center the canvas within the container */
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 600px) {
+    #comparison-chart-container {
+        padding: 10px; /* Reduce padding on smaller screens */
+        width: 100%; /* Full width on mobile devices */
+        max-height: 600px; /* Fixed height to enable scrolling */
+    }
+
+    #comparison-chart-container canvas {
+        height: auto !important; /* Ensure the chart height adapts */
+        max-width: 100%; /* Ensure the canvas does not exceed the container width */
+    }
+
+    /* Reduce font sizes for better readability on small screens */
+    .chartjs-size {
+        font-size: 10px !important; /* Decrease font size for chart labels */
+    }
+}

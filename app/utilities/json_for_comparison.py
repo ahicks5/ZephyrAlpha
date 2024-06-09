@@ -1,15 +1,26 @@
-# self.csv_file = f'/var/www/html/season_stats/soccer/MLS/team_stats_{league}.csv'
-import pandas as pd
 import json
+import pandas as pd
 import os
+from app.utilities.sport_league_mappings import team_mappings, base_path
 
 class TeamComparison:
     def __init__(self, team1, team2, league):
-        self.team1 = team1
-        self.team2 = team2
-        self.league = league
-        self.csv_file = os.path.join('..', '..', 'season_stats', 'soccer', league, f'team_stats_{league}.csv')
-        #self.csv_file = f'/var/www/html/season_stats/soccer/MLS/team_stats_{league}.csv'
+        # Find the correct league key
+        league_key = None
+        for key, value in team_mappings.items():
+            if value['league_name'] == league:
+                league_key = key
+                break
+
+        if not league_key:
+            raise ValueError(f"League '{league}' not supported")
+
+        # Map the teams using the league key
+        self.team1 = team_mappings[league_key]['teams'].get(team1, team1)
+        self.team2 = team_mappings[league_key]['teams'].get(team2, team2)
+        self.league = league_key
+
+        self.csv_file = os.path.join(base_path, self.league, f'team_stats_{self.league}.csv')
         self.team_stats = pd.read_csv(self.csv_file)
         self.league_averages = {}
         self.league_std_devs = {}
@@ -83,6 +94,6 @@ class TeamComparison:
 
 # Example usage
 if __name__ == '__main__':
-    comparison = TeamComparison("Inter Miami", "Seattle Sounders FC", "MLS")
+    comparison = TeamComparison("Vasco da Gama", "São Paulo", "Brasileirão Série A")
     json_result = comparison.generate_json()
     print(json_result)

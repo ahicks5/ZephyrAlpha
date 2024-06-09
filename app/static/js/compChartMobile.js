@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     let comparisonData;
     try {
-        comparisonData = comparison_data;
+        comparisonData = JSON.parse(comparison_data_str); // Ensure this line correctly parses JSON
     } catch (error) {
         console.error('Error parsing JSON:', error);
         return;
@@ -65,51 +65,51 @@ document.addEventListener("DOMContentLoaded", function() {
                     data: teamAData,
                     backgroundColor: 'rgba(255, 99, 132, 0.5)',
                     borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1,
-                    barPercentage: 0.5,
-                    categoryPercentage: 0.5
+                    borderWidth: 1
                 },
                 {
                     label: teamB.name,
                     data: teamBData,
                     backgroundColor: 'rgba(54, 162, 235, 0.5)',
                     borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1,
-                    barPercentage: 0.5,
-                    categoryPercentage: 0.5
+                    borderWidth: 1
                 }
             ]
         };
 
         const barOptions = {
-            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false, // Ensure the chart doesn't maintain aspect ratio
             scales: {
                 x: {
                     beginAtZero: true,
                     max: 1,
                     min: 0,
-                    title: {
-                        display: true,
-                        text: 'Percentile'
-                    },
                     grid: {
                         color: function(context) {
                             return '#e0e0e0'; // Grid lines
                         }
                     },
-                    ticks: {
-                        callback: function(value) {
-                            return `${Math.round(value * 100)}`;
-                        }
+                    scaleLabel: {
+                        display: false // Hide x-axis labels
                     }
                 },
                 y: {
-                    stacked: false
+                    ticks: {
+                        font: {
+                            size: 10 // Adjust font size for labels on mobile
+                        }
+                    }
                 }
             },
             plugins: {
                 legend: {
-                    position: 'top'
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 10 // Adjust font size for legend on mobile
+                        }
+                    }
                 },
                 tooltip: {
                     callbacks: {
@@ -128,11 +128,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     align: 'end',
                     formatter: function(value, context) {
                         return `${Math.round(value * 100)}`;
+                    },
+                    font: {
+                        size: 10 // Adjust font size for data labels on mobile
                     }
                 }
             }
         };
 
+        // Register quartileBackground plugin
         Chart.register({
             id: 'quartileBackground',
             beforeDraw: function(chart) {
@@ -152,8 +156,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 quartiles.forEach(function(quartile, index) {
                     ctx.fillStyle = quartile.color;
-                    const x = left + (quartile.value * (right - left));
-                    ctx.fillRect(index === 0 ? left : left + quartiles[index - 1].value * (right - left), top, quartile.value * (right - left), bottom - top);
+                    const y = top + (quartile.value * (bottom - top));
+                    ctx.fillRect(left, index === 0 ? top : top + quartiles[index - 1].value * (bottom - top), right - left, quartile.value * (bottom - top));
                 });
             }
         });
@@ -165,6 +169,10 @@ document.addEventListener("DOMContentLoaded", function() {
             options: barOptions,
             plugins: [ChartDataLabels, 'quartileBackground']
         });
+
+        // Set the canvas size
+        document.getElementById('comparisonChart').width = 1000;
+        document.getElementById('comparisonChart').height = 800;
     } else {
         console.error('Data structure is incorrect or incomplete');
     }
