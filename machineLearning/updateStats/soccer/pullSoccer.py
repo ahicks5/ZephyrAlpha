@@ -4,14 +4,37 @@ import pandas as pd
 from datetime import datetime
 import time
 import os
+from machineLearning.soccerLeagueLinks import league_dict
 
 class MatchDataExtractor:
-    def __init__(self, base_url, schedule_url):
-        self.base_url = base_url
-        self.schedule_url = schedule_url
+    def __init__(self, friendly_league_name, year=None):
+        self.base_url = 'https://fbref.com'
+        self.schedule_url = self.get_season_link(friendly_league_name, year)
         self.urls = self.get_match_report_links()
         self.shots_data = pd.DataFrame()
         self.team_stats_data = pd.DataFrame()
+        self.existing_game_ids = self.load_existing_game_ids(friendly_league_name, year)
+        self.year = year
+
+    @staticmethod
+    def get_season_link(friendly_league_name, year=None):
+        # Get the league information from the dictionary
+        league_info = league_dict.get(friendly_league_name)
+
+        if not league_info:
+            raise ValueError(f"League '{friendly_league_name}' not found in league_dict.")
+
+        # Construct the base URL
+        base_url = 'https://fbref.com/en/comps'
+
+        # If year is provided, construct the historical URL
+        if year:
+            season_link = f"{base_url}/{league_info['league_code']}/{year}/schedule/{year}-{league_info['league_name']}-Scores-and-Fixtures"
+        else:
+            # Construct the current season URL
+            season_link = f"{base_url}/{league_info['league_code']}/schedule/{league_info['league_name']}-Scores-and-Fixtures"
+
+        return season_link
 
     def get_soup(self, url):
         response = requests.get(url)
@@ -197,13 +220,32 @@ class MatchDataExtractor:
 
         return pd.DataFrame([stats])
 
+    def load_existing_game_ids(self, friendly_league_name, year=None):
+        league_long_name = league_dict[friendly_league_name]['league_long_name'].replace(' ', '_').lower()
+        if year:
+            file_path = os.path.join('..', '..', '..', 'season_stats', league_long_name, f'team_stats_{league_long_name}_{year}.csv')
+        else:
+            file_path = os.path.join('..', '..', '..', 'season_stats', league_long_name, f'team_stats_{league_long_name}.csv')
+
+        if os.path.exists(file_path):
+            existing_data = pd.read_csv(file_path)
+            return set(existing_data['game_id'])
+        else:
+            return set()
+
     def extract_and_save_all_data(self):
         estimated_time = len(self.urls) * 6  # Estimate 6 seconds per item
         print(f"Estimated total processing time: {estimated_time // 60} minutes and {estimated_time % 60} seconds")
 
+        new_data_processed = False
+
         for url in self.urls:
-            soup = self.get_soup(url)
             game_id = self.extract_game_id_from_url(url)
+            if game_id in self.existing_game_ids:
+                print(f"Skipping already processed game: {game_id}")
+                continue
+
+            soup = self.get_soup(url)
             home_team, away_team, game_date, league_name = self.extract_teams_date_and_league_from_h1(soup)
 
             shots_df = self.extract_shots_data(soup, game_id)
@@ -213,33 +255,41 @@ class MatchDataExtractor:
             self.team_stats_data = pd.concat([self.team_stats_data, team_stats_df], ignore_index=True)
 
             print(f"Successfully pulled data for {home_team} vs {away_team} on {game_date}")
+            new_data_processed = True
             time.sleep(4)  # Wait for 4 seconds before making the next request
 
-        # Save data to CSV with league name included in the filename
-        self.save_data_to_csv(league_name)
+        if new_data_processed:
+            # Save data to CSV with league name included in the filename
+            self.save_data_to_csv(league_name, self.year)
+        else:
+            print("No new data was processed.")
 
-    def save_data_to_csv(self, league_name):
+    def save_data_to_csv(self, league_name, year=None):
         # Format league name to be filename friendly
         league_name_tag = league_name.replace(' ', '_').lower()
 
         # Define the directory path
-        directory = os.path.join('..', 'season_stats', league_name_tag)
+        directory = os.path.join('..', '..', '..', 'season_stats', league_name_tag)
 
         # Create the directory if it doesn't exist
         os.makedirs(directory, exist_ok=True)
 
         # Define file paths
-        shots_file_path = os.path.join(directory, f'shots_data_{league_name_tag}.csv')
-        team_stats_file_path = os.path.join(directory, f'team_stats_{league_name_tag}.csv')
+        if year:
+            shots_file_path = os.path.join(directory, f'shots_data_{league_name_tag}_{year}.csv')
+            team_stats_file_path = os.path.join(directory, f'team_stats_{league_name_tag}_{year}.csv')
+        else:
+            shots_file_path = os.path.join(directory, f'shots_data_{league_name_tag}.csv')
+            team_stats_file_path = os.path.join(directory, f'team_stats_{league_name_tag}.csv')
 
         # Save data to CSV files
-        #self.shots_data.to_csv(shots_file_path, index=False)
-        self.team_stats_data.to_csv(team_stats_file_path, index=False)
+        self.shots_data.to_csv(shots_file_path, mode='a', index=False, header=not os.path.exists(shots_file_path))
+        self.team_stats_data.to_csv(team_stats_file_path, mode='a', index=False, header=not os.path.exists(team_stats_file_path))
 
 
 # Example usage
-base_url = "https://fbref.com"
-schedule_url = "https://fbref.com/en/comps/22/schedule/Major-League-Soccer-Scores-and-Fixtures"
+extractor = MatchDataExtractor('Brazil Serie A')  # For historical data
+extractor.extract_and_save_all_data()
 
-extractor = MatchDataExtractor(base_url, schedule_url)
+extractor = MatchDataExtractor('MLS')  # For historical data
 extractor.extract_and_save_all_data()

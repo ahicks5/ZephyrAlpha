@@ -5,6 +5,10 @@ from app.utilities.bet_data_processing import get_organize_bet_data
 from app.utilities.game_data import split_games_by_upcoming
 from app.utilities.json_for_comparison import TeamComparison
 from app.models.models import Message
+from machineLearning.soccerLeagueLinks import league_dict
+from app.utilities.soccerPrediction import predict_game_goals
+import os
+import pandas as pd
 
 game_bp = Blueprint('game', __name__)
 
@@ -14,10 +18,6 @@ def index():
     all_games, upcoming_games, later_games = split_games_by_upcoming(games_list)
     unique_sports = {game['sport'] for game in games_list}
     return render_template('index.html', games=upcoming_games, later_games=later_games, sports=unique_sports)
-
-@game_bp.route('/signup')
-def signup():
-    return "Signup Page - To be implemented"
 
 @game_bp.route('/game/<int:game_id>')
 def game_page(game_id):
@@ -35,17 +35,20 @@ def game_page(game_id):
     home_team = game_details['homeTeam']
     away_team = game_details['awayTeam']
     league = game_details['sport']
-    print(home_team, away_team, league)
 
     comparison_data = None
     try:
-        print(home_team, away_team, league)
         comparison = TeamComparison(home_team, away_team, league)
         comparison_data = comparison.generate_json()
     except Exception as e:
         print(f"Error generating comparison data: {e}")
 
-    print(comparison_data)
+    # Load predictions from CSV
+    prediction_data = None
+    try:
+        prediction_data = predict_game_goals(home_team, away_team, league)
+    except Exception as e:
+        print(f"Error loading prediction data: {e}")
 
     messages = Message.query.filter_by(game_id=game_id).order_by(Message.timestamp.asc()).all()
 
@@ -54,5 +57,5 @@ def game_page(game_id):
                            live_data=live_data,
                            messages=messages,
                            betting_data=betting_data,
-                           comparison_data=comparison_data)
-
+                           comparison_data=comparison_data,
+                           prediction_data=prediction_data)
