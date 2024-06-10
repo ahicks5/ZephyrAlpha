@@ -5,9 +5,19 @@ from app.utilities.bet_data_processing import get_organize_bet_data
 from app.utilities.game_data import split_games_by_upcoming
 from app.utilities.json_for_comparison import TeamComparison
 from app.models.models import Message
-import json
+from machineLearning.soccerLeagueLinks import league_dict
+import os
+import pandas as pd
 
 game_bp = Blueprint('game', __name__)
+
+def load_predictions(league_name):
+    league_long_name = league_dict[league_name]['league_long_name'].replace(' ', '_').lower()
+    predictions_filepath = os.path.join('..', '..', '..', 'season_stats', league_long_name, f'current_predictions_{league_long_name}.csv')
+    if os.path.exists(predictions_filepath):
+        return pd.read_csv(predictions_filepath)
+    else:
+        return None
 
 @game_bp.route('/')
 def index():
@@ -32,17 +42,24 @@ def game_page(game_id):
     home_team = game_details['homeTeam']
     away_team = game_details['awayTeam']
     league = game_details['sport']
-    print(home_team, away_team, league)
 
     comparison_data = None
     try:
-        print(home_team, away_team, league)
         comparison = TeamComparison(home_team, away_team, league)
         comparison_data = comparison.generate_json()
     except Exception as e:
         print(f"Error generating comparison data: {e}")
 
-    print(comparison_data)
+    # Load predictions from CSV
+    prediction_data = None
+    try:
+        predictions_df = load_predictions(league)
+        if predictions_df is not None:
+            prediction_row = predictions_df[(predictions_df['home_team'] == home_team) & (predictions_df['away_team'] == away_team)]
+            if not prediction_row.empty:
+                prediction_data = prediction_row.to_dict('records')[0]
+    except Exception as e:
+        print(f"Error loading prediction data: {e}")
 
     messages = Message.query.filter_by(game_id=game_id).order_by(Message.timestamp.asc()).all()
 
@@ -51,5 +68,5 @@ def game_page(game_id):
                            live_data=live_data,
                            messages=messages,
                            betting_data=betting_data,
-                           comparison_data=comparison_data)
-
+                           comparison_data=comparison_data,
+                           prediction_data=prediction_data)

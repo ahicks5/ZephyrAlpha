@@ -1,16 +1,38 @@
 import pandas as pd
+import os
+from machineLearning.soccerLeagueLinks import league_dict
 
 class SoccerDataCleaner:
-    def __init__(self, input_filepath, output_filepath, recent_stats_filepath):
-        self.input_filepath = input_filepath
-        self.output_filepath = output_filepath
-        self.recent_stats_filepath = recent_stats_filepath
+    def __init__(self, friendly_league_name, year=None):
+        self.input_filepath = self.generate_filepath(friendly_league_name, year, 'input')
+        self.output_filepath = self.generate_filepath(friendly_league_name, year, 'output')
+        self.recent_stats_filepath = self.generate_filepath(friendly_league_name, year, 'recent_stats')
         self.columns_to_aggregate = [
             'Possession_value', 'Passing Accuracy_value', 'Passing Accuracy_attempts',
             'Shots on Target_value', 'Saves_value', 'xg', 'Fouls', 'Corners',
             'Crosses', 'Touches', 'Tackles', 'Interceptions', 'Aerials Won',
             'Clearances', 'Offsides', 'Goal Kicks', 'Throw Ins', 'Long Balls'
         ]
+
+    @staticmethod
+    def generate_filepath(friendly_league_name, year, file_type):
+        league_long_name = league_dict[friendly_league_name]['league_long_name'].replace(' ', '_').lower()
+        base_dir = os.path.join('..', '..', 'season_stats', league_long_name)
+
+        if file_type == 'input':
+            if year:
+                return os.path.join(base_dir, f'team_stats_{league_long_name}_{year}.csv')
+            else:
+                return os.path.join(base_dir, f'team_stats_{league_long_name}.csv')
+        elif file_type == 'output':
+            if year:
+                return os.path.join(base_dir, f'cleaned_data_{league_long_name}_{year}.csv')
+            else:
+                return os.path.join(base_dir, f'cleaned_data_{league_long_name}.csv')
+        elif file_type == 'recent_stats':
+            return os.path.join(base_dir, f'recent_stats_{league_long_name}.csv')
+        else:
+            raise ValueError("Invalid file type. Use 'input', 'output', or 'recent_stats'.")
 
     def load_and_preprocess_data(self):
         # Load the data
@@ -128,14 +150,20 @@ class SoccerDataCleaner:
         self.save_recent_team_averages()
 
 # Usage
-input_filepath = r'C:\Users\arhic\PycharmProjects\ZephyrAlpha\season_stats\major_league_soccer\team_stats_major_league_soccer.csv'
-output_filepath = r'yup.csv'
-recent_stats_filepath = r'recent_stats.csv'
-
-cleaner = SoccerDataCleaner(input_filepath, output_filepath, recent_stats_filepath)
+friendly_league_name = 'MLS'
+year = None
+cleaner = SoccerDataCleaner(friendly_league_name, year)
 cleaner.clean_data()
 cleaned_data_filepath = cleaner.get_cleaned_data_filepath()
 recent_team_averages_filepath = cleaner.get_recent_team_averages_filepath()
 
 print("Cleaned data available at:", cleaned_data_filepath)
 print("Recent team averages available at:", recent_team_averages_filepath)
+
+cleaner_current = SoccerDataCleaner(friendly_league_name)
+cleaner_current.clean_data()
+cleaned_data_filepath_current = cleaner_current.get_cleaned_data_filepath()
+recent_team_averages_filepath_current = cleaner_current.get_recent_team_averages_filepath()
+
+print("Cleaned data available at:", cleaned_data_filepath_current)
+print("Recent team averages available at:", recent_team_averages_filepath_current)
