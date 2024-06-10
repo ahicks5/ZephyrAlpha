@@ -65,10 +65,10 @@
                 <div class="projected-score-title">Projected Score</div>
                 <div class="projected-scores">{{ betting_data.assumed_final_score.proj_away_score }} - {{ betting_data.assumed_final_score.proj_home_score }}</div>
             </div>
-            {% if prediction %}
+            {% if prediction_data %}
             <div class="projected-score-box">
                 <div class="projected-score-title">Predicted Score</div>
-                <div class="projected-scores">{{ prediction.away_goals_pred }} - {{ prediction.home_goals_pred }}</div>
+                <div class="projected-scores">{{ prediction_data.away_goals_pred }} - {{ prediction_data.home_goals_pred }}</div>
             </div>
             {% endif %}
         </div>
