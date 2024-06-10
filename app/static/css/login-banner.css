@@ -1,0 +1,29 @@
+/* banner.css */
+
+.login-signup-banner {
+    background-color: #f8d7da;
+    color: #721c24;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-signup-banner a {
+    color: #721c24;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.login-signup-banner a:hover {
+    color: #f5c6cb;
+    text-decoration: none;
+}
+
+body {
+    padding-top: 60px; /* Add padding to prevent content from being hidden under the banner */
+}
