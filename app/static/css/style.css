@@ -1,101 +1,115 @@
+/* General Styles */
 body {
     background-color: #C8C8C8; /* Light grey for a clean and neutral look */
 }
 
+/* Text Centering and Padding */
+.mt-5.text-center {
+    padding-top: 30px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-weight: bold; /* Corrected font-style to font-weight */
+}
+
+/* Header Logo */
 .header .logo {
-    width: 50%; /* Shrink the logo by 50% */
+    width: 50%;
     max-width: 50%;
     height: 50%;
 }
 
 @media (max-width: 767px) {
     .header .logo {
-        width: 75%; /* Adjust the logo size for mobile devices */
+        width: 75%;
     }
 }
 
+/* Filter Buttons */
 .filter-buttons .filter-button {
-    width: auto; /* Adjust width to be auto */
-    margin: 0 5px; /* Add some margin for spacing */
-    padding: 5px 10px; /* Add padding for better spacing */
+    width: auto;
+    margin: 0 5px;
+    padding: 5px 10px;
     transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
-    background-color: grey; /* Default color for inactive state */
-    color: white; /* White text for better readability */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Add some border radius for smoother look */
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 
 .filter-buttons .filter-button.active {
-    background-color: orange; /* Change color for active state */
-    color: white;
-    transform: translateY(2px); /* Slight push-in effect */
+    background-color: orange;
+    transform: translateY(2px);
 }
 
 .filter-buttons .filter-button:hover {
-    background-color: #FFFFFF; /* White background for hover effect */
-    color: grey; /* Grey text for hover effect */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+    background-color: #FFFFFF;
+    color: grey;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 .filter-buttons .filter-button:active {
-    background-color: #424F5C; /* Dark Green */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Smaller shadow on active click */
-    transform: translateY(2px); /* Slight movement down on active click */
-    color: #FFFFFF; /* White text for readability */
+    background-color: #424F5C;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(2px);
+    color: #FFFFFF;
 }
 
+/* Game Button */
 .game-button {
     width: 100%;
     white-space: normal;
     margin-bottom: 10px;
-    border: 1px solid #8C9CAA; /* Medium green border */
-    color: #FFFFFF; /* White text for readability */
-    background-color: #8C9CAA; /* Medium green background */
+    border: 1px solid #8C9CAA;
+    color: #FFFFFF;
+    background-color: #8C9CAA;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Georgia', serif; /* Serif font for a different look */
-    padding: 10px 15px; /* Added padding for better spacing */
-    border-radius: 5px; /* Rounded corners for a smoother look */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    cursor: pointer; /* Pointer cursor to indicate clickability */
+    font-family: 'Georgia', serif;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .game-button:hover {
-    background-color: #FFFFFF; /* White background for hover effect */
-    color: #8C9CAA; /* Dark green text for hover effect */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+    background-color: #FFFFFF;
+    color: #8C9CAA;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 .game-button:active {
-    background-color: #424F5C; /* Dark Green */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Smaller shadow on active click */
-    transform: translateY(2px); /* Slight movement down on active click */
-    color: #FFFFFF; /* White text for readability */
+    background-color: #424F5C;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(2px);
+    color: #FFFFFF;
 }
 
+/* Header */
 .header {
     padding: 20px;
     text-align: center;
-    background: #7C8981; /* Dark Green for the header */
+    background: #7C8981;
     color: white;
     font-size: 30px;
 }
 
+/* Sport Section */
 .sport-section {
     padding-top: 10px;
 }
 
 .sport-title {
     padding: 10px;
-    background-color: #424F5C; /* Dark Green */
+    background-color: #424F5C;
     color: white;
     border-radius: 5px;
     font-size: 20px;
     margin-bottom: 10px;
     text-align: center;
-    font-family: 'Georgia', serif; /* Serif font for a different look */
-    font-style: italic; /* Italics */
+    font-family: 'Georgia', serif;
+    font-style: italic;
 }
 
+/* Collapsible */
 .collapsible {
     cursor: pointer;
     display: flex;
@@ -103,65 +117,66 @@ body {
     align-items: center;
 }
 
+/* Grid Layout */
 .col-sm-4 {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px; /* Increased left padding */
-    padding-right: 10px; /* Increased right padding */
+    padding: 5px 10px; /* Combined padding */
 }
 
 .container {
     padding-bottom: 25px;
-    background-color: #e0e0e0; /* Slightly darker grey for better contrast */
+    background-color: #e0e0e0;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1); /* Soften the shadow for a lighter feel */
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
     margin-top: 30px;
 }
 
 h2 {
-    color: #36454F; /* Charcoal Gray for readability and elegance */
+    color: #36454F;
 }
 
-.mt-5.text-center {
-    padding-top: 30px; /* Adds 5px padding to the top */
-    text-align: center; /* Centers the text horizontally */
-    font-family: 'Georgia', serif; /* Serif font for a different look */
-    font-style: bold;
-}
-
+/* Search Container */
 .search-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px 0; /* Add padding to center vertically */
+    padding: 15px 0;
 }
 
 .search-box {
-    box-shadow: none; /* Remove the shadow */
+    box-shadow: none;
 }
 
+/* Later Games Title */
 .later-games-title {
     padding: 10px;
-    background-color: #5A6B7A; /* Slightly different color */
+    background-color: #5A6B7A;
     color: white;
     border-radius: 5px;
     font-size: 20px;
-    margin: 20px 0 10px 0; /* Margin for spacing */
-    text-align: center; /* Center text */
-    font-family: 'Georgia', serif; /* Serif font for a different look */
-    font-style: italic; /* Italics */
+    margin: 20px 0 10px 0;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-style: italic;
     display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    cursor: pointer; /* Pointer cursor to indicate clickability */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .later-games-title .arrow {
-    margin-left: 10px; /* Space between text and arrow */
+    margin-left: 10px;
 }
 
+/* Container with Margin Top */
 .container.mt-5 {
-    padding-top: 10px; /* Add padding to the top of the container */
+    padding-top: 10px;
 }
 
-
+/* Top Right Positioning */
+.top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1em;
+    color: #333;
+}

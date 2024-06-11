@@ -4,22 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foursyte.io</title>
-    <!-- Favicon for the browser tab -->
     <link rel="icon" href="/static/logos/foresyte_logo.png" type="image/png">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/login-banner.css">
 </head>
 <body>
 
+{% if not username %}
 <!-- Login/Signup Banner -->
 <div class="login-signup-banner">
-    <p>Don't have an account? <a href="/signup">Click here!</a></p>
+    <p>Don't have an account? <a href="/register">Click here!</a></p>
 </div>
+{% endif %}
 
 <div class="header text-center">
     <img src="/static/logos/foresyte_header.png" alt="Foursyte.io Logo" class="logo">
+    {% if username %}
+    <div class="top-right">
+        <span>Welcome, {{ username }} | <a href="/logout">Logout</a></span>
+    </div>
+    {% endif %}
 </div>
 
 <div class="container">
@@ -105,11 +110,9 @@
     </div>
 </div>
 
-<!-- Optional JavaScript and Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="/static/js/home_page.js"></script>
-
 </body>
 </html>
