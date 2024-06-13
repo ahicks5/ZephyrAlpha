@@ -9,9 +9,20 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/login-banner.css">
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ9LXBN8Q6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TZ9LXBN8Q6');
+</script>
+
 <body>
 
-{% if not username %}
+{% if not current_user.is_authenticated %}
 <!-- Login/Signup Banner -->
 <div class="login-signup-banner">
     <p>Don't have an account? <a href="/register">Register here!</a></p>
@@ -20,9 +31,9 @@
 
 <div class="header text-center">
     <img src="/static/logos/z_logo.png" alt="Zephyr Alpha Logo" class="logo">
-    {% if username %}
+    {% if current_user.is_authenticated %}
     <div class="top-right">
-        <span>Welcome, {{ username }} | <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a></span>
+        <span>Welcome, {{ current_user.username }} | <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a></span>
     </div>
     {% endif %}
 </div>
@@ -35,9 +46,15 @@
                 <div class="small caption">Mobile: 2X Deposit</div>
             </a>
         </div>
+        <div class="app-icon-wrapper">
+            <a href="https://app.prizepicks.com/sign-up?invite_code=PR-KACLQHL">
+                <img src="/static/images/prizepicks.png" alt="PrizePicks" class="img-fluid app-icon">
+                <div class="small caption">100% Match Up To $100</div>
+            </a>
+        </div>
     </div>
 
-        <!-- User Count Section -->
+    <!-- User Count Section -->
     <div class="user-count-section text-center">
         <h2><span id="userCount">10,000+</span> players already rely on ZephyrAlpha.io for their sports betting decisions!</h2>
     </div>
@@ -124,7 +141,7 @@
     </div>
 </div>
 
-{% if not username %}
+{% if not current_user.is_authenticated %}
 <!-- Pop-up HTML -->
 <div id="signupPopup" class="popup">
     <div class="popup-content">
@@ -142,7 +159,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="/static/js/home_page.js"></script>
 
-{% if not username %}
+{% if not current_user.is_authenticated %}
 <script src="/static/js/popup.js"></script>
 {% endif %}
 

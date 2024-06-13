@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/login-banner.css">
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ9LXBN8Q6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TZ9LXBN8Q6');
+</script>
+
 <body>
 <div class="header text-center">
     <img src="/static/logos/foresyte_header.png" alt="Foursyte.io Logo" class="logo">
@@ -35,7 +46,10 @@
         <div class="form-group text-center">
             <input type="submit" value="Register" class="btn btn-primary">
         </div>
-        <div id="errorMessage" class="text-danger text-center" style="display: none;">Passwords do not match!</div>
+        <div id="errorMessage" class="text-danger text-center" style="display: none;"></div>
+        {% if error %}
+            <div class="text-danger text-center">{{ error }}</div>
+        {% endif %}
     </form>
     <div class="text-center mt-3">
         <p>Already have an account? <a href="/login" class="btn btn-secondary">Login Here</a></p>

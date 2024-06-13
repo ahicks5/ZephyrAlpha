@@ -148,22 +148,23 @@ class SoccerGoalPredictor:
         return joblib.load(filepath)
 
 
-# Usage
-friendly_league_name = 'MLS'
-year = None
+if __name__ == '__main__':
+    # Usage
+    friendly_league_name = 'Brazil Serie A'
+    year = None
 
-# For historical data
-predictor_historical = SoccerGoalPredictor(friendly_league_name, year)
+    # For historical data
+    predictor_historical = SoccerGoalPredictor(friendly_league_name, year)
 
-# For current season data
-predictor_current = SoccerGoalPredictor(friendly_league_name)
+    # For current season data
+    predictor_current = SoccerGoalPredictor(friendly_league_name)
 
-teams = [
-    ('Orlando City', 'Los Angeles FC'),
-]
+    #teams = [
+    #    ('Orlando City', 'Los Angeles FC'),
+    #]
 
-for home_team, away_team in teams:
-    predictions = predictor_current.predict_goals(home_team, away_team)
-    for model_name, (home_goals, away_goals) in predictions.items():
-        print(
-            f"{model_name} - Predicted goals - Home Team ({home_team}): {home_goals}, Away Team ({away_team}): {away_goals}")
+    #for home_team, away_team in teams:
+    #    predictions = predictor_current.predict_goals(home_team, away_team)
+    #    for model_name, (home_goals, away_goals) in predictions.items():
+    #        print(
+    #            f"{model_name} - Predicted goals - Home Team ({home_team}): {home_goals}, Away Team ({away_team}): {away_goals}")

@@ -222,13 +222,15 @@ class MatchDataExtractor:
 
     def load_existing_game_ids(self, friendly_league_name, year=None):
         league_long_name = league_dict[friendly_league_name]['league_long_name'].replace(' ', '_').lower()
+        print(league_long_name)
         if year:
-            file_path = os.path.join('..', '..', '..', 'season_stats', league_long_name, f'team_stats_{league_long_name}_{year}.csv')
+            file_path = os.path.join('..', '..', 'season_stats', league_long_name, f'team_stats_{league_long_name}_{year}.csv')
         else:
-            file_path = os.path.join('..', '..', '..', 'season_stats', league_long_name, f'team_stats_{league_long_name}.csv')
+            file_path = os.path.join('..', '..', 'season_stats', league_long_name, f'team_stats_{league_long_name}.csv')
 
         if os.path.exists(file_path):
             existing_data = pd.read_csv(file_path)
+            print(existing_data.head())
             return set(existing_data['game_id'])
         else:
             return set()
@@ -269,7 +271,7 @@ class MatchDataExtractor:
         league_name_tag = league_name.replace(' ', '_').lower()
 
         # Define the directory path
-        directory = os.path.join('..', '..', '..', 'season_stats', league_name_tag)
+        directory = os.path.join('..', '..', 'season_stats', league_name_tag)
 
         # Create the directory if it doesn't exist
         os.makedirs(directory, exist_ok=True)
@@ -287,9 +289,8 @@ class MatchDataExtractor:
         self.team_stats_data.to_csv(team_stats_file_path, mode='a', index=False, header=not os.path.exists(team_stats_file_path))
 
 
-# Example usage
-extractor = MatchDataExtractor('Brazil Serie A')  # For historical data
-extractor.extract_and_save_all_data()
+if __name__ == '__main__':
+    # Example usage
+    extractor = MatchDataExtractor('MLS')  # For historical data
+    extractor.extract_and_save_all_data()
 
-extractor = MatchDataExtractor('MLS')  # For historical data
-extractor.extract_and_save_all_data()

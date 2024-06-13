@@ -1,4 +1,5 @@
-from flask import Flask, Blueprint, render_template, request, redirect, url_for, session
+from flask import Blueprint, render_template, request, redirect, url_for, session
+from flask_login import current_user, login_required, login_user, logout_user
 from app.utilities.data_fetching import get_live_game_data
 from app.utilities.cache_utils import pull_all_games_cached
 from app.utilities.bet_data_processing import get_organize_bet_data
@@ -6,6 +7,7 @@ from app.utilities.game_data import split_games_by_upcoming
 from app.utilities.json_for_comparison import TeamComparison
 from app.models.models import Message, db, User
 from app.utilities.soccerPrediction import predict_game_goals
+import re
 
 game_bp = Blueprint('game', __name__)
 
@@ -19,11 +21,11 @@ def index():
     return render_template('index.html', games=upcoming_games, later_games=later_games, sports=unique_sports, username=username)
 
 @game_bp.route('/dashboard')
+@login_required
 def dashboard():
-    username = session.get('username')
-    if not username:
-        return redirect(url_for('game.index'))
-    return render_template('dashboard.html', username=username)
+    if current_user.account_status == 'admin':
+        return redirect(url_for('admin.admin_dashboard'))
+    return render_template('dashboard.html', username=current_user.username)
 
 @game_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -32,6 +34,11 @@ def register():
         email = request.form.get('email')
         password = request.form.get('password')
         confirm_password = request.form.get('confirmPassword')
+
+        # Server-side validation
+        if not re.match(r'^[a-zA-Z0-9]{5,15}$', username):
+            error = "Username must be 5-15 characters long and contain only letters and numbers."
+            return render_template('register.html', error=error)
 
         if password != confirm_password:
             error = "Passwords do not match"
@@ -60,6 +67,7 @@ def register():
 
     return render_template('register.html')
 
+
 @game_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -72,18 +80,18 @@ def login():
             error = 'Invalid credentials'
             return render_template('login.html', error=error)
 
-        # Set session variables
-        session['user_id'] = user.id
-        session['username'] = user.username
+        # Log the user in
+        login_user(user)  # This line is essential to log the user in using Flask-Login
 
-        return redirect(url_for('game.index'))
+        return redirect(url_for('game.dashboard'))
 
     return render_template('login.html')
 
 
 @game_bp.route('/logout')
 def logout():
-    session.clear()
+    logout_user()  # This ensures the user is logged out using Flask-Login
+    session.clear()  # Clear all session data
     return redirect(url_for('game.index'))
 
 

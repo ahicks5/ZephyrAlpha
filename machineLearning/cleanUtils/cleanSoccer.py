@@ -149,21 +149,22 @@ class SoccerDataCleaner:
         self.save_cleaned_data()
         self.save_recent_team_averages()
 
-# Usage
-friendly_league_name = 'MLS'
-year = None
-cleaner = SoccerDataCleaner(friendly_league_name, year)
-cleaner.clean_data()
-cleaned_data_filepath = cleaner.get_cleaned_data_filepath()
-recent_team_averages_filepath = cleaner.get_recent_team_averages_filepath()
+if __name__ == '__main__':
+    # Usage
+    friendly_league_name = 'Brazil Serie A'
+    year = None
+    cleaner = SoccerDataCleaner(friendly_league_name, year)
+    cleaner.clean_data()
+    cleaned_data_filepath = cleaner.get_cleaned_data_filepath()
+    recent_team_averages_filepath = cleaner.get_recent_team_averages_filepath()
 
-print("Cleaned data available at:", cleaned_data_filepath)
-print("Recent team averages available at:", recent_team_averages_filepath)
+    print("Cleaned data available at:", cleaned_data_filepath)
+    print("Recent team averages available at:", recent_team_averages_filepath)
 
-cleaner_current = SoccerDataCleaner(friendly_league_name)
-cleaner_current.clean_data()
-cleaned_data_filepath_current = cleaner_current.get_cleaned_data_filepath()
-recent_team_averages_filepath_current = cleaner_current.get_recent_team_averages_filepath()
+    cleaner_current = SoccerDataCleaner(friendly_league_name)
+    cleaner_current.clean_data()
+    cleaned_data_filepath_current = cleaner_current.get_cleaned_data_filepath()
+    recent_team_averages_filepath_current = cleaner_current.get_recent_team_averages_filepath()
 
-print("Cleaned data available at:", cleaned_data_filepath_current)
-print("Recent team averages available at:", recent_team_averages_filepath_current)
+    print("Cleaned data available at:", cleaned_data_filepath_current)
+    print("Recent team averages available at:", recent_team_averages_filepath_current)

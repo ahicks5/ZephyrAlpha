@@ -1,0 +1,36 @@
+Minute,Player,Squad,xG,PSxG,Outcome,Distance,Body Part,Notes,Player,Event,Player,Event,game_id,Minute Type,Half
+2.0,Rodrigo Fagundes,Criciúma,0.04,0.21,Saved,12,Head,,Matheusinho,Pass (Live),Marcelo Hermes,Pass (Dead),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+5.0,Alan Empereur,Cuiabá,0.04,,Off Target,5,Head,,Max,Pass (Live),Clayson,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+16.0,Isidro Pitta,Cuiabá,0.54,0.82,Goal,8,Right Foot,,Jonathan Cafu,Pass (Live),Max,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+19.0,Lucas Mineiro,Cuiabá,0.04,0.15,Saved,25,Right Foot,,,,,,Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+23.0,Clayson,Cuiabá,0.11,0.28,Goal,17,Right Foot,Deflected,Jonathan Cafu,Pass (Live),,,Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+26.0,Yannick Bolasie,Criciúma,0.15,,Off Target,13,Right Foot,,Barreto,Pass (Live),Matheusinho,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+28.0,Claudinho,Criciúma,0.03,,Off Target,29,Right Foot,,Matheusinho,Pass (Live),Matheusinho,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+35.0,Clayson,Cuiabá,0.15,0.53,Saved,4,Left Foot,,Jonathan Cafu,Pass (Live),Max,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+35.0,Clayson,Cuiabá,0.05,0.55,Goal,18,Right Foot,,Clayson,Take-On,Denilson,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+37.0,Yannick Bolasie,Criciúma,0.03,0.06,Saved,26,Right Foot,,Claudinho,Pass (Live),Matheusinho,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+38.0,Clayson,Cuiabá,0.03,,Blocked,19,Right Foot,,Isidro Pitta,Pass (Live),Lucas Mineiro,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+40.0,Matheusinho,Criciúma,0.05,,Off Target,16,Right Foot,Volley,Claudinho,Pass (Live),Higor Meritão,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,1
+46.0,Rodrigo Fagundes,Criciúma,0.03,,Blocked,10,Head,,Marcelo Hermes,Pass (Dead),Marcelo Hermes,Pass (Dead),Criciuma-Cuiaba-June-9-2024-Serie-A,ET,1
+49.0,Éder,Criciúma,0.02,,Blocked,29,Right Foot,,Marcelo Hermes,Pass (Live),Yannick Bolasie,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,ET,1
+46.0,Max,Cuiabá,0.10,0.21,Goal,22,Left Foot,,Isidro Pitta,Pass (Live),Max,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+51.0,Denilson,Cuiabá,0.04,,Off Target,23,Right Foot,Volley,Max,Pass (Live),Clayson,Pass (Dead),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+52.0,Yannick Bolasie,Criciúma,0.02,,Off Target,28,Right Foot,,Éder,Pass (Live),Marcelo Hermes,Pass (Dead),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+52.0,Ronald,Criciúma,0.01,,Off Target,29,Right Foot,,Yannick Bolasie,Pass (Live),Yannick Bolasie,Shot,Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+56.0,Éder,Criciúma,0.05,,Blocked,30,Right Foot,Free kick,Arthur,Fouled,Ronald,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+56.0,Éder,Criciúma,0.03,,Off Target,29,Right Foot,,Marcelo Hermes,Pass (Live),,,Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+58.0,Éder,Criciúma,0.05,0.01,Saved,18,Right Foot,Volley,Matheusinho,Pass (Live),Yannick Bolasie,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+62.0,Matheusinho,Criciúma,0.03,,Blocked,25,Right Foot,,Éder,Pass (Live),Ronald,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+63.0,Matheusinho,Criciúma,0.23,0.52,Goal,11,Right Foot,Volley,Jonathan,Pass (Live),Ronald,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+65.0,Barreto,Criciúma,0.02,0.16,Saved,34,Right Foot,,Jonathan,Pass (Live),Barreto,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+65.0,Tobias Figueiredo,Criciúma,0.09,0.51,Goal,6,Head,,Marcelo Hermes,Pass (Dead),Barreto,Shot,Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+66.0,Yannick Bolasie,Criciúma,0.11,0.09,Saved,7,Head,,Éder,Pass (Live),,,Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+72.0,Yannick Bolasie,Criciúma,0.04,0.02,Saved,25,Right Foot,,Éder,Pass (Live),Arthur,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+73.0,Guilherme Madruga,Cuiabá,0.07,,Off Target,23,Right Foot,,Fernando Sobral,Pass (Live),Isidro Pitta,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+76.0,Yannick Bolasie,Criciúma,0.03,,Off Target,11,Right Foot,,Matheusinho,Pass (Live),Arthur,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+79.0,Fernando Sobral,Cuiabá,0.02,,Blocked,28,Right Foot,,,,,,Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+87.0,Isidro Pitta,Cuiabá,0.03,,Off Target,17,Right Foot,Volley,Ramon,Pass (Live),Fernando Sobral,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,RT,2
+93.0,Éder,Criciúma,0.02,,Off Target,24,Right Foot,Volley,,,,,Criciuma-Cuiaba-June-9-2024-Serie-A,ET,2
+94.0,Éder,Criciúma,0.01,,Blocked,10,Head,,Ronald,Pass (Dead),Éder,Shot,Criciuma-Cuiaba-June-9-2024-Serie-A,ET,2
+94.0,Yannick Bolasie,Criciúma,0.38,,Off Target,4,Head,,Éder,Shot,,,Criciuma-Cuiaba-June-9-2024-Serie-A,ET,2
+95.0,Ramon,Cuiabá,0.38,0.69,Goal,14,Left Foot,,Guilherme Madruga,Pass (Live),Walter,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,ET,2

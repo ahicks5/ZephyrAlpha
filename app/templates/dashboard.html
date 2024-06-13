@@ -8,11 +8,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ9LXBN8Q6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TZ9LXBN8Q6');
+</script>
+
 <body>
 <div class="header text-center">
     <img src="/static/logos/foresyte_header.png" alt="Foursyte.io Logo" class="logo">
     <div class="top-right">
-        <span>Welcome, {{ username }} | <a href="/logout">Logout</a></span>
+        <span>Welcome, {{ username }} | <a href="/">Home</a> | <a href="/logout">Logout</a></span>
     </div>
 </div>
 

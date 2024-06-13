@@ -1,0 +1,8 @@
+1. pullSoccer.py
+    A. clean name -> soccer league links
+    B. puts it into season_stats
+2. cleanSoccer.py
+    A. clean name -> soccer league links
+    B. Again puts into season_stats
+3. soccer.py
+    A. clean name -> soccer league links
