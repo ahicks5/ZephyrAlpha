@@ -18,6 +18,12 @@ def index():
     username = session.get('username')
     return render_template('index.html', games=upcoming_games, later_games=later_games, sports=unique_sports, username=username)
 
+@game_bp.route('/dashboard')
+def dashboard():
+    username = session.get('username')
+    if not username:
+        return redirect(url_for('game.index'))
+    return render_template('dashboard.html', username=username)
 
 @game_bp.route('/register', methods=['GET', 'POST'])
 def register():

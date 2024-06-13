@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foursyte.io</title>
+    <title>ZephyrAlpha.io</title>
     <link rel="icon" href="/static/logos/foresyte_logo.png" type="image/png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
@@ -14,20 +14,34 @@
 {% if not username %}
 <!-- Login/Signup Banner -->
 <div class="login-signup-banner">
-    <p>Don't have an account? <a href="/register">Click here!</a></p>
+    <p>Don't have an account? <a href="/register">Register here!</a></p>
 </div>
 {% endif %}
 
 <div class="header text-center">
-    <img src="/static/logos/foresyte_header.png" alt="Foursyte.io Logo" class="logo">
+    <img src="/static/logos/z_logo.png" alt="Zephyr Alpha Logo" class="logo">
     {% if username %}
     <div class="top-right">
-        <span>Welcome, {{ username }} | <a href="/logout">Logout</a></span>
+        <span>Welcome, {{ username }} | <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a></span>
     </div>
     {% endif %}
 </div>
 
 <div class="container">
+    <div class="app-links-container">
+        <div class="app-icon-wrapper">
+            <a href="https://get.fliffapp.com/QlC3/44iysnqy">
+                <img src="/static/images/fliff.png" alt="Fliff" class="img-fluid app-icon">
+                <div class="small caption">Mobile: 2X Deposit</div>
+            </a>
+        </div>
+    </div>
+
+        <!-- User Count Section -->
+    <div class="user-count-section text-center">
+        <h2><span id="userCount">10,000+</span> players already rely on ZephyrAlpha.io for their sports betting decisions!</h2>
+    </div>
+
     <h2 class="mt-5 text-center">Upcoming Matchups</h2>
 
     <div class="legend text-center mt-3">
@@ -110,9 +124,27 @@
     </div>
 </div>
 
+{% if not username %}
+<!-- Pop-up HTML -->
+<div id="signupPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Sign up now!</h2>
+        <p>Pick your favorite teams to monitor and more...</p>
+        <a href="/register" class="btn btn-primary">Register</a>
+        <a href="/login" class="btn btn-secondary">Sign In</a>
+    </div>
+</div>
+{% endif %}
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="/static/js/home_page.js"></script>
+
+{% if not username %}
+<script src="/static/js/popup.js"></script>
+{% endif %}
+
 </body>
 </html>

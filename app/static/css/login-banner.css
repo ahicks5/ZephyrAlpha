@@ -1,28 +1,37 @@
 /* Login Banner */
 .login-signup-banner {
-    background-color: #f8d7da;
-    color: #721c24;
+    background-color: #34495e; /* Dark blue background */
+    color: #ecf0f1; /* Light text color */
     text-align: center;
-    padding: 10px;
+    padding: 10px; /* Increased padding for better spacing */
     font-size: 1.2em;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #2ecc71; /* Green border at the bottom */
 }
 
 .login-signup-banner a {
-    color: #721c24;
+    color: #2ecc71; /* Green text color */
     font-weight: bold;
-    text-decoration: underline;
+    text-decoration: none; /* No underline */
+    padding: 5px 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-signup-banner p {
+    margin-bottom: 0px;
 }
 
 .login-signup-banner a:hover {
-    color: #f5c6cb;
-    text-decoration: none;
+    background-color: #2ecc71; /* Green background on hover */
+    color: #34495e; /* Dark blue text color on hover */
+    text-decoration: none; /* No underline */
 }
 
 body {
-    padding-top: 60px; /* Add padding to prevent content from being hidden under the banner */
+    padding-top: 80px; /* Adjust padding to prevent content from being hidden under the banner */
 }

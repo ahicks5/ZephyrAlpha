@@ -1,11 +1,18 @@
 /* General Styles */
 body {
-    background-color: #C8C8C8; /* Light grey for a clean and neutral look */
+    background-image: url('/static/logos/space_background.png'); /* Path to your background image */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-attachment: fixed; /* Keeps the background image fixed in place */
+    color: #FFFFFF; /* Optional: Set text color to white for better contrast */
+    font-family: 'Georgia', serif;
+    color: Black;
 }
 
 /* Text Centering and Padding */
 .mt-5.text-center {
-    padding-top: 30px;
+    padding-top: 3px;
     text-align: center;
     font-family: 'Georgia', serif;
     font-weight: bold; /* Corrected font-style to font-weight */
@@ -13,14 +20,16 @@ body {
 
 /* Header Logo */
 .header .logo {
-    width: 50%;
-    max-width: 50%;
-    height: 50%;
+    width: 8%; /* Adjusted width to make it smaller */
+    max-width: 8%; /* Adjusted max-width to make it smaller */
+    height: auto; /* Maintain aspect ratio */
 }
 
 @media (max-width: 767px) {
     .header .logo {
-        width: 75%;
+        width: 25%; /* Adjusted width for smaller screens */
+        max-width: 50%
+        height: auto; /* Maintain aspect ratio */
     }
 }
 
@@ -85,11 +94,10 @@ body {
 
 /* Header */
 .header {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
-    background: #7C8981;
     color: white;
-    font-size: 30px;
+    font-size: 15px;
 }
 
 /* Sport Section */
@@ -123,11 +131,11 @@ body {
 }
 
 .container {
-    padding-bottom: 25px;
+    padding-bottom: 5px;
     background-color: #e0e0e0;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
-    margin-top: 30px;
+    margin-top: 5px;
 }
 
 h2 {
@@ -169,7 +177,7 @@ h2 {
 
 /* Container with Margin Top */
 .container.mt-5 {
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 /* Top Right Positioning */
@@ -180,3 +188,101 @@ h2 {
     font-size: 1em;
     color: #333;
 }
+/* Pop-up styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    transition: opacity 0.5s ease-in-out; /* Transition for smooth appearance */
+    opacity: 0; /* Start as fully transparent */
+}
+
+.popup.show {
+    opacity: 1; /* Fully opaque when shown */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Adjusted width for a skinnier box */
+    max-width: 400px; /* Max width to prevent it from being too wide */
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 767px) {
+    .popup-content {
+        width: 80%; /* Adjusted width for mobile devices */
+        max-width: 80%; /* Adjusted max-width for mobile devices */
+    }
+}
+
+.popup .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.popup .close:hover,
+.popup .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup .btn {
+    margin: 10px;
+}
+
+
+.app-links-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.app-links-container .app-icon-wrapper {
+    margin: 0 1rem;
+    text-align: center;
+}
+
+.app-links-container .app-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    border-radius: 10px;
+}
+
+.app-links-container .caption {
+    font-size: 0.875rem;
+}
+
+/* User Count Section */
+.user-count-section {
+    background-color: #424F5C; /* Dark background color */
+    padding: 10px;
+    margin-top: 5px; /* Space above the section */
+    margin-bottom: 5px; /* Space below the section */
+    font-family: 'Georgia', serif;
+}
+
+.user-count-section h2 {
+    margin: 0;
+    font-size: 16px;
+    color: #FFFFFF; /* White text color */
+    font-style: italic;
+}
+
