@@ -34,3 +34,292 @@ Minute,Player,Squad,xG,PSxG,Outcome,Distance,Body Part,Notes,Player,Event,Player
 94.0,Éder,Criciúma,0.01,,Blocked,10,Head,,Ronald,Pass (Dead),Éder,Shot,Criciuma-Cuiaba-June-9-2024-Serie-A,ET,2
 94.0,Yannick Bolasie,Criciúma,0.38,,Off Target,4,Head,,Éder,Shot,,,Criciuma-Cuiaba-June-9-2024-Serie-A,ET,2
 95.0,Ramon,Cuiabá,0.38,0.69,Goal,14,Left Foot,,Guilherme Madruga,Pass (Live),Walter,Pass (Live),Criciuma-Cuiaba-June-9-2024-Serie-A,ET,2
+10.0,Alerrandro,Vitória,0.01,,Blocked,26,Right Foot,,,,,,Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+11.0,Willean Lepo,Vitória,0.01,,Off Target,33,Left Foot,Volley,Alerrandro,Shot,,,Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+23.0,Rodrigo Sam,Juventude,0.03,,Blocked,10,Head,,Marcelinho,Pass (Live),Jadson,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+23.0,Erick,Juventude,0.17,,Off Target,11,Right Foot,,Rodrigo Sam,Shot,,,Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+25.0,Matheusinho,Vitória,0.09,,Off Target,11,Left Foot,Volley,Matheusinho,Take-On,Willean Lepo,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+26.0,Lucas Esteves,Vitória,0.02,,Off Target,24,Left Foot,,Lucas Esteves,Interception,,,Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+32.0,Ewerton,Juventude,0.02,0.25,Saved,31,Right Foot,,Jadson,Pass (Live),Nenê,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+33.0,Marcelinho,Juventude,0.01,,Blocked,9,Head,,Nenê,Pass (Dead),Ewerton,Shot,Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+34.0,Rodrigo Sam,Juventude,0.18,0.14,Goal,6,Head,,Nenê,Pass (Dead),Marcelinho,Shot,Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+37.0,Marcelinho,Juventude,0.13,,Off Target,8,Head,,Lucas Barbosa,Pass (Live),Erick,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+38.0,Jadson,Juventude,0.03,,Off Target,12,Right Foot,,Nenê,Pass (Live),Lucas Barbosa,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+42.0,Willian,Vitória,0.05,0.09,Goal,17,Left Foot,,Lucas Esteves,Pass (Live),Osvaldo,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+45.0,Lucas Barbosa,Juventude,0.01,,Off Target,36,Left Foot,,Caíque de Jesus Gonçalves,Pass (Live),Rodrigo Sam,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,1
+47.0,Matheusinho,Vitória,0.01,0.13,Saved,30,Left Foot,,Willean Lepo,Pass (Live),Willian,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,ET,1
+48.0,Léo Naldi,Vitória,0.01,,Blocked,16,Head,,Matheusinho,Pass (Dead),Matheusinho,Fouled,Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+48.0,Willian,Vitória,0.01,,Off Target,17,Head,,Léo Naldi,Shot,,,Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+51.0,Matheusinho,Vitória,0.01,,Off Target,34,Left Foot,,Willian,Pass (Live),Matheusinho,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+53.0,Willean Lepo,Vitória,0.03,,Blocked,28,Left Foot,,Willian,Pass (Live),Willean Lepo,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+54.0,Willean Lepo,Vitória,0.08,,Blocked,10,Right Foot,,Lucas Esteves,Pass (Live),José Hugo,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+55.0,José Hugo,Vitória,0.01,0.18,Saved,29,Right Foot,,Léo Naldi,Pass (Live),Willian,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+57.0,Rildo,Juventude,0.02,,Off Target,12,Head,,Nenê,Pass (Dead),,Fouled,Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+62.0,Matheusinho,Vitória,0.03,,Blocked,33,Right Foot,,Alerrandro,Pass (Live),Léo Naldi,Tackle,Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+65.0,Willian,Vitória,0.05,,Off Target,10,Head,,Matheusinho,Pass (Dead),,,Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+66.0,Jadson,Juventude,0.02,,Off Target,16,Left Foot,,Nenê,Pass (Live),Jadson,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+69.0,Rodrigo Sam,Juventude,0.05,,Off Target,10,Head,,Nenê,Pass (Live),Jadson,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+72.0,Camutanga,Vitória,0.03,0.04,Saved,36,Right Foot,"Free kick, Deflected",Léo Naldi,Fouled,,,Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+78.0,Lucas Esteves,Vitória,0.04,,Off Target,33,Left Foot,Free kick,Léo Naldi,Fouled,Willean Lepo,Take-On,Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+79.0,Luis Mandaca,Juventude,0.01,,Off Target,33,Right Foot,,Alan Ruschel,Pass (Dead),,,Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+84.0,Léo Naldi,Vitória,0.01,,Off Target,30,Right Foot,,José Hugo,Pass (Live),Willian,Pass (Live),Juventude-Vitoria-June-11-2024-Serie-A,RT,2
+91.0,Camutanga,Vitória,0.03,,Off Target,12,Head,,Lucas Esteves,Pass (Dead),José Hugo,Fouled,Juventude-Vitoria-June-11-2024-Serie-A,ET,2
+3.0,Breno,Corinthians,0.04,,Off Target,16,Right Foot,,Yuri Alberto,Fouled,Yuri Alberto,Interception,Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+4.0,Shaylon,Atl Goianiense,0.14,0.13,Saved,5,Head,,Gabriel Baralhas,Pass (Live),Guilherme Romão,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+4.0,Wesley Ribeiro,Corinthians,0.03,,Off Target,25,Right Foot,,,,,,Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+10.0,Shaylon,Atl Goianiense,0.09,,Blocked,17,Right Foot,,Emiliano Rodríguez,Pass (Live),Guilherme Romão,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+15.0,Yuri Alberto,Corinthians,0.07,0.15,Goal,16,Left Foot,,Cacá,Pass (Live),Carlos Miguel,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+23.0,Gustavo Henrique,Corinthians,0.04,0.06,Saved,12,Head,,Igor Coronado,Pass (Live),Rodrigo Garro,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+28.0,Lucas Kal,Atl Goianiense,0.01,,Off Target,32,Right Foot,,Rhaldney,Pass (Live),Shaylon,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+37.0,Wesley Ribeiro,Corinthians,0.06,,Blocked,23,Right Foot,,Hugo,Tackle,,,Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+39.0,Alix Vinicius,Atl Goianiense,0.18,0.11,Saved,4,Right Foot,,Shaylon,Pass (Dead),Emiliano Rodríguez,Fouled,Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+43.0,Luiz Fernando,Atl Goianiense,0.15,,Off Target,16,Right Foot,,Gabriel Baralhas,Pass (Live),Alix Vinicius,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+44.0,Yuri Alberto,Corinthians,0.16,,Off Target,11,Left Foot,,Rodrigo Garro,Pass (Live),Wesley Ribeiro,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,1
+46.0,Gabriel Baralhas,Atl Goianiense,0.12,0.20,Saved,18,Right Foot,Volley,Luiz Fernando,Pass (Live),Rhaldney,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,ET,1
+48.0,Shaylon,Atl Goianiense,0.02,,Blocked,32,Left Foot,,,,,,Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,ET,1
+49.0,Luiz Fernando,Atl Goianiense,0.02,,Blocked,13,Left Foot,,Emiliano Rodríguez,Pass (Live),,,Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+49.0,Shaylon,Atl Goianiense,0.06,,Blocked,16,Left Foot,,Guilherme Romão,Pass (Live),Guilherme Romão,Take-On,Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+58.0,Luiz Fernando,Atl Goianiense,0.12,,Blocked,11,Right Foot,Volley,Maguinho,Pass (Live),Rhaldney,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+61.0,Emiliano Rodríguez,Atl Goianiense,0.07,,Off Target,10,Head,,Shaylon,Pass (Dead),Luiz Fernando,Fouled,Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+62.0,Yuri Alberto,Corinthians,0.04,0.13,Goal,12,Right Foot,,Rodrigo Garro,Pass (Live),Wesley Ribeiro,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+64.0,Guilherme Romão,Atl Goianiense,0.04,0.03,Saved,11,Head,,Luiz Fernando,Pass (Live),Alejo Cruz,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+64.0,Luiz Fernando,Atl Goianiense,0.46,0.44,Saved,6,Head,,Guilherme Romão,Pass (Live),Alejo Cruz,Pass (Dead),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+74.0,Max,Atl Goianiense,0.01,,Blocked,25,Left Foot,,Max,Take-On,Danielzinho,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+74.0,Guilherme Romão,Atl Goianiense,0.11,,Off Target,11,Left Foot,,Bruno Tubarão,Pass (Live),Lucas Kal,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+78.0,Vágner Love,Atl Goianiense,0.40,,Off Target,6,Left Foot,Volley,Max,Pass (Live),Bruno Tubarão,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+84.0,Danielzinho,Atl Goianiense,0.02,,Off Target,30,Right Foot,,Alejo Cruz,Pass (Dead),Danielzinho,Fouled,Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+85.0,Vágner Love,Atl Goianiense,0.06,,Off Target,15,Right Foot,,Luiz Fernando,Pass (Live),Bruno Tubarão,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+87.0,Vágner Love,Atl Goianiense,0.08,,Blocked,14,Left Foot,,Shaylon,Pass (Live),Danielzinho,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+88.0,Vágner Love,Atl Goianiense,0.05,,Off Target,10,Head,,Max,Pass (Live),Danielzinho,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,RT,2
+92.0,Shaylon (pen),Atl Goianiense,0.79,0.96,Goal,13,Left Foot,,Max,Fouled,,,Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,ET,2
+98.0,Adriano Martins,Atl Goianiense,0.07,0.14,Saved,11,Head,,Shaylon,Pass (Live),Bruno Tubarão,Pass (Live),Atletico-Goianiense-Corinthians-June-11-2024-Serie-A,ET,2
+1.0,Luiz Henrique,Botafogo (RJ),0.02,,Off Target,27,Left Foot,,Tiquinho Soares,Pass (Live),,,Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+5.0,John Kennedy,Fluminense,0.03,,Off Target,11,Head,,Marcelo,Pass (Dead),,,Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+6.0,Tiquinho Soares,Botafogo (RJ),0.20,,Blocked,9,Right Foot,,Tchê Tchê,Pass (Live),Luiz Henrique,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+6.0,Tchê Tchê,Botafogo (RJ),0.07,,Blocked,23,Right Foot,,Luiz Henrique,Pass (Dead),Tiquinho Soares,Shot,Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+8.0,Júnior Santos,Botafogo (RJ),0.09,,Off Target,16,Left Foot,,Alexander Barboza,Pass (Live),John,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+18.0,Júnior Santos,Botafogo (RJ),0.02,,Off Target,18,Right Foot,,Gregore,Pass (Live),Cuiabano,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+19.0,Júnior Santos,Botafogo (RJ),0.17,0.69,Saved,14,Right Foot,,Marlon Freitas,Pass (Live),,,Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+20.0,Tchê Tchê,Botafogo (RJ),0.03,,Blocked,25,Right Foot,,Júnior Santos,Shot,,,Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+20.0,Tiquinho Soares,Botafogo (RJ),0.04,,Off Target,13,Right Foot,Volley,Damián Suárez,Pass (Live),Marlon Freitas,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+24.0,Júnior Santos,Botafogo (RJ),0.59,,Woodwork,17,Right Foot,,Tchê Tchê,Pass (Live),Tiquinho Soares,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+27.0,Alexander Barboza,Botafogo (RJ),0.02,,Off Target,37,Left Foot,,Gregore,Pass (Live),Damián Suárez,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+28.0,Marquinhos,Fluminense,0.05,,Woodwork,14,Head,,Marcelo,Pass (Live),Marquinhos,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+31.0,Marcelo,Fluminense,0.01,,Off Target,35,Left Foot,,Marlon,Pass (Live),Marlon,Take-On,Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+33.0,Luiz Henrique,Botafogo (RJ),0.02,,Off Target,8,Head,,Damián Suárez,Pass (Dead),,,Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+41.0,Gregore,Botafogo (RJ),0.02,0.04,Saved,12,Head,,Damián Suárez,Pass (Dead),Marlon Freitas,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+42.0,Cuiabano,Botafogo (RJ),0.03,0.15,Saved,19,Left Foot,,Tiquinho Soares,Pass (Live),,,Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,1
+47.0,Alexander Barboza,Botafogo (RJ),0.02,0.07,Saved,13,Head,,Cuiabano,Pass (Dead),Marlon Freitas,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,ET,1
+46.0,Marcelo,Fluminense,0.03,,Off Target,17,Left Foot,,John Kennedy,Pass (Live),Marcelo,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,2
+56.0,Alexander Barboza,Botafogo (RJ),0.02,,Blocked,14,Head,,Marlon Freitas,Pass (Live),Tchê Tchê,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,2
+57.0,Luiz Henrique,Botafogo (RJ),0.09,0.37,Saved,24,Left Foot,,Tchê Tchê,Pass (Live),Marlon Freitas,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,2
+58.0,Marlon Freitas,Botafogo (RJ),0.04,,Off Target,26,Right Foot,,Tchê Tchê,Pass (Live),Luiz Henrique,Shot,Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,2
+66.0,Bastos,Botafogo (RJ),0.08,0.20,Goal,10,Head,,Damián Suárez,Pass (Dead),Tiquinho Soares,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,2
+70.0,Lima,Fluminense,0.04,,Off Target,24,Right Foot,Volley,Marquinhos,Pass (Live),Renato Augusto,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,2
+78.0,Isaac,Fluminense,0.06,,Blocked,18,Right Foot,,Isaac,Take-On,Lima,Pass (Live),Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,2
+86.0,Júnior Santos,Botafogo (RJ),0.19,,Off Target,14,Right Foot,,Tchê Tchê,Pass (Live),,,Botafogo-RJ-Fluminense-June-11-2024-Serie-A,RT,2
+2.0,Juninho Capixaba,Red Bull Bragantino,0.07,,Off Target,16,Right Foot,,Thiago Borbas,Pass (Live),Lucas Evangelista,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+10.0,Rômulo,Atlético Mineiro,0.13,,Off Target,6,Head,,Bruno Fuchs,Pass (Live),Rômulo,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+15.0,Alisson,Atlético Mineiro,0.09,,Blocked,25,Left Foot,,,,,,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+17.0,Helinho,Red Bull Bragantino,0.11,,Off Target,26,Left Foot,Free kick,Lucas Evangelista,Fouled,,,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+20.0,Luan Cândido,Red Bull Bragantino,0.05,,Blocked,30,Left Foot,Free kick,Eric Ramires,Fouled,Lucas Evangelista,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+25.0,Lucas Evangelista,Red Bull Bragantino,0.04,0.41,Goal,25,Left Foot,,Helinho,Pass (Live),Eric Ramires,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+28.0,Gustavo Scarpa,Atlético Mineiro,0.01,,Blocked,29,Left Foot,Volley,Renzo Saravia,Pass (Live),Igor Gomes,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+32.0,Thiago Borbas,Red Bull Bragantino,0.05,,Blocked,22,Right Foot,,Matheus Fernandes,Pass (Live),Matheus Fernandes,Tackle,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+32.0,Matheus Fernandes,Red Bull Bragantino,0.14,0.05,Saved,16,Left Foot,,Helinho,Pass (Live),Helinho,Take-On,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+37.0,Matheus Fernandes,Red Bull Bragantino,0.04,,Off Target,28,Right Foot,,,,,,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+38.0,Henry Mosquera,Red Bull Bragantino,0.04,0.06,Saved,26,Right Foot,,Eric Ramires,Pass (Live),Jadsom,Pass (Dead),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+41.0,Carlos Eduardo,Atlético Mineiro,0.07,0.24,Saved,15,Left Foot,,Gustavo Scarpa,Pass (Live),Carlos Eduardo,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+42.0,Federico Zaracho,Atlético Mineiro,0.09,0.26,Goal,18,Right Foot,,,,,,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+44.0,Paulinho,Atlético Mineiro,0.40,0.82,Goal,12,Left Foot,,Igor Gomes,Pass (Live),,,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,1
+47.0,Paulinho,Atlético Mineiro,0.02,,Blocked,25,Right Foot,,Alisson,Tackle,,,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,ET,1
+48.0,Eric Ramires,Red Bull Bragantino,0.30,,Off Target,15,Left Foot,,Matheus Fernandes,Pass (Live),Lucas Evangelista,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,ET,1
+52.0,Juninho Capixaba,Red Bull Bragantino,0.09,0.11,Saved,11,Head,,Helinho,Pass (Dead),Helinho,Fouled,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,2
+57.0,Thiago Borbas,Red Bull Bragantino,0.09,0.18,Saved,12,Head,,Eduardo Sasha,Pass (Live),Nathan Mendes,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,2
+63.0,Juninho Capixaba,Red Bull Bragantino,0.02,,Off Target,27,Right Foot,,Henry Mosquera,Pass (Live),Lucas Evangelista,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,2
+75.0,Helinho,Red Bull Bragantino,0.03,,Blocked,29,Left Foot,Free kick,Helinho,Fouled,Eric Ramires,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,2
+86.0,Luan Cândido,Red Bull Bragantino,0.11,,Off Target,12,Left Foot,Volley,Gustavinho,Pass (Dead),,,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,2
+89.0,Igor Rabello,Atlético Mineiro,0.09,0.03,Saved,11,Right Foot,Volley,Paulinho,Pass (Live),Gustavo Scarpa,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,2
+89.0,Paulinho,Atlético Mineiro,0.07,,Blocked,21,Right Foot,,Igor Gomes,Pass (Live),,,Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,RT,2
+96.0,Pedrinho,Atlético Mineiro,0.05,,Off Target,13,Head,,Gustavo Scarpa,Pass (Live),Brahian Palacios,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,ET,2
+101.0,Luan Cândido,Red Bull Bragantino,0.01,,Off Target,14,Left Foot,Volley,Lincoln,Fouled,Nathan Mendes,Pass (Live),Red-Bull-Bragantino-Atletico-Mineiro-June-11-2024-Serie-A,ET,2
+13.0,William,Cruzeiro,0.02,0.07,Saved,33,Right Foot,,Álvaro Barreal,Pass (Live),Lucas Silva,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+16.0,Álvaro Barreal,Cruzeiro,0.02,,Blocked,29,Left Foot,,Matheus Pereira,Pass (Dead),Kaiki,Fouled,Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+19.0,Clayson,Cuiabá,0.05,,Blocked,14,Right Foot,,Denilson,Pass (Live),,,Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+22.0,Rafael Silva,Cruzeiro,0.13,,Off Target,6,Left Foot,Volley,William,Pass (Live),Álvaro Barreal,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+25.0,Ramon,Cuiabá,0.02,,Blocked,21,Left Foot,Volley,Jonathan Cafu,Pass (Live),Denilson,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+28.0,Álvaro Barreal,Cruzeiro,0.20,0.55,Saved,14,Left Foot,,Matheus Pereira,Pass (Live),Lucas Romero,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+28.0,Matheus Pereira,Cruzeiro,0.01,,Off Target,30,Left Foot,,Lucas Silva,Pass (Live),Zé Ivaldo,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+31.0,Álvaro Barreal,Cruzeiro,0.03,,Off Target,22,Left Foot,,Zé Ivaldo,Pass (Live),Lucas Romero,Pass (Dead),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+37.0,Max,Cuiabá,0.03,,Off Target,29,Left Foot,,Denilson,Pass (Live),Railan,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+42.0,Clayson,Cuiabá,0.12,,Off Target,11,Left Foot,,Denilson,Pass (Live),Clayson,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+45.0,Max,Cuiabá,0.05,,Off Target,26,Right Foot,,Denilson,Pass (Live),Isidro Pitta,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,1
+46.0,Matheus Pereira,Cruzeiro,0.15,0.85,Goal,8,Head,,William,Pass (Live),Lucas Romero,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,ET,1
+58.0,Clayson,Cuiabá,0.04,,Blocked,16,Right Foot,,Jonathan Cafu,Pass (Live),Clayson,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,2
+61.0,Rafael Silva,Cruzeiro,0.08,0.05,Saved,12,Right Foot,,Matheus Pereira,Pass (Live),Rafael Silva,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,2
+64.0,Isidro Pitta (pen),Cuiabá,0.79,0.99,Goal,13,Right Foot,,Clayson,Fouled,Denilson,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,2
+65.0,Denilson,Cuiabá,0.01,0.07,Saved,23,Right Foot,,Ramon,Pass (Live),Isidro Pitta,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,2
+67.0,Rafael Silva,Cruzeiro,0.11,0.58,Goal,17,Left Foot,,Matheus Pereira,Pass (Live),Lucas Romero,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,2
+68.0,Clayson,Cuiabá,0.01,,Blocked,29,Right Foot,,Alan Empereur,Pass (Live),Lucas Mineiro,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,2
+70.0,Isidro Pitta,Cuiabá,0.08,,Off Target,12,Head,,Railan,Pass (Live),Railan,Take-On,Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,2
+70.0,Clayson,Cuiabá,0.03,0.04,Saved,14,Head,,Ramon,Pass (Live),Denilson,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,2
+84.0,Matheus Pereira,Cruzeiro,0.04,,Off Target,19,Left Foot,,Robert,Pass (Live),Robert,Take-On,Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,2
+89.0,João Marcelo,Cruzeiro,0.09,0.04,Saved,5,Head,,Matheus Pereira,Pass (Dead),William,Take-On,Cruzeiro-Cuiaba-June-13-2024-Serie-A,RT,2
+91.0,Matheus Pereira,Cruzeiro,0.02,,Woodwork,26,Right Foot,,Robert,Pass (Live),Lucas Villalba,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,ET,2
+93.0,Isidro Pitta,Cuiabá,0.18,,Blocked,15,Right Foot,,Guilherme Madruga,Pass (Live),Guilherme Madruga,Take-On,Cruzeiro-Cuiaba-June-13-2024-Serie-A,ET,2
+94.0,Alan Empereur,Cuiabá,0.06,,Blocked,18,Left Foot,,Lucas Mineiro,Pass (Live),Ramon,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,ET,2
+94.0,Marllon Borges,Cuiabá,0.02,,Off Target,15,Head,,Ramon,Pass (Dead),Alan Empereur,Shot,Cruzeiro-Cuiaba-June-13-2024-Serie-A,ET,2
+94.0,Guilherme Madruga,Cuiabá,0.16,0.44,Saved,4,Right Foot,,Marllon Borges,Shot,,,Cruzeiro-Cuiaba-June-13-2024-Serie-A,ET,2
+97.0,Eliel Chrystian,Cuiabá,0.03,0.03,Saved,10,Head,,Guilherme Madruga,Pass (Live),Railan,Pass (Live),Cruzeiro-Cuiaba-June-13-2024-Serie-A,ET,2
+5.0,João Pedro,Grêmio,0.06,,Blocked,13,Right Foot,,João Pedro,Pass (Live),Dodi,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+6.0,Cristian Pavón,Grêmio,0.07,,Off Target,14,Right Foot,,João Pedro,Pass (Live),Reinaldo,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+11.0,Everton Soares,Flamengo,0.05,,Off Target,27,Right Foot,Free kick,Igor,Fouled,Lorran,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+15.0,Leo Ortiz,Flamengo,0.04,0.04,Saved,9,Head,,Lorran,Pass (Dead),Pedro,Fouled,Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+16.0,Cristian Pavón,Grêmio,0.03,,Blocked,20,Right Foot,Deflected,Franco Cristaldo,Pass (Live),Reinaldo,Pass (Dead),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+21.0,Lorran,Flamengo,0.05,,Off Target,11,Left Foot,,Everton Soares,Pass (Live),Lorran,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+27.0,Everton,Grêmio,0.03,,Off Target,26,Right Foot,,Reinaldo,Pass (Live),João Pedro Pepê,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+36.0,Bruno Henrique,Flamengo,0.03,,Blocked,28,Right Foot,,Leo Ortiz,Pass (Live),Luiz Araújo,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+38.0,Bruno Henrique,Flamengo,0.04,,Off Target,17,Left Foot,Volley,Gerson,Pass (Live),Wesley,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+39.0,Luiz Araújo,Flamengo,0.04,,Woodwork,26,Left Foot,,Bruno Henrique,Pass (Live),Lorran,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+40.0,Gerson,Flamengo,0.03,0.02,Saved,28,Left Foot,,David Luiz,Pass (Live),Luiz Araújo,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+42.0,Luiz Araújo,Flamengo,0.03,0.24,Goal,25,Left Foot,,Pedro,Pass (Live),Bruno Henrique,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+44.0,Cristian Pavón,Grêmio,0.10,,Off Target,14,Left Foot,,Reinaldo,Pass (Live),João Pedro,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,1
+46.0,Reinaldo,Grêmio,0.02,,Off Target,31,Left Foot,,Franco Cristaldo,Pass (Live),João Pedro Pepê,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,ET,1
+58.0,Bruno Henrique,Flamengo,0.05,,Blocked,18,Right Foot,,Gerson,Pass (Live),,,Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+59.0,David Luiz,Flamengo,0.03,,Woodwork,12,Head,,Lorran,Pass (Dead),Bruno Henrique,Shot,Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+63.0,João Pedro,Grêmio,0.09,0.53,Saved,9,Head,,Dodi,Pass (Live),Dodi,Take-On,Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+65.0,Pedro,Flamengo,0.18,,Off Target,8,Left Foot,,Gerson,Pass (Live),Léo Pereira,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+65.0,Nathan Fernandes,Grêmio,0.08,,Blocked,13,Right Foot,,Dodi,Pass (Live),João Pedro,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+67.0,Luiz Araújo,Flamengo,0.06,0.73,Goal,13,Left Foot,,Pedro,Pass (Live),Lorran,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+74.0,Reinaldo,Grêmio,0.01,0.07,Saved,31,Left Foot,,Franco Cristaldo,Pass (Live),Reinaldo,Pass (Dead),Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+74.0,Pedro,Flamengo,0.07,0.04,Saved,12,Right Foot,Volley,Lorran,Pass (Live),Gerson,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+75.0,Nathan Fernandes,Grêmio,0.02,,Off Target,26,Right Foot,,Reinaldo,Pass (Live),João Pedro Pepê,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+80.0,Leo Ortiz,Flamengo,0.10,,Off Target,7,Head,,Léo Pereira,Pass (Live),Leo Ortiz,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+81.0,Reinaldo,Grêmio,0.02,0.05,Saved,15,Left Foot,,Nathan Fernandes,Pass (Live),Nathan Fernandes,Take-On,Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+87.0,Luiz Araújo,Flamengo,0.03,,Off Target,31,Left Foot,,Wesley,Pass (Live),Victor Hugo,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+89.0,Pedro,Flamengo,0.13,0.75,Saved,7,Head,,Luiz Araújo,Pass (Live),Victor Hugo,Pass (Dead),Flamengo-Gremio-June-13-2024-Serie-A,RT,2
+93.0,Dodi,Grêmio,0.03,0.05,Saved,27,Right Foot,,Franco Cristaldo,Pass (Live),Felipe Carballo,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,ET,2
+95.0,Reinaldo,Grêmio,0.03,,Blocked,15,Left Foot,,Nathan,Pass (Live),Franco Cristaldo,Pass (Live),Flamengo-Gremio-June-13-2024-Serie-A,ET,2
+96.0,Walter Kannemann,Grêmio,0.02,,Off Target,12,Head,,Reinaldo,Pass (Dead),Reinaldo,Shot,Flamengo-Gremio-June-13-2024-Serie-A,ET,2
+96.0,Edenílson,Grêmio,0.35,0.88,Goal,6,Head,,Walter Kannemann,Shot,,,Flamengo-Gremio-June-13-2024-Serie-A,ET,2
+2.0,Jonathan Calleri,São Paulo,0.47,0.04,Saved,14,Right Foot,,Lucas Moura,Pass (Live),Luciano,Pass (Live),Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,1
+11.0,Wesley,Internacional,0.01,,Off Target,26,Left Foot,Volley,,,,,Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,1
+16.0,Thiago Maia,Internacional,0.03,,Off Target,27,Left Foot,,Bruno Henrique,Pass (Live),Hyoran,Pass (Live),Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,1
+29.0,Hyoran,Internacional,0.03,,Off Target,26,Right Foot,,Charles Aránguiz,Pass (Live),,,Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,1
+61.0,Jonathan Calleri,São Paulo,0.06,,Blocked,14,Right Foot,,Diego,Pass (Dead),Alisson,Fouled,Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,2
+64.0,Wesley,Internacional,0.09,,Off Target,11,Left Foot,,Renê,Pass (Dead),Hyoran,Fouled,Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,2
+65.0,Renê,Internacional,0.02,,Off Target,10,Head,,Bruno Henrique,Pass (Live),Charles Aránguiz,Pass (Live),Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,2
+65.0,Jonathan Calleri,São Paulo,0.02,0.33,Saved,17,Right Foot,Volley,Lucas Moura,Pass (Live),Jandrei,Pass (Dead),Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,2
+78.0,Lucas Moura,São Paulo,0.17,,Blocked,17,Right Foot,,Ferreira,Pass (Live),Lucas Moura,Pass (Live),Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,2
+78.0,Lucas Moura,São Paulo,0.15,0.26,Saved,15,Left Foot,,Lucas Moura,Shot,,,Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,2
+79.0,Alan Franco,São Paulo,0.01,,Off Target,13,Head,,Ferreira,Pass (Dead),Lucas Moura,Shot,Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,2
+80.0,Lucas Moura,São Paulo,0.04,0.27,Saved,13,Head,,Igor Vinícius de Souza,Pass (Live),Lucas Moura,Pass (Live),Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,2
+80.0,Giuliano Galoppo,São Paulo,0.10,,Off Target,10,Head,,Ferreira,Pass (Dead),Lucas Moura,Shot,Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,2
+90.0,Fernando,Internacional,0.03,,Blocked,11,Other,,Bruno Gomes,Pass (Dead),Gustavo Prado,Pass (Live),Internacional-Sao-Paulo-June-13-2024-Serie-A,RT,2
+94.0,Alisson,São Paulo,0.07,,Off Target,28,Right Foot,Free kick,Erick,Fouled,Giuliano Galoppo,Pass (Live),Internacional-Sao-Paulo-June-13-2024-Serie-A,ET,2
+98.0,Vitão,Internacional,0.05,,Off Target,10,Head,,Renê,Pass (Dead),Hyoran,Pass (Live),Internacional-Sao-Paulo-June-13-2024-Serie-A,ET,2
+3.0,Thiago Heleno,Ath Paranaense,0.04,0.04,Saved,33,Right Foot,,Erick,Pass (Live),,,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+6.0,Nikão,Ath Paranaense,0.19,0.48,Saved,11,Left Foot,Volley,Bruno Zapelli,Pass (Live),Nikão,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+7.0,Thiago Heleno,Ath Paranaense,0.01,,Off Target,10,Head,,Nikão,Pass (Live),Bruno Zapelli,Pass (Dead),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+7.0,Erick,Ath Paranaense,0.10,0.03,Saved,11,Right Foot,Volley,Thiago Heleno,Shot,,,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+8.0,Barreto,Criciúma,0.43,0.27,Saved,11,Right Foot,,Matheusinho,Pass (Live),Walisson Maia,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+9.0,Barreto,Criciúma,0.96,0.99,Goal,2,Left Foot,,Barreto,Shot,,,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+13.0,Nikão,Ath Paranaense,0.10,,Off Target,14,Left Foot,Volley,Christian,Fouled,,,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+22.0,Éder,Criciúma,0.04,,Off Target,31,Right Foot,Free kick,Yannick Bolasie,Fouled,Yannick Bolasie,Take-On,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+23.0,Gonzalo Mastriani,Ath Paranaense,0.78,0.85,Goal,4,Head,,Bruno Zapelli,Pass (Live),Fernandinho,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+24.0,Ronald,Criciúma,0.14,,Blocked,16,Right Foot,,Ronald,Take-On,,,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+24.0,Higor Meritão,Criciúma,0.02,0.32,Saved,29,Left Foot,Volley,Ronald,Shot,,,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+25.0,Erick,Ath Paranaense,0.03,,Off Target,31,Right Foot,,Lucas Esquivel,Pass (Live),Bruno Zapelli,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+26.0,Gonzalo Mastriani,Ath Paranaense,0.02,,Blocked,26,Left Foot,,Fernandinho,Pass (Live),Kaique Rocha,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+27.0,Yannick Bolasie,Criciúma,0.01,,Off Target,29,Right Foot,Volley,Éder,Pass (Live),Matheusinho,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+35.0,Nikão,Ath Paranaense,0.05,,Blocked,15,Right Foot,,Lucas Esquivel,Pass (Live),Thiago Heleno,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+35.0,Bruno Zapelli,Ath Paranaense,0.13,,Off Target,11,Right Foot,Volley,Nikão,Shot,,,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+38.0,Yannick Bolasie,Criciúma,0.06,0.04,Saved,10,Head,,Ronald,Pass (Dead),Barreto,Take-On,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+38.0,Yannick Bolasie,Criciúma,0.05,,Blocked,17,Right Foot,,Ronald,Pass (Live),Ronald,Tackle,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+41.0,Erick,Ath Paranaense,0.01,,Off Target,9,Head,,Kaique Rocha,Pass (Live),Lucas Esquivel,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,1
+48.0,Tomás Cuello,Ath Paranaense,0.02,,Blocked,27,Right Foot,,Fernandinho,Pass (Live),Gonzalo Mastriani,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+49.0,Tomás Cuello,Ath Paranaense,0.13,,Blocked,20,Right Foot,,Tomás Cuello,Take-On,Fernandinho,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+49.0,Nikão,Ath Paranaense,0.08,,Blocked,15,Left Foot,,Erick,Pass (Live),Kaique Rocha,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+53.0,Yannick Bolasie,Criciúma,0.03,,Blocked,20,Left Foot,,Ronald,Pass (Live),Ronald,Take-On,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+54.0,Gonzalo Mastriani,Ath Paranaense,0.51,0.81,Goal,5,Head,,Mádson,Pass (Live),Christian,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+58.0,Lucas Esquivel,Ath Paranaense,0.02,,Off Target,32,Left Foot,,Nikão,Pass (Live),Nikão,Tackle,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+60.0,Matheusinho,Criciúma,0.02,,Off Target,34,Right Foot,,Ronald,Pass (Live),Tobias Figueiredo,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+64.0,Gonzalo Mastriani,Ath Paranaense,0.06,0.50,Saved,8,Head,,Lucas Esquivel,Pass (Live),Kaique Rocha,Pass (Dead),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+65.0,Gonzalo Mastriani,Ath Paranaense,0.10,,Woodwork,12,Right Foot,,Fernandinho,Pass (Live),Christian,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+66.0,Tomás Cuello,Ath Paranaense,0.02,,Woodwork,27,Right Foot,,Erick,Pass (Live),Thiago Heleno,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+70.0,Christian,Ath Paranaense,0.05,,Blocked,14,Left Foot,,Lucas Esquivel,Pass (Live),Tomás Cuello,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+77.0,Arthur,Criciúma,0.04,,Off Target,10,Head,,Ronald,Pass (Dead),Barreto,Fouled,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+79.0,Tomás Cuello,Ath Paranaense,0.21,0.38,Goal,16,Right Foot,,Fernandinho,Pass (Live),,,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+81.0,Matheusinho,Criciúma,0.02,,Off Target,34,Left Foot,,Barreto,Pass (Live),Arthur,Pass (Live),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+88.0,Fernandinho,Ath Paranaense,0.01,,Off Target,41,Right Foot,Volley,,,,,Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+89.0,Lucas Esquivel,Ath Paranaense,0.01,,Off Target,34,Left Foot,Volley,Mádson,Pass (Dead),Mádson,Pass (Dead),Athletico-Paranaense-Criciuma-June-13-2024-Serie-A,RT,2
+14.0,Jean Lucas,Bahia,0.42,,Off Target,12,Left Foot,,Everton Ribeiro,Pass (Live),Cauly Oliveira Souza,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,1
+17.0,Pedro Borges,Fortaleza,0.07,,Off Target,30,Left Foot,,Pedro Borges,Pass (Live),Leandro Emmanuel Martínez,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,1
+26.0,Felipe Jonatan,Fortaleza,0.03,,Blocked,19,Left Foot,Volley,Guilherme Tinga,Pass (Live),Emanuel Brítez,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,1
+27.0,Renato Kayser,Fortaleza,0.02,,Off Target,11,Left Foot,,Breno,Pass (Dead),Felipe Jonatan,Shot,Bahia-Fortaleza-June-13-2024-Serie-A,RT,1
+29.0,Hércules,Fortaleza,0.02,,Off Target,30,Right Foot,,Breno,Fouled,,,Bahia-Fortaleza-June-13-2024-Serie-A,RT,1
+30.0,Jean Lucas,Bahia,0.06,,Off Target,24,Right Foot,,Ademir Santos,Pass (Live),Cauly Oliveira Souza,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,1
+48.0,Leandro Emmanuel Martínez,Fortaleza,0.03,0.15,Saved,32,Right Foot,,Titi,Pass (Live),José Welison,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+48.0,Leandro Emmanuel Martínez,Fortaleza,0.10,,Off Target,18,Left Foot,,Leandro Emmanuel Martínez,Shot,,,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+51.0,Luciano Juba,Bahia,0.01,,Blocked,37,Left Foot,,Cauly Oliveira Souza,Pass (Live),Jean Lucas,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+52.0,Hércules,Fortaleza,0.07,,Blocked,17,Left Foot,,Guilherme Tinga,Take-On,José Welison,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+52.0,Pedro Borges,Fortaleza,0.03,,Blocked,22,Right Foot,,Hércules,Shot,,,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+54.0,Leandro Emmanuel Martínez,Fortaleza,0.09,,Off Target,6,Right Foot,Volley,Guilherme Tinga,Pass (Live),José Welison,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+59.0,José Welison,Fortaleza,0.01,,Off Target,33,Right Foot,,Hércules,Pass (Live),Guilherme Tinga,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+61.0,Oscar Estupiñan,Bahia,0.11,,Off Target,22,Left Foot,,Oscar Estupiñan,Tackle,,,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+63.0,Everton Ribeiro,Bahia,0.02,,Blocked,35,Left Foot,,Caio Alexandre,Pass (Live),Gilberto,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+64.0,Breno,Fortaleza,0.05,0.08,Saved,12,Right Foot,,Renato Kayser,Pass (Live),,,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+68.0,Biel,Bahia,0.14,,Woodwork,15,Left Foot,,Rezende,Pass (Dead),,,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+72.0,Breno,Fortaleza,0.02,0.09,Saved,18,Right Foot,,Guilherme Tinga,Pass (Live),Guilherme Tinga,Tackle,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+75.0,Oscar Estupiñan,Bahia,0.02,,Off Target,16,Head,,Gilberto,Pass (Live),Gabriel,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+77.0,Oscar Estupiñan,Bahia,0.08,0.33,Saved,14,Left Foot,,Biel,Pass (Live),Caio Alexandre,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+78.0,Biel,Bahia,0.05,,Off Target,21,Right Foot,Volley,Cicinho,Pass (Live),Everton Ribeiro,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+78.0,Carlos de Pena,Bahia,0.03,,Blocked,26,Left Foot,,Biel,Pass (Live),Biel,Shot,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+79.0,Juan Martín Lucero,Fortaleza,0.04,,Off Target,72,Right Foot,,,,,,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+80.0,Jean Lucas,Bahia,0.03,0.61,Goal,9,Head,,Everton Ribeiro,Pass (Live),Cicinho,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+85.0,Imanol Machuca,Fortaleza,0.44,0.35,Saved,13,Right Foot,,,,,,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+85.0,Juan Martín Lucero,Fortaleza,0.04,0.02,Saved,12,Head,,Yago Pikachu,Pass (Live),Imanol Machuca,Shot,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+89.0,Tomas Pochettino,Fortaleza,0.02,,Blocked,28,Right Foot,,Emanuel Brítez,Pass (Live),Felipe Jonatan,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+89.0,Emanuel Brítez,Fortaleza,0.01,,Blocked,31,Right Foot,,Tomas Pochettino,Shot,,,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+90.0,Tomas Pochettino,Fortaleza,0.03,0.02,Saved,23,Left Foot,Deflected,Emanuel Brítez,Shot,,,Bahia-Fortaleza-June-13-2024-Serie-A,RT,2
+91.0,Yago Pikachu,Fortaleza,0.03,,Blocked,15,Right Foot,,Tomas Pochettino,Pass (Live),Yago Pikachu,Pass (Dead),Bahia-Fortaleza-June-13-2024-Serie-A,ET,2
+92.0,Jean Lucas,Bahia,0.24,0.25,Saved,14,Left Foot,,Biel,Pass (Live),Carlos de Pena,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,ET,2
+93.0,Pedro Rocha Neves,Fortaleza,0.08,,Blocked,9,Left Foot,,Yago Pikachu,Pass (Live),Guilherme Tinga,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,ET,2
+98.0,Juan Martín Lucero,Fortaleza,0.04,,Off Target,27,Right Foot,Free kick,Imanol Machuca,Fouled,Felipe Jonatan,Pass (Live),Bahia-Fortaleza-June-13-2024-Serie-A,ET,2
+2.0,Raphael Veiga,Palmeiras,0.02,,Off Target,26,Left Foot,,Aníbal Moreno,Pass (Live),Zé Rafael,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+3.0,Estevão,Palmeiras,0.02,0.31,Saved,17,Left Foot,,Lázaro,Pass (Live),Murilo Cerqueira,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+4.0,Kaiky Naves,Palmeiras,0.06,,Blocked,9,Head,,Raphael Veiga,Pass (Dead),Estevão,Shot,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+4.0,Aníbal Moreno,Palmeiras,0.04,,Off Target,22,Right Foot,Volley,Kaiky Naves,Shot,,,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+5.0,Estevão,Palmeiras,0.02,,Off Target,22,Left Foot,Volley,Raphael Veiga,Pass (Dead),,,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+9.0,Aníbal Moreno,Palmeiras,0.02,,Off Target,35,Right Foot,,Joaquín Piquerez,Pass (Live),Joaquín Piquerez,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+12.0,Raphael Veiga,Palmeiras,0.03,0.09,Saved,27,Left Foot,,Marcos Rocha,Pass (Live),Kaiky Naves,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+13.0,Aníbal Moreno,Palmeiras,0.03,,Off Target,27,Right Foot,,Marcos Rocha,Pass (Live),Raphael Veiga,Pass (Dead),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+15.0,David,Vasco da Gama,0.04,,Blocked,12,Left Foot,,Rossi,Pass (Live),David,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+17.0,Lázaro,Palmeiras,0.03,,Off Target,11,Head,,Marcos Rocha,Pass (Live),Estevão,Pass (Dead),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+19.0,Rossi,Vasco da Gama,0.02,,Off Target,33,Right Foot,,Pablo Vegetti,Pass (Live),Léo Pelé,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+20.0,Lázaro,Palmeiras,0.05,0.06,Saved,23,Right Foot,,Raphael Veiga,Pass (Live),Estevão,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+20.0,Lázaro,Palmeiras,0.07,,Blocked,9,Head,,Rony,Pass (Live),Lázaro,Shot,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+22.0,Pablo Vegetti,Vasco da Gama,0.00,,Off Target,29,Right Foot,Volley,Léo Pelé,Pass (Live),,,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+23.0,Raphael Veiga,Palmeiras,0.05,,Blocked,18,Right Foot,,Rony,Pass (Live),,,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+23.0,Murilo Cerqueira,Palmeiras,0.02,,Blocked,8,Head,,Raphael Veiga,Pass (Dead),Raphael Veiga,Shot,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+26.0,Joaquín Piquerez,Palmeiras,0.34,0.14,Goal,13,Right Foot,,Estevão,Pass (Live),Marcos Rocha,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+29.0,Raphael Veiga,Palmeiras,0.04,,Off Target,25,Left Foot,Free kick,Estevão,Fouled,Zé Rafael,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+31.0,Raphael Veiga,Palmeiras,0.02,0.09,Saved,31,Left Foot,,Marcos Rocha,Pass (Dead),Estevão,Fouled,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+32.0,Estevão,Palmeiras,0.03,,Blocked,20,Left Foot,,Aníbal Moreno,Pass (Live),Aníbal Moreno,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+38.0,Pablo Vegetti,Vasco da Gama,0.01,,Off Target,16,Head,,Rossi,Pass (Dead),,,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,1
+46.0,Estevão,Palmeiras,0.03,,Blocked,22,Left Foot,,Lázaro,Pass (Live),Raphael Veiga,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,ET,1
+48.0,Raphael Veiga,Palmeiras,0.03,,Blocked,25,Left Foot,,Rony,Pass (Live),Lázaro,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,ET,1
+49.0,Raphael Veiga,Palmeiras,0.07,,Blocked,17,Left Foot,,Rony,Pass (Live),Murilo Cerqueira,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,ET,1
+50.0,Lázaro,Palmeiras,0.07,,Blocked,10,Left Foot,,Rony,Pass (Live),Marcos Rocha,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,ET,1
+51.0,Rony,Palmeiras,0.05,,Off Target,10,Head,,Raphael Veiga,Pass (Dead),Lázaro,Shot,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,ET,1
+48.0,José Luis Rodríguez Bebanz,Vasco da Gama,0.02,,Off Target,38,Right Foot,,Juan Sforza,Pass (Live),Adson,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,2
+49.0,Lázaro,Palmeiras,0.03,,Off Target,31,Right Foot,,Aníbal Moreno,Pass (Live),Aníbal Moreno,Take-On,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,2
+50.0,Adson,Vasco da Gama,0.01,,Off Target,22,Left Foot,,Adson,Take-On,Lucas Piton,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,2
+52.0,Raphael Veiga,Palmeiras,0.04,,Off Target,29,Left Foot,Free kick,Estevão,Fouled,Lázaro,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,2
+56.0,Rony,Palmeiras,0.90,0.90,Goal,4,Right Foot,,Estevão,Pass (Live),Marcos Rocha,Tackle,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,2
+61.0,Pablo Vegetti,Vasco da Gama,0.03,,Off Target,45,Right Foot,,,,,,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,2
+66.0,Estevão,Palmeiras,0.05,,Off Target,17,Left Foot,,Raphael Veiga,Pass (Live),Rony,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,2
+68.0,Pablo Vegetti,Vasco da Gama,0.09,0.04,Saved,9,Head,,Adson,Pass (Live),Juan Sforza,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,2
+75.0,Murilo Cerqueira,Palmeiras,0.20,,Off Target,6,Head,,Joaquín Piquerez,Pass (Live),Estevão,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,2
+78.0,Raphael Veiga,Palmeiras,0.02,,Off Target,30,Left Foot,,Aníbal Moreno,Pass (Live),Zé Rafael,Pass (Live),Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,RT,2
+96.0,Pablo Vegetti,Vasco da Gama,0.02,0.03,Saved,12,Head,,Victor Luis,Pass (Dead),Pablo Vegetti,Fouled,Palmeiras-Vasco-da-Gama-June-13-2024-Serie-A,ET,2

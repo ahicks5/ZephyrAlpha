@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Foursyte.io</title>
+    <title>Login - ZephyrAlpha.io</title>
     <link rel="icon" href="/static/logos/foresyte_logo.png" type="image/png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
@@ -22,7 +22,12 @@
 
 <body>
 <div class="header text-center">
-    <img src="/static/logos/foresyte_header.png" alt="Foursyte.io Logo" class="logo">
+    <a href="/"><img src="/static/logos/z_logo2.png" alt="Zephyr Alpha Logo" class="logo"></a>
+    {% if current_user.is_authenticated %}
+    <div class="top-right">
+        <span>Welcome, {{ current_user.username }} | <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a></span>
+    </div>
+    {% endif %}
 </div>
 <div class="container mt-5">
     <h2 class="text-center">Login to Your Account</h2>

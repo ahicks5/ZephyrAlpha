@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Foursyte.io</title>
-    <link rel="icon" href="/static/logos/foresyte_logo.png" type="image/png">
+    <title>Dashboard - ZephyrAlpha.io</title>
+    <link rel="icon" href="/static/logos/z_logo2.png" type="image/png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
@@ -15,22 +15,131 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-TZ9LXBN8Q6');
 </script>
 
 <body>
 <div class="header text-center">
-    <img src="/static/logos/foresyte_header.png" alt="Foursyte.io Logo" class="logo">
+    <a href="/"><img src="/static/logos/z_logo2.png" alt="Zephyr Alpha Logo" class="logo"></a>
     <div class="top-right">
         <span>Welcome, {{ username }} | <a href="/">Home</a> | <a href="/logout">Logout</a></span>
     </div>
 </div>
 
-<div class="container">
-    <h2 class="mt-5 text-center">User Dashboard</h2>
-    <p class="text-center">This is a placeholder for the user dashboard where users can select their favorite teams, upgrade their status to a paid plan, and more.</p>
+<div class="container mt-5">
+    <h2 class="text-center">User Dashboard</h2>
+    <p class="text-center">Welcome, {{ username }}!</p>
+
+    <div class="row">
+        <!-- Favorite Teams Section -->
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>Favorite Teams</h5>
+                </div>
+                <div class="card-body">
+                    <p>Select your favorite teams to follow: (coming soon!)</p>
+                    <form id="favorite-teams-form" action="/update-favorites" method="POST">
+                        <!-- Dropdown to select sport -->
+                        <div class="form-group">
+                            <label for="sport-select">Select Sport:</label>
+                            <select class="form-control" id="sport-select" onchange="showTeams()">
+                                <option value="">-- Select Sport --</option>
+                                {% for sport in sports %}
+                                    <option value="{{ sport }}">{{ sport }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <!-- Panels for team selection -->
+                        <div id="team-selection" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <h6>Available Teams</h6>
+                                    <ul class="list-group" id="available-teams">
+                                        <li class="list-group-item" ondblclick="moveToSelected(this)">Team 1</li>
+                                        <li class="list-group-item" ondblclick="moveToSelected(this)">Team 2</li>
+                                        <li class="list-group-item" ondblclick="moveToSelected(this)">Team 3</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-2 d-flex flex-column justify-content-center align-items-center">
+                                    <button type="button" class="btn btn-primary mb-2" onclick="moveAllToSelected()">>>></button>
+                                    <button type="button" class="btn btn-secondary mt-2" onclick="moveAllToAvailable()"><<<</button>
+                                </div>
+                                <div class="col-md-5">
+                                    <h6>Selected Teams</h6>
+                                    <ul class="list-group" id="selected-teams">
+                                        <!-- Selected teams will appear here -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Save Favorites</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscription Status Section -->
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>Subscription Status</h5>
+                </div>
+                <div class="card-body">
+                    <p>Your current subscription status: <strong>{{ subscription_status }}</strong></p>
+                    <a href="/upgrade" class="btn btn-success">Upgrade to Paid Plan (coming soon!)</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Signup Time Section -->
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>Account Information</h5>
+                </div>
+                <div class="card-body">
+                    <p>Account created on: <strong>{{ signup_time.strftime('%B %d, %Y') }}</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    function showTeams() {
+        document.getElementById('team-selection').style.display = 'block';
+    }
+
+    function moveToSelected(element) {
+        const selectedTeams = document.getElementById('selected-teams');
+        selectedTeams.appendChild(element);
+        element.setAttribute('ondblclick', 'moveToAvailable(this)');
+    }
+
+    function moveToAvailable(element) {
+        const availableTeams = document.getElementById('available-teams');
+        availableTeams.appendChild(element);
+        element.setAttribute('ondblclick', 'moveToSelected(this)');
+    }
+
+    function moveAllToSelected() {
+        const availableTeams = document.getElementById('available-teams');
+        const selectedTeams = document.getElementById('selected-teams');
+        while (availableTeams.firstChild) {
+            moveToSelected(availableTeams.firstChild);
+        }
+    }
+
+    function moveAllToAvailable() {
+        const availableTeams = document.getElementById('available-teams');
+        const selectedTeams = document.getElementById('selected-teams');
+        while (selectedTeams.firstChild) {
+            moveToAvailable(selectedTeams.firstChild);
+        }
+    }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>

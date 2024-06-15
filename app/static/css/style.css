@@ -21,7 +21,7 @@ body {
 /* Header Logo */
 .header .logo {
     width: 8%; /* Adjusted width to make it smaller */
-    max-width: 8%; /* Adjusted max-width to make it smaller */
+    max-width: 25%; /* Adjusted max-width to make it smaller */
     height: auto; /* Maintain aspect ratio */
 }
 

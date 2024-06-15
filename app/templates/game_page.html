@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ game.description }}</title>
     <link rel="stylesheet" href="/static/css/game_page.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="/static/logos/z_logo2.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -37,8 +39,11 @@
 
 <body>
 
-<div class="header">
-    <a href="/" class="header-link">BetChat.io</a>
+<div class="header text-center">
+    <a href="/"><img src="/static/logos/z_logo2.png" alt="Zephyr Alpha Logo" class="logo"></a>
+    <div class="top-right">
+        <span>Welcome, {{ current_user.username }} | <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a> | <a href="/">Home</a></span>
+    </div>
 </div>
 
 <div id="roomId" data-id="{{ game.id }}"></div>

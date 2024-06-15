@@ -1,0 +1,32 @@
+Minute,Player,Squad,xG,PSxG,Outcome,Distance,Body Part,Notes,Player,Event,Player,Event,game_id,Minute Type,Half
+4.0,Cucho,Crew,0.14,0.28,Saved,17,Right Foot,,Christian Ramirez,Pass (Live),Mohamed Farsi,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+5.0,Maximilian Arfsten,Crew,0.15,,Off Target,5,Left Foot,,Diego Rossi,Pass (Live),Christian Ramirez,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+13.0,Christian Ramirez,Crew,0.07,0.25,Saved,17,Right Foot,,Mohamed Farsi,Pass (Live),Malte Amundsen,Pass (Dead),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+17.0,Cucho,Crew,0.03,0.12,Saved,12,Right Foot,,Yevhen Cheberko,Pass (Live),Darlington Nagbe,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+21.0,Hannes Wolf,NYCFC,0.03,0.26,Saved,26,Left Foot,,Mitja Ilenič,Pass (Live),Keaton Parks,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+26.0,Diego Rossi,Crew,0.43,0.36,Saved,11,Left Foot,,Maximilian Arfsten,Pass (Live),Diego Rossi,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+27.0,Christian Ramirez,Crew,0.35,0.34,Saved,13,Right Foot,,Diego Rossi,Pass (Live),Maximilian Arfsten,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+29.0,Yevhen Cheberko,Crew,0.05,,Blocked,11,Left Foot,,Cucho,Pass (Live),Maximilian Arfsten,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+31.0,Santiago Rodríguez,NYCFC,0.05,,Woodwork,23,Right Foot,,Keaton Parks,Pass (Live),Alonso Martínez,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+32.0,Alonso Martínez,NYCFC,0.21,,Off Target,12,Left Foot,,Agustin Ojeda,Pass (Live),Hannes Wolf,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+34.0,Christian Ramirez,Crew,0.16,0.29,Saved,13,Right Foot,,Cucho,Pass (Live),Diego Rossi,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+42.0,Cucho,Crew,0.04,,Blocked,33,Right Foot,Free kick,Christian Ramirez,Fouled,Mohamed Farsi,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+44.0,Agustin Ojeda,NYCFC,0.13,0.72,Goal,16,Right Foot,,Alonso Martínez,Pass (Live),Santiago Rodríguez,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,1
+47.0,Cucho,Crew,0.06,0.04,Saved,18,Right Foot,,Cucho,Tackle,Rudy Camacho,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,ET,1
+49.0,Maximilian Arfsten,Crew,0.18,0.14,Saved,6,Head,,Sean Zawadzki,Pass (Live),Diego Rossi,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,ET,1
+46.0,Christian Ramirez,Crew,0.02,,Blocked,17,Right Foot,,Mohamed Farsi,Pass (Live),Sean Zawadzki,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+48.0,Cucho,Crew,0.13,,Off Target,13,Left Foot,,Maximilian Arfsten,Pass (Live),Malte Amundsen,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+48.0,Christian Ramirez,Crew,0.34,0.88,Goal,5,Right Foot,,Cucho,Shot,,,New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+53.0,Mohamed Farsi,Crew,0.57,1.00,Goal,3,Left Foot,,Maximilian Arfsten,Shot,,,New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+53.0,Maximilian Arfsten,Crew,0.07,0.17,Saved,15,Right Foot,,Cucho,Pass (Live),Mohamed Farsi,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+55.0,Alonso Martínez,NYCFC,0.08,,Off Target,16,Right Foot,,Santiago Rodríguez,Pass (Live),Andrés Perea,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+57.0,Hannes Wolf,NYCFC,0.31,,Off Target,10,Left Foot,,Santiago Rodríguez,Pass (Live),Tayvon Gray,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+65.0,Cucho (pen),Crew,0.79,1.00,Goal,13,Right Foot,,Mohamed Farsi,Fouled,Yevhen Cheberko,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+70.0,Maximiliano Moralez,NYCFC,0.08,0.46,Saved,24,Right Foot,,Santiago Rodríguez,Pass (Live),Keaton Parks,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+72.0,Santiago Rodríguez,NYCFC,0.03,0.18,Saved,33,Right Foot,Free kick,Maximiliano Moralez,Fouled,Andrés Perea,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+78.0,Malachi Jones,NYCFC,0.09,,Off Target,16,Right Foot,,Maximiliano Moralez,Pass (Live),Santiago Rodríguez,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+85.0,Maximiliano Moralez,NYCFC,0.03,0.10,Saved,12,Left Foot,,Christian McFarlane,Pass (Live),Andrés Perea,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+86.0,Santiago Rodríguez,NYCFC,0.95,0.95,Goal,9,Left Foot,,Santiago Rodríguez,Take-On,Maximiliano Moralez,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,RT,2
+94.0,Santiago Rodríguez,NYCFC,0.08,,Blocked,16,Left Foot,,Santiago Rodríguez,Take-On,Maximiliano Moralez,Pass (Live),New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,ET,2
+95.0,Birk Risa,NYCFC,0.03,,Off Target,27,Left Foot,,Christian McFarlane,Pass (Live),Malachi Jones,Take-On,New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,ET,2
+103.0,Alexandru Mățan,Crew,0.13,,Off Target,12,Right Foot,,Christian Ramirez,Pass (Live),,,New-York-City-FC-Columbus-Crew-June-14-2024-Major-League-Soccer,ET,2

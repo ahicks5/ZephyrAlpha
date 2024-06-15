@@ -236,29 +236,34 @@ class MatchDataExtractor:
             return set()
 
     def extract_and_save_all_data(self):
-        estimated_time = len(self.urls) * 6  # Estimate 6 seconds per item
+        estimated_time = len(self.urls) * 4  # Estimate 6 seconds per item
         print(f"Estimated total processing time: {estimated_time // 60} minutes and {estimated_time % 60} seconds")
 
         new_data_processed = False
 
         for url in self.urls:
-            game_id = self.extract_game_id_from_url(url)
-            if game_id in self.existing_game_ids:
-                print(f"Skipping already processed game: {game_id}")
-                continue
+            try:
+                game_id = self.extract_game_id_from_url(url)
+                if game_id in self.existing_game_ids:
+                    print(f"Skipping already processed game: {game_id}")
+                    continue
 
-            soup = self.get_soup(url)
-            home_team, away_team, game_date, league_name = self.extract_teams_date_and_league_from_h1(soup)
+                soup = self.get_soup(url)
+                home_team, away_team, game_date, league_name = self.extract_teams_date_and_league_from_h1(soup)
 
-            shots_df = self.extract_shots_data(soup, game_id)
-            team_stats_df = self.extract_team_stats(soup, game_id, home_team, away_team, game_date, league_name)
+                shots_df = self.extract_shots_data(soup, game_id)
+                team_stats_df = self.extract_team_stats(soup, game_id, home_team, away_team, game_date, league_name)
 
-            self.shots_data = pd.concat([self.shots_data, shots_df], ignore_index=True)
-            self.team_stats_data = pd.concat([self.team_stats_data, team_stats_df], ignore_index=True)
+                self.shots_data = pd.concat([self.shots_data, shots_df], ignore_index=True)
+                self.team_stats_data = pd.concat([self.team_stats_data, team_stats_df], ignore_index=True)
 
-            print(f"Successfully pulled data for {home_team} vs {away_team} on {game_date}")
-            new_data_processed = True
-            time.sleep(4)  # Wait for 4 seconds before making the next request
+                print(f"Successfully pulled data for {home_team} vs {away_team} on {game_date}")
+                new_data_processed = True
+            except:
+                print('Error, skipping game and continuing.')
+
+            time.sleep(5)  # Wait for 4 seconds before making the next request
+
 
         if new_data_processed:
             # Save data to CSV with league name included in the filename
@@ -291,6 +296,6 @@ class MatchDataExtractor:
 
 if __name__ == '__main__':
     # Example usage
-    extractor = MatchDataExtractor('MLS')  # For historical data
+    extractor = MatchDataExtractor('MLS', 2023)  # For historical data
     extractor.extract_and_save_all_data()
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZephyrAlpha.io</title>
-    <link rel="icon" href="/static/logos/foresyte_logo.png" type="image/png">
+    <link rel="icon" href="/static/logos/z_logo2.png" type="image/png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/login-banner.css">
@@ -25,12 +25,12 @@
 {% if not current_user.is_authenticated %}
 <!-- Login/Signup Banner -->
 <div class="login-signup-banner">
-    <p>Don't have an account? <a href="/register">Register here!</a></p>
+    <p>Don't have an account? <a href="/register">Register here!</a> <a href="/login">Sign in</a></p>
 </div>
 {% endif %}
 
 <div class="header text-center">
-    <img src="/static/logos/z_logo.png" alt="Zephyr Alpha Logo" class="logo">
+    <a href="/"><img src="/static/logos/z_logo2.png" alt="Zephyr Alpha Logo" class="logo"></a>
     {% if current_user.is_authenticated %}
     <div class="top-right">
         <span>Welcome, {{ current_user.username }} | <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a></span>

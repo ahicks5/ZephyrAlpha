@@ -15,6 +15,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)  # Updated length
     account_status = db.Column(db.String(20), default='free')
+    signup_time = db.Column(db.DateTime, default=datetime.utcnow)
+    favorite_teams = db.Column(db.Text)  # Store favorite teams as JSON string
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

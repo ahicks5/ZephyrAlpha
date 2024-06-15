@@ -67,6 +67,9 @@ def pull_games(sport_types):
 
 
 def split_games_by_upcoming(games_list):
+    # Sort games_list by 'startTime' in ascending order
+    games_list = sorted(games_list, key=lambda x: x['startTime'])
+
     central_tz = pytz.timezone('America/Chicago')
     current_time = datetime.now(central_tz)
     upcoming_time = current_time + timedelta(hours=24)

@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_login import LoginManager
+from flask_migrate import Migrate
 from .database import db  # Ensure this import matches the location of your db instance
 from config import Config
 from .extensions import cache, socketio
@@ -15,12 +16,16 @@ from .models.models import User
 # Initialize extensions
 login_manager = LoginManager()
 
+#Initialize migrate
+migrate = Migrate()
+
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
     # Initialize extensions with the app instance
     db.init_app(app)
+    migrate.init_app(app, db)
     socketio.init_app(app)
     cache.init_app(app)
     login_manager.init_app(app)

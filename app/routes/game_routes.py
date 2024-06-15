@@ -16,6 +16,7 @@ def index():
     games_list = pull_all_games_cached().to_dict(orient='records')
     all_games, upcoming_games, later_games = split_games_by_upcoming(games_list)
     unique_sports = {game['sport'] for game in games_list}
+    unique_sports = sorted(unique_sports)
 
     username = session.get('username')
     return render_template('index.html', games=upcoming_games, later_games=later_games, sports=unique_sports, username=username)
@@ -25,7 +26,12 @@ def index():
 def dashboard():
     if current_user.account_status == 'admin':
         return redirect(url_for('admin.admin_dashboard'))
-    return render_template('dashboard.html', username=current_user.username)
+    favorite_teams = current_user.favorite_teams
+    subscription_status = current_user.account_status
+    signup_time = current_user.signup_time
+    sports = ["Soccer"]  # You can expand this list as needed
+    return render_template('dashboard.html', username=current_user.username, favorite_teams=favorite_teams, subscription_status=subscription_status, signup_time=signup_time, sports=sports)
+
 
 @game_bp.route('/register', methods=['GET', 'POST'])
 def register():

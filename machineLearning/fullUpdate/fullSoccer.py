@@ -29,7 +29,7 @@ def fullUpdateSoccer(league_friendly_name, year=None):
 
 
 if __name__ == '__main__':
-    league_friendly_name = 'MLS'
+    league_friendly_name = 'Brazil Serie A'
     year = None
     fullUpdateSoccer(league_friendly_name, year)
 

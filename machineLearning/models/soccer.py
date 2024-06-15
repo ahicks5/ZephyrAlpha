@@ -26,6 +26,7 @@ class SoccerGoalPredictor:
         self.model_away = None
         self.scaler = StandardScaler()
         self.train_models()
+        self.generate_predictions_csv()
 
     def generate_filepath(self, file_type):
         base_dir = os.path.abspath(
@@ -44,6 +45,8 @@ class SoccerGoalPredictor:
             return os.path.join(base_dir, f'{self.league_long_name}_away_model.pkl')
         elif file_type == 'scaler':
             return os.path.join(base_dir, f'{self.league_long_name}_scaler.pkl')
+        elif file_type == 'predictions':
+            return os.path.join(base_dir, f'current_predictions_{self.league_long_name}.csv')
         else:
             raise ValueError(
                 "Invalid file type. Use 'cleaned_data', 'recent_stats', 'model_home', 'model_away', or 'scaler'.")
@@ -147,6 +150,26 @@ class SoccerGoalPredictor:
     def load_model(self, filepath):
         return joblib.load(filepath)
 
+    def generate_predictions_csv(self):
+        output_filepath = self.generate_filepath('predictions')
+        teams = self.recent_team_stats['team'].unique()
+        predictions = []
+
+        for home_team in teams:
+            for away_team in teams:
+                if home_team != away_team:
+                    preds = self.predict_goals(home_team, away_team)
+                    predictions.append({
+                        'home_team': home_team,
+                        'away_team': away_team,
+                        'home_goals_pred': preds['RandomForest'][0],
+                        'away_goals_pred': preds['RandomForest'][1]
+                    })
+
+        predictions_df = pd.DataFrame(predictions)
+        predictions_df.to_csv(output_filepath, index=False)
+        print(f"Predictions saved to {output_filepath}")
+
 
 if __name__ == '__main__':
     # Usage
@@ -154,7 +177,7 @@ if __name__ == '__main__':
     year = None
 
     # For historical data
-    predictor_historical = SoccerGoalPredictor(friendly_league_name, year)
+    #predictor_historical = SoccerGoalPredictor(friendly_league_name, year)
 
     # For current season data
     predictor_current = SoccerGoalPredictor(friendly_league_name)
@@ -165,6 +188,6 @@ if __name__ == '__main__':
 
     #for home_team, away_team in teams:
     #    predictions = predictor_current.predict_goals(home_team, away_team)
-    #    for model_name, (home_goals, away_goals) in predictions.items():
+     #   for model_name, (home_goals, away_goals) in predictions.items():
     #        print(
-    #            f"{model_name} - Predicted goals - Home Team ({home_team}): {home_goals}, Away Team ({away_team}): {away_goals}")
+     #           f"{model_name} - Predicted goals - Home Team ({home_team}): {home_goals}, Away Team ({away_team}): {away_goals}")
