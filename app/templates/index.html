@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/login-banner.css">
+    <style>
+        .favorites-section {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .favorites-section .sport-title {
+            color: white; /* White font color */
+            background-color: #001f3f; /* Deep navy blue background */
+        }
+    </style>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -58,6 +70,24 @@
     <div class="user-count-section text-center">
         <h2><span id="userCount">10,000+</span> players already rely on ZephyrAlpha.io for their sports betting decisions!</h2>
     </div>
+
+    {% if current_user.is_authenticated and favorite_games %}
+    <div class="favorites-section">
+        <h2 class="sport-title">Favorites</h2>
+        <div class="row">
+            {% for game in favorite_games %}
+                <div class="col-sm-4">
+                    <button class="btn game-button" data-live="{{ game.live }}" onclick="location.href='/game/{{ game.id }}';">
+                        {{ game.homeTeam }} vs {{ game.awayTeam }}
+                        <div class="small text-center">
+                            {{ game.formatted_start_time }}
+                        </div>
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
 
     <h2 class="mt-5 text-center">Upcoming Matchups</h2>
 

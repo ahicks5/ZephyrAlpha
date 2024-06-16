@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session
+from flask import Blueprint, render_template, request, redirect, url_for, session, jsonify, Flask
 from flask_login import current_user, login_required, login_user, logout_user
 from app.utilities.data_fetching import get_live_game_data
 from app.utilities.cache_utils import pull_all_games_cached
@@ -8,8 +8,9 @@ from app.utilities.json_for_comparison import TeamComparison
 from app.models.models import Message, db, User
 from app.utilities.soccerPrediction import predict_game_goals
 import re
-from pull_vsin.updateMLS import get_vsin_data, WebScraper
+from pull_vsin.updateMLS import get_vsin_data
 import json
+from app.utilities.sport_league_mappings import team_mappings, sort_team_mappings
 
 game_bp = Blueprint('game', __name__)
 
@@ -20,20 +21,56 @@ def index():
     unique_sports = {game['sport'] for game in games_list}
     unique_sports = sorted(unique_sports)
 
+    # Get the favorite teams for the current user
+    favorite_teams = {}
+    if current_user.is_authenticated:
+        favorite_teams = json.loads(current_user.favorite_teams) if current_user.favorite_teams else {}
+
+    # Find games that include favorite teams
+    favorite_games = []
+    for game in games_list:
+        for league, teams in favorite_teams.items():
+            if game['homeTeam'] in teams or game['awayTeam'] in teams:
+                favorite_games.append(game)
+                break
+
     username = session.get('username')
-    return render_template('index.html', games=upcoming_games, later_games=later_games, sports=unique_sports, username=username)
+    return render_template('index.html', games=upcoming_games, later_games=later_games, sports=unique_sports, username=username, favorite_games=favorite_games)
+
 
 @game_bp.route('/dashboard')
 @login_required
 def dashboard():
     if current_user.account_status == 'admin':
         return redirect(url_for('admin.admin_dashboard'))
-    favorite_teams = current_user.favorite_teams
+
+    favorite_teams = json.loads(current_user.favorite_teams) if current_user.favorite_teams else {}
     subscription_status = current_user.account_status
     signup_time = current_user.signup_time
-    sports = ["Soccer"]  # You can expand this list as needed
-    return render_template('dashboard.html', username=current_user.username, favorite_teams=favorite_teams, subscription_status=subscription_status, signup_time=signup_time, sports=sports)
+    sorted_team_mappings = sort_team_mappings(team_mappings)
 
+    return render_template(
+        'dashboard.html',
+        username=current_user.username,
+        favorite_teams=favorite_teams,
+        subscription_status=subscription_status,
+        signup_time=signup_time,
+        team_mappings=sorted_team_mappings
+    )
+
+@game_bp.route('/update-favorites', methods=['POST'])
+@login_required
+def update_favorites():
+    selected_teams = request.form.getlist('teams[]')
+    league_key = request.form.get('league')
+
+    favorite_teams = json.loads(current_user.favorite_teams) if current_user.favorite_teams else {}
+    favorite_teams[league_key] = selected_teams
+
+    current_user.favorite_teams = json.dumps(favorite_teams)
+    db.session.commit()
+
+    return jsonify({'message': 'Changes have been saved.'})
 
 @game_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -152,9 +189,6 @@ def game_page(game_id):
     except Exception as e:
         print(f"Error loading VSIN data: {e}")
 
-    print(vsin_data)  # Ensure this prints correctly
-    print(type(vsin_data))  # Print the type of vsin_data
-
     messages = Message.query.filter_by(game_id=game_id).order_by(Message.timestamp.asc()).all()
 
     username = session.get('username')
@@ -168,3 +202,12 @@ def game_page(game_id):
                            prediction_data=prediction_data,
                            vsin_data=vsin_data,
                            username=username)
+
+@game_bp.errorhandler(404)
+def page_not_found(e):
+    return render_template('errors/404.html'), 404
+
+@game_bp.errorhandler(500)
+def internal_server_error(e):
+    return render_template('errors/500.html'), 500
+

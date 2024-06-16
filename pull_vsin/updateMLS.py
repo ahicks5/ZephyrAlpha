@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import csv
-from .vsin_match import team_mapping
+from pull_vsin.vsin_match import team_mapping
 import pandas as pd
 
 

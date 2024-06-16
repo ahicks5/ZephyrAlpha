@@ -65,3 +65,13 @@ team_mappings = {
 
 base_path = "/var/www/html/season_stats/"
 #base_path = "C:/Users/arhic/PycharmProjects/ZephyrAlpha/season_stats/"
+
+def sort_team_mappings(team_mappings):
+    sorted_team_mappings = {}
+    for league_key, league_data in sorted(team_mappings.items(), key=lambda item: item[1]['league_name']):
+        sorted_teams = dict(sorted(league_data['teams'].items(), key=lambda item: item[1]))
+        sorted_team_mappings[league_key] = {
+            'league_name': league_data['league_name'],
+            'teams': sorted_teams
+        }
+    return sorted_team_mappings

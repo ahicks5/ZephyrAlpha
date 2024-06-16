@@ -7,6 +7,23 @@
     <link rel="icon" href="/static/logos/z_logo2.png" type="image/png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .scrollable-container {
+            max-height: 300px; /* Adjust height as needed */
+            overflow-y: auto;
+            margin-bottom: 20px; /* Ensure there's space below the container */
+        }
+        .form-check {
+            margin-bottom: 10px;
+        }
+        .league-teams .col-md-3 {
+            flex: 0 0 25%; /* Adjust the width of columns to make them stretch */
+            max-width: 25%;
+        }
+        .alert {
+            display: none;
+        }
+    </style>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -38,43 +55,43 @@
                     <h5>Favorite Teams</h5>
                 </div>
                 <div class="card-body">
-                    <p>Select your favorite teams to follow: (coming soon!)</p>
-                    <form id="favorite-teams-form" action="/update-favorites" method="POST">
+                    <p>Select your favorite teams to follow:</p>
+                    <div id="success-alert" class="alert alert-success" role="alert">
+                        Changes have been saved.
+                    </div>
+                    <form id="favorite-teams-form">
                         <!-- Dropdown to select sport -->
                         <div class="form-group">
-                            <label for="sport-select">Select Sport:</label>
-                            <select class="form-control" id="sport-select" onchange="showTeams()">
-                                <option value="">-- Select Sport --</option>
-                                {% for sport in sports %}
-                                    <option value="{{ sport }}">{{ sport }}</option>
+                            <label for="sport-select">Select League:</label>
+                            <select class="form-control" id="sport-select" name="league" onchange="showTeams()">
+                                <option value="">-- Select League --</option>
+                                {% for league_key, league_data in team_mappings.items() %}
+                                    <option value="{{ league_key }}">{{ league_data.league_name }}</option>
                                 {% endfor %}
                             </select>
                         </div>
 
                         <!-- Panels for team selection -->
-                        <div id="team-selection" style="display: none;">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <h6>Available Teams</h6>
-                                    <ul class="list-group" id="available-teams">
-                                        <li class="list-group-item" ondblclick="moveToSelected(this)">Team 1</li>
-                                        <li class="list-group-item" ondblclick="moveToSelected(this)">Team 2</li>
-                                        <li class="list-group-item" ondblclick="moveToSelected(this)">Team 3</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-2 d-flex flex-column justify-content-center align-items-center">
-                                    <button type="button" class="btn btn-primary mb-2" onclick="moveAllToSelected()">>>></button>
-                                    <button type="button" class="btn btn-secondary mt-2" onclick="moveAllToAvailable()"><<<</button>
-                                </div>
-                                <div class="col-md-5">
-                                    <h6>Selected Teams</h6>
-                                    <ul class="list-group" id="selected-teams">
-                                        <!-- Selected teams will appear here -->
-                                    </ul>
+                        <div id="team-selection" class="scrollable-container" style="display: none;">
+                            <div class="form-group">
+                                <h6>Teams</h6>
+                                <div id="teams-list">
+                                    {% for league_key, league_data in team_mappings.items() %}
+                                        <div id="{{ league_key }}" class="league-teams row" style="display: none;">
+                                            {% for team_key, team_name in league_data.teams.items() %}
+                                                <div class="col-md-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="teams[]" value="{{ team_key }}" id="team-{{ loop.index }}" {% if league_key in favorite_teams and team_key in favorite_teams[league_key] %}checked{% endif %}>
+                                                        <label class="form-check-label" for="team-{{ loop.index }}">{{ team_key }}</label>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endfor %}
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mt-3">Save Favorites</button>
                         </div>
+                        <button type="button" class="btn btn-primary mt-3" onclick="saveFavorites()">Save Favorites</button>
                     </form>
                 </div>
             </div>
@@ -109,35 +126,31 @@
 
 <script>
     function showTeams() {
-        document.getElementById('team-selection').style.display = 'block';
+        const selectedLeague = document.getElementById('sport-select').value;
+        const allLeagues = document.querySelectorAll('.league-teams');
+        allLeagues.forEach(league => {
+            league.style.display = league.id === selectedLeague ? 'flex' : 'none';
+        });
+        document.getElementById('team-selection').style.display = selectedLeague ? 'block' : 'none';
     }
 
-    function moveToSelected(element) {
-        const selectedTeams = document.getElementById('selected-teams');
-        selectedTeams.appendChild(element);
-        element.setAttribute('ondblclick', 'moveToAvailable(this)');
-    }
-
-    function moveToAvailable(element) {
-        const availableTeams = document.getElementById('available-teams');
-        availableTeams.appendChild(element);
-        element.setAttribute('ondblclick', 'moveToSelected(this)');
-    }
-
-    function moveAllToSelected() {
-        const availableTeams = document.getElementById('available-teams');
-        const selectedTeams = document.getElementById('selected-teams');
-        while (availableTeams.firstChild) {
-            moveToSelected(availableTeams.firstChild);
-        }
-    }
-
-    function moveAllToAvailable() {
-        const availableTeams = document.getElementById('available-teams');
-        const selectedTeams = document.getElementById('selected-teams');
-        while (selectedTeams.firstChild) {
-            moveToAvailable(selectedTeams.firstChild);
-        }
+    function saveFavorites() {
+        const form = document.getElementById('favorite-teams-form');
+        const formData = new FormData(form);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/update-favorites', true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                const alertBox = document.getElementById('success-alert');
+                alertBox.style.display = 'block';
+                setTimeout(() => {
+                    alertBox.style.display = 'none';
+                }, 3000);
+            }
+        };
+        xhr.send(formData);
     }
 </script>
 
