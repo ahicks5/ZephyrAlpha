@@ -26,7 +26,6 @@ class SoccerGoalPredictor:
         self.model_away = None
         self.scaler = StandardScaler()
         self.train_models()
-        self.generate_predictions_csv()
 
     def generate_filepath(self, file_type):
         base_dir = os.path.abspath(
@@ -149,26 +148,6 @@ class SoccerGoalPredictor:
 
     def load_model(self, filepath):
         return joblib.load(filepath)
-
-    def generate_predictions_csv(self):
-        output_filepath = self.generate_filepath('predictions')
-        teams = self.recent_team_stats['team'].unique()
-        predictions = []
-
-        for home_team in teams:
-            for away_team in teams:
-                if home_team != away_team:
-                    preds = self.predict_goals(home_team, away_team)
-                    predictions.append({
-                        'home_team': home_team,
-                        'away_team': away_team,
-                        'home_goals_pred': preds['RandomForest'][0],
-                        'away_goals_pred': preds['RandomForest'][1]
-                    })
-
-        predictions_df = pd.DataFrame(predictions)
-        predictions_df.to_csv(output_filepath, index=False)
-        print(f"Predictions saved to {output_filepath}")
 
 
 if __name__ == '__main__':

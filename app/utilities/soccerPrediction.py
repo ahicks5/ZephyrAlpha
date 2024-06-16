@@ -6,8 +6,8 @@ import joblib
 
 class SoccerGoalPredictor:
     def __init__(self, friendly_league_name, year=None):
-        self.league_info = team_mappings[friendly_league_name]
-        self.league_long_name = self.league_info['league_name'].replace(' ', '_').lower()
+        self.league_info = league_dict[friendly_league_name]
+        self.league_long_name = self.league_info['league_long_name']
         self.year = year
         self.cleaned_data_filepath = self.generate_filepath('cleaned_data')
         self.recent_team_stats_filepath = self.generate_filepath('recent_stats')
@@ -91,9 +91,10 @@ class SoccerGoalPredictor:
     def load_model(self, filepath):
         return joblib.load(filepath)
 
+
 def generate_predictions_for_all_teams(league_name):
     predictor = SoccerGoalPredictor(league_name)
-    all_teams = team_mappings[league_name]['teams'].keys()
+    all_teams = team_mappings[predictor.league_long_name]['teams'].keys()
     predictions = []
 
     for home_team in all_teams:
@@ -107,31 +108,41 @@ def generate_predictions_for_all_teams(league_name):
                     'away_goals_pred': prediction['away_goals_pred']
                 })
 
-    league_long_name = team_mappings[league_name]['league_name'].replace(' ', '_').lower()
+    league_long_name = predictor.league_long_name
     predictions_df = pd.DataFrame(predictions)
     predictions_filepath = os.path.join(base_path, league_long_name, f'current_predictions_{league_long_name}.csv')
     predictions_df.to_csv(predictions_filepath, index=False)
 
 
-def predict_game_goals(home_team, away_team, league):
-    # Load predictions for the league
-    predictions_df = load_predictions(league)
-
-    # Find the correct league key
-    league_key = None
+def get_league_key(friendly_league_name):
+    # Step 1: Find the long name from team_mappings
     for key, value in team_mappings.items():
-        if value['league_name'] == league:
-            league_key = key
+        if value['league_name'].lower() == friendly_league_name.lower():
+            league_long_name = key
             break
+    else:
+        raise ValueError(f"League '{friendly_league_name}' not found in team mappings.")
 
-    if not league_key:
-        raise ValueError(f"League '{league}' not supported")
+    # Step 2: Find the corresponding key in league_dict using the long name
+    for key, value in league_dict.items():
+        if value['league_long_name'] == league_long_name:
+            return key
 
-    # Map the teams using the league key
-    home_team = team_mappings[league_key]['teams'].get(home_team, home_team)
-    away_team = team_mappings[league_key]['teams'].get(away_team, away_team)
+    raise ValueError(f"Long name '{league_long_name}' not found in league dictionary.")
+
+
+def predict_game_goals(home_team, away_team, league):
+    # get league key Brasileirão Série A -> Brazil Serie A
+    league_key = get_league_key(league)
+
+    # Load predictions for the league
+    predictions_df = load_predictions(league_key)
 
     if predictions_df is not None:
+        # Map the teams using the league key
+        home_team = team_mappings[league_dict[league_key]['league_long_name']]['teams'].get(home_team, home_team)
+        away_team = team_mappings[league_dict[league_key]['league_long_name']]['teams'].get(away_team, away_team)
+
         prediction_row = predictions_df[
             (predictions_df['home_team'] == home_team) & (predictions_df['away_team'] == away_team)]
         if not prediction_row.empty:
@@ -144,12 +155,14 @@ def predict_game_goals(home_team, away_team, league):
 
 
 def load_predictions(league_name):
-    league_long_name = league_dict[league_name]['league_long_name'].replace(' ', '_').lower()
+    league_long_name = league_dict[league_name]['league_long_name']
     predictions_filepath = os.path.join(base_path, league_long_name, f'current_predictions_{league_long_name}.csv')
     if os.path.exists(predictions_filepath):
         return pd.read_csv(predictions_filepath)
     else:
         return None
 
+
 if __name__ == '__main__':
-    print(predict_game_goals('Seattle Sounders', 'Minnesota United', 'MLS'))
+    generate_predictions_for_all_teams('Brazil Serie A')
+    #print(predict_game_goals('Corinthians', 'Flamengo', 'Brazil Serie A'))

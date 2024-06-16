@@ -64,3 +64,4 @@ team_mappings = {
 }
 
 base_path = "/var/www/html/season_stats/"
+#base_path = "C:/Users/arhic/PycharmProjects/ZephyrAlpha/season_stats/"

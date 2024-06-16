@@ -1,3 +1,4 @@
+//utils.js
 // Function to start a countdown timer for any purpose, e.g., before sending the next message
 function startCountdown(duration, displayElementId) {
     let remainingTime = duration;

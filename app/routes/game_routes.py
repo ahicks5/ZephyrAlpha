@@ -8,6 +8,8 @@ from app.utilities.json_for_comparison import TeamComparison
 from app.models.models import Message, db, User
 from app.utilities.soccerPrediction import predict_game_goals
 import re
+from pull_vsin.updateMLS import get_vsin_data, WebScraper
+import json
 
 game_bp = Blueprint('game', __name__)
 
@@ -136,14 +138,22 @@ def game_page(game_id):
     except Exception as e:
         print(f"Error generating comparison data: {e}")
 
-    print(comparison_data)
-
     # Load predictions from CSV
     prediction_data = None
     try:
         prediction_data = predict_game_goals(home_team, away_team, league)
     except Exception as e:
         print(f"Error loading prediction data: {e}")
+
+    vsin_data = None
+    try:
+        vsin_data = get_vsin_data(home_team, away_team, '/var/www/html/pull_vsin/mls_betting_splits.csv')
+        vsin_data = json.dumps({str(k): v for k, v in vsin_data.items()})  # Ensure all keys are strings
+    except Exception as e:
+        print(f"Error loading VSIN data: {e}")
+
+    print(vsin_data)  # Ensure this prints correctly
+    print(type(vsin_data))  # Print the type of vsin_data
 
     messages = Message.query.filter_by(game_id=game_id).order_by(Message.timestamp.asc()).all()
 
@@ -156,4 +166,5 @@ def game_page(game_id):
                            betting_data=betting_data,
                            comparison_data=comparison_data,
                            prediction_data=prediction_data,
+                           vsin_data=vsin_data,
                            username=username)

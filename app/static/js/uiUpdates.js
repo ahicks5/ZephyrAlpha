@@ -155,9 +155,6 @@ function updateBetStatus() {
     // Correctly targeting the home team's score
     const homeScoreElement = document.querySelector('.live-score-container .score-cell:last-child .team-score');
 
-    console.log('awayScoreElement:', awayScoreElement);
-    console.log('homeScoreElement:', homeScoreElement);
-
     // Check if score elements were found
     if (!awayScoreElement || !homeScoreElement) {
         console.error('Score elements not found');
@@ -167,21 +164,15 @@ function updateBetStatus() {
     const awayScore = parseInt(awayScoreElement.innerText);
     const homeScore = parseInt(homeScoreElement.innerText);
 
-    console.log(`Parsed scores - Away: ${awayScore}, Home: ${homeScore}`);
-
     // Assuming you have elements with class 'moneyline-odds' for both teams
     const awayMoneylineElement = document.querySelector('.away-odds');
     const homeMoneylineElement = document.querySelector('.home-odds');
-
-    console.log('awayMoneylineElement:', awayMoneylineElement);
-    console.log('homeMoneylineElement:', homeMoneylineElement);
 
     // Update Moneyline status based on the current leading team
     if (awayScore > homeScore) {
         // Highlight the away team as winning
         awayMoneylineElement.style.color = 'green';
         awayMoneylineElement.style.fontWeight = 'bold';
-        console.log('Highlighting away team as winning');
         // Ensure the home element is not highlighted
         homeMoneylineElement.style.color = ''; // Reset to default
         homeMoneylineElement.style.fontWeight = ''; // Reset to default
@@ -189,7 +180,6 @@ function updateBetStatus() {
         // Highlight the home team as winning
         homeMoneylineElement.style.color = 'green';
         homeMoneylineElement.style.fontWeight = 'bold';
-        console.log('Highlighting home team as winning');
         // Ensure the away element is not highlighted
         awayMoneylineElement.style.color = ''; // Reset to default
         awayMoneylineElement.style.fontWeight = ''; // Reset to default
@@ -197,18 +187,13 @@ function updateBetStatus() {
         // In case of a tie, ensure no team is highlighted
         awayMoneylineElement.style.color = ''; // Reset to default
         homeMoneylineElement.style.fontWeight = ''; // Reset to default
-        console.log('No team is highlighted, it\'s a tie');
     }
 
     // Update the spread bets status
     document.querySelectorAll('.away-spread, .home-spread').forEach((element, index) => {
-        console.log(`Evaluating spread bet for element ${index}`, element);
-
         const betType = element.classList.contains('away-spread') ? 'away' : 'home';
         const spreadText = element.innerText;
         const spreadValue = parseFloat(spreadText.match(/-?\d+(\.\d+)?/)[0]);
-
-        console.log(`Spread bet details - Element ${index}: Type: ${betType}, Value: ${spreadValue}`);
 
         let conditionMet = false;
 
@@ -219,8 +204,6 @@ function updateBetStatus() {
             const adjustedHomeScore = homeScore + spreadValue;
             conditionMet = adjustedHomeScore > awayScore;
         }
-
-        console.log(`Condition for element ${index} - Type: ${betType}, Met: ${conditionMet}`);
 
         if (conditionMet) {
             element.style.color = 'green';
@@ -233,22 +216,17 @@ function updateBetStatus() {
 
     // Update the over/under bets status
     document.querySelectorAll('.under-odds, .over-odds').forEach((element, index) => {
-        console.log(`Evaluating over/under bet for element ${index}`, element);
 
         const totalPoints = awayScore + homeScore;
         const betText = element.innerText;
         const betValue = parseFloat(betText.match(/-?\d+(\.\d+)?/)[0]);
         let conditionMet = false;
 
-        console.log(`Over/under bet details - Element ${index}: Total points: ${totalPoints}, Bet value: ${betValue}`);
-
         if (element.classList.contains('under-odds')) {
             conditionMet = totalPoints < betValue;
         } else { // 'over-odds'
             conditionMet = totalPoints > betValue;
         }
-
-        console.log(`Condition for element ${index} - Type: ${element.classList.contains('under-odds') ? 'under' : 'over'}, Met: ${conditionMet}`);
 
         if (conditionMet) {
             element.style.color = 'green';

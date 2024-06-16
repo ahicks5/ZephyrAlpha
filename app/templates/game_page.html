@@ -24,7 +24,20 @@
             console.error('Error parsing JSON:', error);
         }
     </script>
+    <script>
+        const vsinDataStr = `{{ vsin_data|safe }}`;
+        console.log('Raw VSIN Data String:', vsinDataStr);
+
+        let vsinData;
+        try {
+            vsinData = JSON.parse(vsinDataStr);
+            console.log('Parsed VSIN Data:', vsinData);
+        } catch (error) {
+            console.error('Error parsing VSIN data:', error);
+        }
+    </script>
     <script src="/static/js/compChart.js"></script>
+    <script src="/static/js/vsinChart.js"></script>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -87,6 +100,18 @@
                 <div class="projected-scores">{{ prediction_data.away_goals_pred }} - {{ prediction_data.home_goals_pred }}</div>
             </div>
             {% endif %}
+        </div>
+
+        <!-- VSIN Charts -->
+        <div class="betting-info mt-3">
+            <div class="d-flex justify-content-between">
+                <div class="vsin-chart-box">
+                    <canvas id="vsinHandleChart" width="200" height="200"></canvas>
+                </div>
+                <div class="vsin-chart-box">
+                    <canvas id="vsinBetsChart" width="200" height="200"></canvas>
+                </div>
+            </div>
         </div>
 
         {% if betting_data %}
@@ -170,20 +195,8 @@
 <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="/static/js/socketEvents.js"></script>
-<script src="/static/js/uiUpdates.js"></script>
 <script src="/static/js/utils.js"></script>
 <script>
-    // Ensure comparison_data is properly formatted as JSON
-    const comparison_data_str = `{{ comparison_data|safe }}`;
-    let comparison_data;
-    try {
-        comparison_data = JSON.parse(comparison_data_str);
-        console.log("Comparison Data Type:", typeof comparison_data);
-        console.log("Comparison Data:", comparison_data);
-    } catch (error) {
-        console.error('Error parsing JSON:', error);
-    }
-
     // Detect mobile device
     function isMobileDevice() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
@@ -200,5 +213,6 @@
         document.head.appendChild(script);
     }
 </script>
+<script src="/static/js/uiUpdates.js"></script>
 </body>
 </html>

@@ -379,3 +379,24 @@ button:hover, .btn-success:hover {
         font-size: 10px !important;
     }
 }
+
+/* Adjust container to center the charts */
+.betting-info .d-flex {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+    gap: 10px; /* Add spacing between the charts */
+}
+
+/* VSIN Chart Box */
+.vsin-chart-box {
+    background-color: #F2F2F2; /* Adjusted to match the outer box */
+    border: 1px solid #DDDDDD;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 200px; /* Ensure fixed width for consistency */
+}
+
