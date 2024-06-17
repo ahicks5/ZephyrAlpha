@@ -35,7 +35,8 @@ def index():
                 break
 
     username = session.get('username')
-    return render_template('index.html', games=upcoming_games, later_games=later_games, sports=unique_sports, username=username, favorite_games=favorite_games)
+    return render_template('index.html', games=upcoming_games, later_games=later_games, sports=unique_sports, username=username, favorite_games=favorite_games, favorite_teams=favorite_teams)
+
 
 
 @game_bp.route('/dashboard')
@@ -65,12 +66,30 @@ def update_favorites():
     league_key = request.form.get('league')
 
     favorite_teams = json.loads(current_user.favorite_teams) if current_user.favorite_teams else {}
-    favorite_teams[league_key] = selected_teams
+
+    if league_key:
+        if selected_teams:
+            favorite_teams[league_key] = selected_teams
+        else:
+            if league_key in favorite_teams:
+                del favorite_teams[league_key]
+    else:
+        # Remove any teams associated with the empty league key
+        if "" in favorite_teams:
+            del favorite_teams[""]
 
     current_user.favorite_teams = json.dumps(favorite_teams)
     db.session.commit()
 
     return jsonify({'message': 'Changes have been saved.'})
+
+@game_bp.route('/clear-favorites', methods=['POST'])
+@login_required
+def clear_favorites():
+    current_user.favorite_teams = json.dumps({})
+    db.session.commit()
+    return jsonify({'message': 'Favorites have been cleared.'})
+
 
 @game_bp.route('/register', methods=['GET', 'POST'])
 def register():

@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - ZephyrAlpha.io</title>
+    <title>User Dashboard - ZephyrAlpha.io</title>
     <link rel="icon" href="/static/logos/z_logo2.png" type="image/png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <style>
         .scrollable-container {
-            max-height: 300px; /* Adjust height as needed */
+            max-height: 300px;
             overflow-y: auto;
-            margin-bottom: 20px; /* Ensure there's space below the container */
+            margin-bottom: 20px;
         }
         .form-check {
             margin-bottom: 10px;
         }
         .league-teams .col-md-3 {
-            flex: 0 0 25%; /* Adjust the width of columns to make them stretch */
+            flex: 0 0 25%;
             max-width: 25%;
         }
         .alert {
@@ -25,15 +25,6 @@
         }
     </style>
 </head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ9LXBN8Q6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TZ9LXBN8Q6');
-</script>
 
 <body>
 <div class="header text-center">
@@ -58,6 +49,9 @@
                     <p>Select your favorite teams to follow:</p>
                     <div id="success-alert" class="alert alert-success" role="alert">
                         Changes have been saved.
+                    </div>
+                    <div id="clear-alert" class="alert alert-success" role="alert">
+                        Favorites have been cleared.
                     </div>
                     <form id="favorite-teams-form">
                         <!-- Dropdown to select sport -->
@@ -92,6 +86,7 @@
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary mt-3" onclick="saveFavorites()">Save Favorites</button>
+                        <button type="button" class="btn btn-danger mt-3" onclick="clearFavorites()">Clear Favorites</button>
                     </form>
                 </div>
             </div>
@@ -151,6 +146,28 @@
             }
         };
         xhr.send(formData);
+    }
+
+    function clearFavorites() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/clear-favorites', true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                const alertBox = document.getElementById('clear-alert');
+                alertBox.style.display = 'block';
+                setTimeout(() => {
+                    alertBox.style.display = 'none';
+                }, 3000);
+                // Uncheck all checkboxes
+                const checkboxes = document.querySelectorAll('.form-check-input');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+            }
+        };
+        xhr.send();
     }
 </script>
 

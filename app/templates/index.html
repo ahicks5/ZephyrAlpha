@@ -8,18 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/login-banner.css">
-    <style>
-        .favorites-section {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .favorites-section .sport-title {
-            color: white; /* White font color */
-            background-color: #001f3f; /* Deep navy blue background */
-        }
-    </style>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -72,7 +60,7 @@
     </div>
 
     {% if current_user.is_authenticated and favorite_games %}
-    <div class="favorites-section">
+    <div class="sport-section">
         <h2 class="sport-title">Favorites</h2>
         <div class="row">
             {% for game in favorite_games %}
@@ -192,6 +180,13 @@
 {% if not current_user.is_authenticated %}
 <script src="/static/js/popup.js"></script>
 {% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const favoriteTeams = {{ favorite_teams|tojson }};
+        console.log('Favorite Teams:', favoriteTeams);
+    });
+</script>
 
 </body>
 </html>
