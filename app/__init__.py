@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from .database import db  # Ensure this import matches the location of your db instance
@@ -16,7 +16,7 @@ from .models.models import User
 # Initialize extensions
 login_manager = LoginManager()
 
-#Initialize migrate
+# Initialize migrate
 migrate = Migrate()
 
 def create_app():
@@ -36,6 +36,11 @@ def create_app():
     # Register blueprints
     app.register_blueprint(game_bp)
     app.register_blueprint(admin_bp)
+
+    # Route to serve the validation file
+    @app.route('/.well-known/pki-validation/<path:filename>')
+    def serve_validation_file(filename):
+        return send_from_directory(app.static_folder + '/.well-known/pki-validation/', filename)
 
     with app.app_context():
         # If you're using models here for something like `db.create_all()`, keep this import

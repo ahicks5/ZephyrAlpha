@@ -20,8 +20,20 @@
             flex: 0 0 25%;
             max-width: 25%;
         }
-        .alert {
+        .favorite-bubble {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 15px;
+        }
+        .refresh-message {
             display: none;
+            margin-top: 10px;
+        }
+        .no-favorites {
+            background-color: #6c757d;
         }
     </style>
 </head>
@@ -46,13 +58,23 @@
                     <h5>Favorite Teams</h5>
                 </div>
                 <div class="card-body">
+                    <!-- Display selected favorite teams as bubbles -->
+                    <h6>Currently Selected Favorite Teams:</h6>
+                    <div id="favorite-teams-bubbles">
+                        {% if not favorite_teams %}
+                            <span class="favorite-bubble no-favorites">No Favorites Yet!</span>
+                        {% else %}
+                            {% for league_key, teams in favorite_teams.items() %}
+                                {% for team_key in teams %}
+                                    <span class="favorite-bubble">{{ team_key }}</span>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div id="refresh-message" class="alert alert-info refresh-message" role="alert">
+                        Refresh the page to show new favorites.
+                    </div>
                     <p>Select your favorite teams to follow:</p>
-                    <div id="success-alert" class="alert alert-success" role="alert">
-                        Changes have been saved.
-                    </div>
-                    <div id="clear-alert" class="alert alert-success" role="alert">
-                        Favorites have been cleared.
-                    </div>
                     <form id="favorite-teams-form">
                         <!-- Dropdown to select sport -->
                         <div class="form-group">
@@ -137,12 +159,7 @@
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.onload = function() {
             if (xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
-                const alertBox = document.getElementById('success-alert');
-                alertBox.style.display = 'block';
-                setTimeout(() => {
-                    alertBox.style.display = 'none';
-                }, 3000);
+                clearBubblesAndShowMessage();
             }
         };
         xhr.send(formData);
@@ -154,20 +171,22 @@
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.onload = function() {
             if (xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
-                const alertBox = document.getElementById('clear-alert');
-                alertBox.style.display = 'block';
-                setTimeout(() => {
-                    alertBox.style.display = 'none';
-                }, 3000);
                 // Uncheck all checkboxes
                 const checkboxes = document.querySelectorAll('.form-check-input');
                 checkboxes.forEach(checkbox => {
                     checkbox.checked = false;
                 });
+                clearBubblesAndShowMessage();
             }
         };
         xhr.send();
+    }
+
+    function clearBubblesAndShowMessage() {
+        const bubbleContainer = document.getElementById('favorite-teams-bubbles');
+        bubbleContainer.innerHTML = '';
+        const messageBox = document.getElementById('refresh-message');
+        messageBox.style.display = 'block';
     }
 </script>
 

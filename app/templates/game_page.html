@@ -54,9 +54,11 @@
 
 <div class="header text-center">
     <a href="/"><img src="/static/logos/z_logo2.png" alt="Zephyr Alpha Logo" class="logo"></a>
+    {% if current_user.is_authenticated %}
     <div class="top-right">
         <span>Welcome, {{ current_user.username }} | <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a> | <a href="/">Home</a></span>
     </div>
+    {% endif %}
 </div>
 
 <div id="roomId" data-id="{{ game.id }}"></div>
