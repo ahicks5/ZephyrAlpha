@@ -2,9 +2,32 @@
 import requests
 import json
 import pandas as pd
-from .chosen_sports import sport_types
 import pytz
 from datetime import datetime, timedelta
+from app.extensions import cache  # Adjust the import path based on your project structure
+
+sport_types = [
+    'basketball/nba',
+    #'basketball/wncaa',
+    'basketball/wnba',
+    'soccer/north-america/united-states/mls',
+    'hockey/nhl',
+    #'basketball/europe/belarus/belarus-nbbl',
+    #'basketball/college-basketball',
+    'soccer/south-america/brazil/brasileirao-serie-a'
+    # Add more sport types here if needed
+]
+
+CACHE_TIMEOUT = 60 * 15  # 15 minutes
+
+def pull_all_games_cached():
+    games_df = cache.get('games_df')
+    if games_df is None:
+        games_df = pull_all_games()
+        cache.set('games_df', games_df, timeout=CACHE_TIMEOUT)
+        print("Cache miss: fetched new games data.")
+    return games_df
+
 
 def get_json(url):
     headers = {
@@ -19,15 +42,8 @@ def get_json(url):
         return None
 
 def parse_json(response):
-    all_games = []
-    for game in response[0]['events']:
-        away_team = home_team = 'n/a'
-        for team in game['competitors']:
-            if team['home'] is True:
-                home_team = team['name']
-            else:
-                away_team = team['name']
-        all_games.append({
+    all_games = [
+        {
             'id': game['id'],
             'description': game['description'],
             'link': game['link'],
@@ -36,11 +52,12 @@ def parse_json(response):
             'live': game['live'],
             'competitionId': game['competitionId'],
             'lastModified': game['lastModified'],
-            'awayTeam': away_team,
-            'homeTeam': home_team
-        })
-    df = pd.DataFrame(all_games)
-    return df
+            'awayTeam': next(team['name'] for team in game['competitors'] if not team['home']),
+            'homeTeam': next(team['name'] for team in game['competitors'] if team['home'])
+        }
+        for game in response[0]['events']
+    ]
+    return pd.DataFrame(all_games)
 
 
 def pull_games(sport_types):
@@ -66,7 +83,7 @@ def pull_games(sport_types):
         return None
 
 
-def split_games_by_upcoming(games_list):
+def split_and_group_games_by_sport(games_list):
     # Sort games_list by 'startTime' in ascending order
     games_list = sorted(games_list, key=lambda x: x['startTime'])
 
@@ -74,21 +91,23 @@ def split_games_by_upcoming(games_list):
     current_time = datetime.now(central_tz)
     upcoming_time = current_time + timedelta(hours=24)
 
-    all_games = []
-    upcoming_games = []
-    not_upcoming_games = []
+    games_by_sport = {}
 
     for game in games_list:
         game_time = datetime.fromtimestamp(game['startTime'] / 1000, tz=central_tz)
         game['formatted_start_time'] = game_time.strftime('%-m/%-d %-I:%M%p').lower()
         game['upcoming_game'] = game_time <= upcoming_time
-        all_games.append(game)
-        if game['upcoming_game']:
-            upcoming_games.append(game)
-        else:
-            not_upcoming_games.append(game)
 
-    return all_games, upcoming_games, not_upcoming_games
+        sport = game['sport']
+        if sport not in games_by_sport:
+            games_by_sport[sport] = {'upcoming': [], 'later': []}
+
+        if game['upcoming_game']:
+            games_by_sport[sport]['upcoming'].append(game)
+        else:
+            games_by_sport[sport]['later'].append(game)
+
+    return games_by_sport
 
 
 def pull_all_games():
@@ -96,4 +115,5 @@ def pull_all_games():
 
 
 if __name__ == '__main__':
-    pull_all_games().to_csv('games.csv')
+    #pull_all_games().to_csv('games.csv')
+    parse_json(get_json(f'https://www.bovada.lv/services/sports/event/coupon/events/A/description/soccer/north-america/united-states/mls?marketFilterId=def&preMatchOnly=false&eventsLimit=5000&lang=en'))

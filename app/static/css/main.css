@@ -1,0 +1,318 @@
+/* custom.css */
+html {
+  overflow-y: scroll;
+}
+
+body {
+    background-color: #22276d;
+    color: #ffffff;
+}
+
+.header {
+    background-color: #22276d;
+    padding: 10px;
+}
+
+.logo {
+    height: 50px;
+}
+
+.nav-link {
+    color: #ffffff;
+}
+
+.nav-link:hover {
+    color: #ffcd3d;
+}
+
+.nav-link.active {
+    background-color: #383d7c;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+.coin-challenge-section {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: #383d7c;
+}
+
+.my-picks, .coins {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.my-picks a, .coins a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.my-picks img, .coins img {
+    margin-bottom: 5px;
+}
+
+.daily-challenges {
+    font-size: 16px;
+}
+
+.progress-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffcd3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.actions .leaderboard,
+.actions .challenges {
+    margin-left: 20px;
+    cursor: pointer;
+    color: #383d7c;
+}
+
+.actions .leaderboard:hover,
+.actions .challenges:hover {
+    color: #fabb00;
+}
+
+.sport-title {
+    padding: 3% 5%;
+    background-color: #383d7c;
+    display: flex !important;
+    justify-content: space-between;
+    /* display: block !important; */
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.toggle-games {
+    font-size: 24px;
+    color: #ffffff;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.toggle-games i {
+    font-size: 1.5rem;
+}
+
+
+.game-card .card-title {
+    font-size: 20px;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.game-card .card-text.time {
+    margin-right: 3%;
+    gap: 0.5rem;
+    color: #ffcd3d;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.nav a {
+    font-size: 18px;
+}
+
+
+.game-cards {
+    margin-bottom: 1.8%;
+    margin-top: 10px;
+}
+.game-card {
+    background-color: #2d3385;
+    color: #ffffff;
+}
+
+.search-box {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    color: #383d7c;
+}
+
+.app-icon {
+    width: 40%; /* Set width to 60% of its parent container */
+    height: auto; /* Let height adjust proportionally based on width */
+    max-width: 150px; /* Limit maximum width to 150px to prevent images from becoming too large */
+    display: block; /* Ensure image is displayed as a block element */
+    border-radius: 0.5rem; /* Add border radius for rounded corners */
+}
+
+.small {
+    text-decoration: none;
+    color: #383d7c;
+}
+.card-body {
+    margin-top: 1%;
+    gap: 2%;
+    display: flex;
+    justify-content: space-between !important;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.3rem 1rem;        
+}
+
+.fa-add:before, .fa-plus:before {
+    color: white;
+    content: "\2b";
+}
+.fa-arrow-right:before {
+    color: white;
+    content: "\f061";
+}
+.fa-clock-four:before, .fa-clock:before {
+    color: #ff6c00;
+    content: "\f017";
+}
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgb(255 255 255);
+}
+
+.collapsible {
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+}
+
+/* General responsiveness */
+@media (max-width: 991.98px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    .navbar-brand img.logo {
+        height: 50px; /* Adjust logo size for smaller screens */
+    }
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem; /* Adjust padding for nav links */
+        font-size: 14px; /* Reduce font size for nav links */
+    }
+    .coin-challenge-section {
+        padding: 10px;
+    }
+    .progress-circle {
+        width: 75px;
+        height: 40px;
+        font-size: 14px; /* Adjust font size for progress circle */
+    }
+    .game-card .card-title {
+        font-size: 16px; /* Adjust font size for card titles */
+    }
+    .game-card .card-text.time {
+        font-size: 14px; /* Adjust font size for card time */
+    }
+    .nav-link.active {
+        padding: 0.25rem 0.75rem; /* Adjust padding for active nav links */
+    }
+    .sport-title {
+        font-weight: bold;
+        font-size: 20px; /* Adjust font size for sport titles */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .search-box {
+        font-size: 14px; /* Adjust font size for search box */
+    }
+    .legend {
+        font-size: 17px; /* Adjust font size for legend */
+    }
+    .sport-title {
+        font-weight: bold;
+        font-size: 20px; /* Further reduce font size for sport titles */
+    }
+    .game-card .card-title {
+        font-size: 15px; /* Further reduce font size for card titles */
+    }
+    .game-card .card-text.time {
+        font-size: 12px; /* Further reduce font size for card time */
+    }
+    .app-icon {
+        width: 80%;
+        height: 30px;
+    }
+    .small {
+        font-size: 10px;
+        margin-right: 10px;
+    }
+    .card-body {
+        margin-top: 2%;       
+}
+}
+
+/* Adjustments for smaller screens and mobile devices */
+@media (max-width: 575.98px) {
+    .navbar-brand img.logo {
+        height: 50px; /* Further adjust logo size for smallest screens */
+    }
+    .nav-link {
+        font-size: 12px; /* Further reduce font size for nav links */
+    }
+    .coin-challenge-section {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .daily-challenges {
+        margin-top: 10px; /* Adjust spacing for daily challenges */
+    }
+    .progress-circle {
+        width: 50px;
+        height: 35px;
+        font-size: 15px; /* Further adjust font size for progress circle */
+    }
+    .game-card .card-title {
+        font-size: 15px; /* Further adjust font size for card titles */
+    }
+    .game-card .card-text.time {
+        font-size: 12px; /* Further adjust font size for card time */
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 767.98px) and (orientation: landscape) {
+    .coin-challenge-section {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Portrait orientation adjustments */
+@media (max-width: 575.98px) and (orientation: portrait) {
+    .game-card {
+        margin-bottom: 10px; /* Adjust card margin for better stacking */
+    }
+}

@@ -1,13 +1,27 @@
+import json
 import pandas as pd
 import os
-from app.utilities.sport_league_mappings import team_mappings, base_path
-from machineLearning.soccerLeagueLinks import league_dict
 import joblib
 
+# Function to determine the correct base path
+def determine_base_path():
+    paths = [
+        "/var/www/html/season_stats/",
+        "C:/Users/arhic/PycharmProjects/ZephyrAlpha/season_stats/"
+    ]
+
+    for path in paths:
+        if os.path.exists(path):
+            return path
+
+    raise FileNotFoundError("No valid base path found. Please check the paths.")
+
+# Set the base path dynamically
+base_path = determine_base_path()
+
 class SoccerGoalPredictor:
-    def __init__(self, friendly_league_name, year=None):
-        self.league_info = league_dict[friendly_league_name]
-        self.league_long_name = self.league_info['league_long_name']
+    def __init__(self, stats_league_long_name, year=None):
+        self.league_long_name = stats_league_long_name
         self.year = year
         self.cleaned_data_filepath = self.generate_filepath('cleaned_data')
         self.recent_team_stats_filepath = self.generate_filepath('recent_stats')
@@ -44,14 +58,7 @@ class SoccerGoalPredictor:
         else:
             raise ValueError("Invalid file type. Use 'cleaned_data', 'recent_stats', 'model_home', 'model_away', or 'scaler'.")
 
-    def get_team_name(self, team_name):
-        for league_key, league_value in team_mappings.items():
-            if team_name in league_value['teams']:
-                return league_value['teams'][team_name]
-        raise ValueError(f"Team '{team_name}' not found in team mappings.")
-
     def get_latest_team_stats(self, team, home=True):
-        team = self.get_team_name(team)
         if home:
             team_stats = self.recent_team_stats[self.recent_team_stats['team'] == team].filter(regex='^home_|^home_allowed_')
         else:
@@ -60,13 +67,10 @@ class SoccerGoalPredictor:
             raise ValueError(f"No stats found for team: {team}")
         return team_stats
 
-    def predict_goals(self, home_team, away_team):
-        home_team = self.get_team_name(home_team)
-        away_team = self.get_team_name(away_team)
-
+    def predict_goals(self, stats_home_team, stats_away_team):
         # Get the latest stats for the given teams
-        home_stats = self.get_latest_team_stats(home_team, home=True).iloc[0]
-        away_stats = self.get_latest_team_stats(away_team, home=False).iloc[0]
+        home_stats = self.get_latest_team_stats(stats_home_team, home=True).iloc[0]
+        away_stats = self.get_latest_team_stats(stats_away_team, home=False).iloc[0]
 
         # Combine stats into a single row without duplication
         match_stats = pd.concat([home_stats, away_stats]).to_frame().T
@@ -91,7 +95,6 @@ class SoccerGoalPredictor:
     def load_model(self, filepath):
         return joblib.load(filepath)
 
-
 def generate_predictions_for_all_teams(league_name):
     predictor = SoccerGoalPredictor(league_name)
     all_teams = team_mappings[predictor.league_long_name]['teams'].keys()
@@ -111,40 +114,16 @@ def generate_predictions_for_all_teams(league_name):
     league_long_name = predictor.league_long_name
     predictions_df = pd.DataFrame(predictions)
     predictions_filepath = os.path.join(base_path, league_long_name, f'current_predictions_{league_long_name}.csv')
+    os.makedirs(os.path.dirname(predictions_filepath), exist_ok=True)  # Ensure the directory exists
     predictions_df.to_csv(predictions_filepath, index=False)
 
-
-def get_league_key(friendly_league_name):
-    # Step 1: Find the long name from team_mappings
-    for key, value in team_mappings.items():
-        if value['league_name'].lower() == friendly_league_name.lower():
-            league_long_name = key
-            break
-    else:
-        raise ValueError(f"League '{friendly_league_name}' not found in team mappings.")
-
-    # Step 2: Find the corresponding key in league_dict using the long name
-    for key, value in league_dict.items():
-        if value['league_long_name'] == league_long_name:
-            return key
-
-    raise ValueError(f"Long name '{league_long_name}' not found in league dictionary.")
-
-
-def predict_game_goals(home_team, away_team, league):
-    # get league key Brasileirão Série A -> Brazil Serie A
-    league_key = get_league_key(league)
-
+def predict_game_goals(stats_home_team, stats_away_team, stats_league_long_name):
     # Load predictions for the league
-    predictions_df = load_predictions(league_key)
+    predictions_df = load_predictions(stats_league_long_name)
 
     if predictions_df is not None:
-        # Map the teams using the league key
-        home_team = team_mappings[league_dict[league_key]['league_long_name']]['teams'].get(home_team, home_team)
-        away_team = team_mappings[league_dict[league_key]['league_long_name']]['teams'].get(away_team, away_team)
-
         prediction_row = predictions_df[
-            (predictions_df['home_team'] == home_team) & (predictions_df['away_team'] == away_team)]
+            (predictions_df['home_team'] == stats_home_team) & (predictions_df['away_team'] == stats_away_team)]
         if not prediction_row.empty:
             prediction = prediction_row.to_dict('records')[0]
             # Round predictions to 2 decimal places
@@ -153,15 +132,12 @@ def predict_game_goals(home_team, away_team, league):
             return prediction
     return None
 
-
-def load_predictions(league_name):
-    league_long_name = league_dict[league_name]['league_long_name']
-    predictions_filepath = os.path.join(base_path, league_long_name, f'current_predictions_{league_long_name}.csv')
+def load_predictions(stats_league_long_name):
+    predictions_filepath = os.path.join(base_path, stats_league_long_name, f'current_predictions_{stats_league_long_name}.csv')
     if os.path.exists(predictions_filepath):
         return pd.read_csv(predictions_filepath)
     else:
         return None
-
 
 if __name__ == '__main__':
     generate_predictions_for_all_teams('Brazil Serie A')

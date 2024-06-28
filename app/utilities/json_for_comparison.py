@@ -1,24 +1,29 @@
 import json
 import pandas as pd
 import os
-from app.utilities.sport_league_mappings import team_mappings, base_path
+
+# Function to determine the correct base path
+def determine_base_path():
+    paths = [
+        "/var/www/html/season_stats/",
+        "C:/Users/arhic/PycharmProjects/ZephyrAlpha/season_stats/"
+    ]
+
+    for path in paths:
+        if os.path.exists(path):
+            return path
+
+    raise FileNotFoundError("No valid base path found. Please check the paths.")
+
+
+# Set the base path dynamically
+base_path = determine_base_path()
 
 class TeamComparison:
-    def __init__(self, team1, team2, league):
-        # Find the correct league key
-        league_key = None
-        for key, value in team_mappings.items():
-            if value['league_name'] == league:
-                league_key = key
-                break
-
-        if not league_key:
-            raise ValueError(f"League '{league}' not supported")
-
-        # Map the teams using the league key
-        self.team1 = team_mappings[league_key]['teams'].get(team1, team1)
-        self.team2 = team_mappings[league_key]['teams'].get(team2, team2)
-        self.league = league_key
+    def __init__(self, stats_team1, stats_team2, stats_league_long_name):
+        self.team1 = stats_team1
+        self.team2 = stats_team2
+        self.league = stats_league_long_name
 
         self.csv_file = os.path.join(base_path, self.league, f'team_stats_{self.league}.csv')
         self.team_stats = pd.read_csv(self.csv_file)
@@ -94,6 +99,6 @@ class TeamComparison:
 
 # Example usage
 if __name__ == '__main__':
-    comparison = TeamComparison("Vasco da Gama", "São Paulo", "Brasileirão Série A")
+    comparison = TeamComparison("Vasco da Gama", "São Paulo", "campeonato_brasileiro_série_a")
     json_result = comparison.generate_json()
     print(json_result)

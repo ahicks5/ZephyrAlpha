@@ -6,8 +6,8 @@
     <title>ZephyrAlpha.io</title>
     <link rel="icon" href="/static/logos/z_logo2.png" type="image/png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/login-banner.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -21,172 +21,168 @@
 </script>
 
 <body>
-
-{% if not current_user.is_authenticated %}
-<!-- Login/Signup Banner -->
-<div class="login-signup-banner">
-    <p>Don't have an account? <a href="/register">Register here!</a> <a href="/login">Sign in</a></p>
-</div>
-{% endif %}
-
-<div class="header text-center">
-    <a href="/"><img src="/static/logos/z_logo2.png" alt="Zephyr Alpha Logo" class="logo"></a>
-    {% if current_user.is_authenticated %}
-    <div class="top-right">
-        <span>Welcome, {{ current_user.username }} | <a href="/dashboard">Dashboard</a> | <a href="/logout">Logout</a></span>
-    </div>
-    {% endif %}
-</div>
-
-<div class="container">
-    <div class="app-links-container">
-        <div class="app-icon-wrapper">
-            <a href="https://get.fliffapp.com/QlC3/44iysnqy">
-                <img src="/static/images/fliff.png" alt="Fliff" class="img-fluid app-icon">
-                <div class="small caption">Mobile: 2X Deposit</div>
-            </a>
+    <header class="header navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">
+            <img src="/static/logos/z_logo2.png" alt="Zephyr Alpha Logo" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="nav-link">Welcome, {{ current_user.username }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
-        <div class="app-icon-wrapper">
-            <a href="https://app.prizepicks.com/sign-up?invite_code=PR-KACLQHL">
-                <img src="/static/images/prizepicks.png" alt="PrizePicks" class="img-fluid app-icon">
-                <div class="small caption">100% Match Up To $100</div>
-            </a>
-        </div>
-    </div>
+    </header>
 
-    <!-- User Count Section -->
-    <div class="user-count-section text-center">
-        <h2><span id="userCount">10,000+</span> players already rely on ZephyrAlpha.io for their sports betting decisions!</h2>
-    </div>
-
-    {% if current_user.is_authenticated and favorite_games %}
-    <div class="sport-section">
-        <h2 class="sport-title">Favorites</h2>
-        <div class="row">
-            {% for game in favorite_games %}
-                <div class="col-sm-4">
-                    <button class="btn game-button" data-live="{{ game.live }}" onclick="location.href='/game/{{ game.id }}';">
-                        {{ game.homeTeam }} vs {{ game.awayTeam }}
-                        <div class="small text-center">
-                            {{ game.formatted_start_time }}
-                        </div>
-                    </button>
+    <div class="container mt-4">
+        <div class="coin-challenge-section d-flex justify-content-between align-items-center">
+            <div class="my-picks">
+                <a href="https://get.fliffapp.com/QlC3/44iysnqy">
+                    <img src="/static/images/fliff.png" alt="Fliff" class="img-fluid app-icon">
+                    <div class="small caption">Mobile: <br> 2X Deposit</div>
+                </a>
+            </div>
+            <div class="daily-challenges d-flex align-items-center">
+                <div class="progress-circle">
+                    +
                 </div>
+                <span>10,000+ players already rely on ZephyrAlpha.io for their sports betting decisions!</span>
+            </div>
+            <div class="coins">
+                <a href="https://app.prizepicks.com/sign-up?invite_code=PR-KACLQHL">
+                    <img src="/static/images/prizepicks.png" alt="PrizePicks" class="img-fluid app-icon">
+                    <div class="small caption">100% Match <br> Up To $100</div>
+                </a>
+            </div>
+        </div>
+
+        <nav class="nav mt-4">
+            {% if favorite_games_by_sport %}
+                <a class="nav-link" href="#" data-target="favorites">Favorites</a>
+            {% endif %}
+            <a class="nav-link active" href="#" data-target="home">Today</a>
+            {% for sport in sports %}
+                <a class="nav-link" href="#" data-target="{{ sport | lower }}">{{ sport }}</a>
             {% endfor %}
-        </div>
-    </div>
-    {% endif %}
+        </nav>
 
-    <h2 class="mt-5 text-center">Upcoming Matchups</h2>
-
-    <div class="legend text-center mt-3">
-        <p><span role="img" aria-label="fire">🔥</span><i> indicates live games</i></p>
-    </div>
-
-    <div class="search-container mt-3">
-        <input type="text" id="searchBox" class="form-control search-box" placeholder="Search games...">
-    </div>
-
-    <div id="noResults" style="display: none;" class="alert alert-info text-center">
-        No results found.
-    </div>
-
-    {% set sports_dict = {} %}
-    {% for sport in sports %}
-        {% set _dummy = sports_dict.update({sport: []}) %}
-    {% endfor %}
-
-    {% for game in games %}
-        {% if game.sport in sports_dict %}
-            {% set _dummy = sports_dict[game.sport].append(game) %}
-        {% endif %}
-    {% endfor %}
-
-    {% for sport, games_in_sport in sports_dict.items() %}
-        {% if games_in_sport %}
-            <div class="sport-section">
-                <div class="sport-title">{{ sport }}</div>
-                <div class="row">
-                    {% for game in games_in_sport %}
-                        <div class="col-sm-4">
-                            <button class="btn game-button" data-live="{{ game.live }}" onclick="location.href='/game/{{ game.id }}';">
-                                {{ game.homeTeam }} vs {{ game.awayTeam }}
-                                <div class="small text-center">
-                                    {{ game.formatted_start_time }}
-                                </div>
-                            </button>
+        {% if favorite_games_by_sport %}
+            <div id="favorites" class="tab-content mt-4">
+                {% for sport, games in favorite_games_by_sport.items() %}
+                    <div class="sport-section mt-4" id="favorites-{{ sport | lower }}">
+                        <div class="sport-title">
+                            {{ sport }}
                         </div>
-                    {% endfor %}
-                </div>
+                        <div class="game-cards">
+                            <div class="row">
+                                {% for game in games %}
+                                    <div class="col-sm-12">
+                                        <div class="card game-card" data-live="{{ game.live }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ game.homeTeam }} vs {{ game.awayTeam }}</h5>
+                                                <p class="card-text time"><i class="fas fa-clock"></i> {{ game.formatted_start_time }}</p>
+                                                <a href="/game/{{ game.id }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         {% endif %}
-    {% endfor %}
-</div>
 
-<div class="container mt-5">
-    <div class="later-games-title collapsible">Show Later Games <span class="arrow">&#9660;</span></div>
-    <div class="content" style="display: none;">
-        {% set later_sports_dict = {} %}
-        {% for sport in sports %}
-            {% set _dummy = later_sports_dict.update({sport: []}) %}
-        {% endfor %}
-
-        {% for game in later_games %}
-            {% if game.sport in later_sports_dict %}
-                {% set _dummy = later_sports_dict[game.sport].append(game) %}
-            {% endif %}
-        {% endfor %}
-
-        {% for sport, games_in_sport in later_sports_dict.items() %}
-            {% if games_in_sport %}
-                <div class="sport-section">
-                    <div class="sport-title">{{ sport }}</div>
-                    <div class="row">
-                        {% for game in games_in_sport %}
-                            <div class="col-sm-4">
-                                <button class="btn game-button" data-live="{{ game.live }}" onclick="location.href='/game/{{ game.id }}';">
-                                    {{ game.homeTeam }} vs {{ game.awayTeam }}
-                                    <div class="small text-center">
-                                        {{ game.formatted_start_time }}
+        <div id="home" class="tab-content mt-4">
+            {% for sport, games in games_by_sport.items() %}
+                {% if games.upcoming %}
+                    <div class="sport-section mt-4" id="home-{{ sport | lower }}">
+                        <div class="sport-title">
+                            {{ sport }}
+                        </div>
+                        <div class="game-cards">
+                            <div class="row">
+                                {% for game in games.upcoming %}
+                                    <div class="col-sm-12">
+                                        <div class="card game-card" data-live="{{ game.live }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ game.homeTeam }} vs {{ game.awayTeam }}</h5>
+                                                <p class="card-text time"><i class="fas fa-clock"></i> {{ game.formatted_start_time }}</p>
+                                                <a href="/game/{{ game.id }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </button>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% for sport, games in games_by_sport.items() %}
+            <div id="{{ sport | lower }}" class="tab-content mt-4" style="display:none;">
+                <div class="sport-title">
+                    {{ sport }}
+                </div>
+                <div class="game-cards">
+                    <div class="row">
+                        {% for game in games.upcoming %}
+                            <div class="col-sm-12">
+                                <div class="card game-card" data-live="{{ game.live }}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ game.homeTeam }} vs {{ game.awayTeam }}</h5>
+                                        <p class="card-text time"><i class="fas fa-clock"></i> {{ game.formatted_start_time }}</p>
+                                        <a href="/game/{{ game.id }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
                 </div>
-            {% endif %}
+                <div class="later-games-title collapsible mt-4">Show Later Games <span class="arrow">&#9660;</span></div>
+                <div class="content" style="display: none;">
+                    <div class="game-cards">
+                        <div class="row">
+                            {% for game in games.later %}
+                                <div class="col-sm-12">
+                                    <div class="card game-card" data-live="{{ game.live }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ game.homeTeam }} vs {{ game.awayTeam }}</h5>
+                                            <p class="card-text time"><i class="fas fa-clock"></i> {{ game.formatted_start_time }}</p>
+                                            <a href="/game/{{ game.id }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     </div>
-</div>
 
-{% if not current_user.is_authenticated %}
-<!-- Pop-up HTML -->
-<div id="signupPopup" class="popup">
-    <div class="popup-content">
-        <span class="close" onclick="closePopup()">&times;</span>
-        <h2>Sign up now!</h2>
-        <p>Pick your favorite teams to monitor and more...</p>
-        <a href="/register" class="btn btn-primary">Register</a>
-        <a href="/login" class="btn btn-secondary">Sign In</a>
-    </div>
-</div>
-{% endif %}
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="/static/js/home_page.js"></script>
-
-{% if not current_user.is_authenticated %}
-<script src="/static/js/popup.js"></script>
-{% endif %}
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const favoriteTeams = {{ favorite_teams|tojson }};
-        console.log('Favorite Teams:', favoriteTeams);
-    });
-</script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>

@@ -1,42 +1,47 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, jsonify, Flask, send_from_directory
 from flask_login import current_user, login_required, login_user, logout_user
+from app.utilities.main.main_utils import pull_all_games_cached, split_and_group_games_by_sport
 from app.utilities.data_fetching import get_live_game_data
-from app.utilities.cache_utils import pull_all_games_cached
 from app.utilities.bet_data_processing import get_organize_bet_data
-from app.utilities.game_data import split_games_by_upcoming
 from app.utilities.json_for_comparison import TeamComparison
 from app.models.models import Message, db, User
-from app.utilities.soccerPrediction import predict_game_goals
+from app.utilities.load_predictions.load_soccer_predictions import predict_game_goals
+from app.utilities.sport_league_mappings import sort_team_mappings, team_mappings
 import re
 from pull_vsin.updateMLS import get_vsin_data
 import json
-from app.utilities.sport_league_mappings import team_mappings, sort_team_mappings
+from app.utilities.team_mappings.mapping_utils import get_mapped_name, get_mapped_league_name, listed_teams_for_dashboard
+
 
 game_bp = Blueprint('game', __name__)
 
 @game_bp.route('/')
 def index():
     games_list = pull_all_games_cached().to_dict(orient='records')
-    all_games, upcoming_games, later_games = split_games_by_upcoming(games_list)
-    unique_sports = {game['sport'] for game in games_list}
-    unique_sports = sorted(unique_sports)
+    games_by_sport = split_and_group_games_by_sport(games_list)
+
+    # sports sorted
+    sports = sorted(list(games_by_sport.keys()))
 
     # Get the favorite teams for the current user
     favorite_teams = {}
     if current_user.is_authenticated:
         favorite_teams = json.loads(current_user.favorite_teams) if current_user.favorite_teams else {}
 
-    # Find games that include favorite teams
-    favorite_games = []
-    for game in games_list:
-        for league, teams in favorite_teams.items():
-            if game['homeTeam'] in teams or game['awayTeam'] in teams:
-                favorite_games.append(game)
-                break
+    # Find and group favorite games by sport
+    favorite_games_by_sport = {}
+    if favorite_teams:
+        for game in games_list:
+            for league, teams in favorite_teams.items():
+                if game['homeTeam'] in teams or game['awayTeam'] in teams:
+                    sport = game['sport']
+                    if sport not in favorite_games_by_sport:
+                        favorite_games_by_sport[sport] = []
+                    favorite_games_by_sport[sport].append(game)
 
     username = session.get('username')
-    return render_template('index.html', games=upcoming_games, later_games=later_games, sports=unique_sports, username=username, favorite_games=favorite_games, favorite_teams=favorite_teams)
 
+    return render_template('index.html', games_by_sport=games_by_sport, sports=sports, username=username, favorite_games_by_sport=favorite_games_by_sport, favorite_teams=favorite_teams)
 
 
 @game_bp.route('/dashboard')
@@ -45,18 +50,13 @@ def dashboard():
     if current_user.account_status == 'admin':
         return redirect(url_for('admin.admin_dashboard'))
 
-    favorite_teams = json.loads(current_user.favorite_teams) if current_user.favorite_teams else {}
-    subscription_status = current_user.account_status
-    signup_time = current_user.signup_time
-    sorted_team_mappings = sort_team_mappings(team_mappings)
-
     return render_template(
         'dashboard.html',
         username=current_user.username,
-        favorite_teams=favorite_teams,
-        subscription_status=subscription_status,
-        signup_time=signup_time,
-        team_mappings=sorted_team_mappings
+        favorite_teams=json.loads(current_user.favorite_teams) if current_user.favorite_teams else {},
+        subscription_status=current_user.account_status,
+        signup_time=current_user.signup_time,
+        team_mappings=listed_teams_for_dashboard()
     )
 
 @game_bp.route('/update-favorites', methods=['POST'])
@@ -183,13 +183,20 @@ def game_page(game_id):
     link = game_details.get('link')
     betting_data = get_organize_bet_data(link) if link else {}
 
-    home_team = game_details['homeTeam']
-    away_team = game_details['awayTeam']
-    league = game_details['sport']
+    # Get attributes from data, working with Bovada so far
+    bovada_home_team = game_details['homeTeam']
+    bovada_away_team = game_details['awayTeam']
+    bovada_league = game_details['sport']
+
+    # convert to stats equivalent name
+    stats_home_team = get_mapped_name(entry_name=bovada_home_team, entry_type='bovada_name', exit_type='stats_name')
+    stats_away_team = get_mapped_name(entry_name=bovada_away_team, entry_type='bovada_name', exit_type='stats_name')
+    stats_league_long_name = get_mapped_league_name(entry_name=bovada_league, entry_type='bovada_league_name',
+                                                    exit_type='stats_league_long_name')
 
     comparison_data = None
     try:
-        comparison = TeamComparison(home_team, away_team, league)
+        comparison = TeamComparison(stats_home_team, stats_away_team, stats_league_long_name)
         comparison_data = comparison.generate_json()
     except Exception as e:
         print(f"Error generating comparison data: {e}")
@@ -197,13 +204,16 @@ def game_page(game_id):
     # Load predictions from CSV
     prediction_data = None
     try:
-        prediction_data = predict_game_goals(home_team, away_team, league)
+        prediction_data = predict_game_goals(stats_home_team, stats_away_team, stats_league_long_name)
     except Exception as e:
         print(f"Error loading prediction data: {e}")
 
+    vsin_home_team = get_mapped_name(entry_name=bovada_home_team, entry_type='bovada_name', exit_type='vsin_name')
+    vsin_away_team = get_mapped_name(entry_name=bovada_away_team, entry_type='bovada_name', exit_type='vsin_name')
+
     vsin_data = None
     try:
-        vsin_data = get_vsin_data(home_team, away_team, '/var/www/html/pull_vsin/mls_betting_splits.csv')
+        vsin_data = get_vsin_data(vsin_home_team, vsin_away_team)
         vsin_data = json.dumps({str(k): v for k, v in vsin_data.items()})  # Ensure all keys are strings
     except Exception as e:
         print(f"Error loading VSIN data: {e}")

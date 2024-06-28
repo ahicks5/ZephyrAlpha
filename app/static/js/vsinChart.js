@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    if (vsinData && vsinData['Clean Team 1'] && vsinData['Clean Team 2']) {
-        const team1 = vsinData['Clean Team 1'];
-        const team2 = vsinData['Clean Team 2'];
+    if (vsinData && vsinData['VSIN Team 1'] && vsinData['VSIN Team 2']) {
+        const team1 = vsinData['VSIN Team 1'];
+        const team2 = vsinData['VSIN Team 2'];
 
         const handleData = [parseFloat(vsinData['Handle Team 1']), parseFloat(vsinData['Handle Team 2'])];
         const betsData = [parseFloat(vsinData['Bets Team 1']), parseFloat(vsinData['Bets Team 2'])];
@@ -54,11 +54,23 @@ document.addEventListener('DOMContentLoaded', function () {
             plugins: [ChartDataLabels]
         });
 
-        const handleCtx = document.getElementById('vsinHandleChart').getContext('2d');
-        new Chart(handleCtx, config(handleData, 'Money Wagered'));
+        // Ensure chart elements exist and have valid IDs before creating the charts
+        const handleChartElement = document.getElementById('vsinHandleChart');
+        const betsChartElement = document.getElementById('vsinBetsChart');
 
-        const betsCtx = document.getElementById('vsinBetsChart').getContext('2d');
-        new Chart(betsCtx, config(betsData, '# of Bets'));
+        if (handleChartElement && handleChartElement.id !== '0') {
+            const handleCtx = handleChartElement.getContext('2d');
+            new Chart(handleCtx, config(handleData, 'Money Wagered'));
+        } else {
+            console.error('Handle chart element is missing or has invalid ID.');
+        }
+
+        if (betsChartElement && betsChartElement.id !== '0') {
+            const betsCtx = betsChartElement.getContext('2d');
+            new Chart(betsCtx, config(betsData, '# of Bets'));
+        } else {
+            console.error('Bets chart element is missing or has invalid ID.');
+        }
     } else {
         console.error('VSIN data is missing or incomplete.');
         console.log('VSIN data provided:', vsinData);

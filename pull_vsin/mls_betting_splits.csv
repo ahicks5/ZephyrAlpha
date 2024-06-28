@@ -1,14 +1,16 @@
 VSIN Team 1,Clean Team 1,Team 1,Moneyline Team 1,Handle Team 1,Bets Team 1,Total,Handle Total Team 1,Bets Total Team 1,Spread,Handle Spread Team 1,Bets Spread Team 1,VSIN Team 2,Clean Team 2,Team 2,Moneyline Team 2,Handle Team 2,Bets Team 2,Total,Handle Total Team 2,Bets Total Team 2,Spread,Handle Spread Team 2,Bets Spread Team 2
-DC Utd,DC United,DC Utd,+290,11%,17%,--,0%,0%,--,0%,0%,Charlotte FC,Charlotte FC,Charlotte FC,-130,89%,83%,--,0%,0%,--,0%,0%
-Minnesota Utd,Minnesota United,Minnesota Utd,+500,65%,30%,--,0%,0%,--,0%,0%,Seattle Sounders,Seattle Sounders,Seattle Sounders,-205,35%,70%,--,0%,0%,--,0%,0%
-Nashville SC,Nashville SC,Nashville SC,+340,34%,14%,--,0%,0%,--,0%,0%,New York Red Bulls,New York Red Bulls,New York Red Bulls,-130,66%,86%,--,0%,0%,--,0%,0%
-HOU Dynamo,Houston Dynamo,HOU Dynamo,+205,33%,23%,--,0%,0%,--,0%,0%,Atlanta Utd,Atlanta United,Atlanta Utd,+110,67%,77%,--,0%,0%,--,0%,0%
-Real Salt Lake,Real Salt Lake,Real Salt Lake,+100,88%,86%,--,0%,0%,--,0%,0%,CF Montreal,CF Montréal,CF Montreal,+225,12%,14%,--,0%,0%,--,0%,0%
-LAFC,Los Angeles FC,LAFC,+155,93%,83%,--,0%,0%,--,0%,0%,Orlando City,Orlando City,Orlando City,+160,7%,17%,--,0%,0%,--,0%,0%
-CHI Fire,Chicago Fire,CHI Fire,+260,9%,10%,--,0%,0%,--,0%,0%,Toronto FC,Toronto FC,Toronto FC,-105,91%,90%,--,0%,0%,--,0%,0%
-Vancouver Whitecaps,Vancouver Whitecaps,Vancouver Whitecaps,+195,40%,53%,--,0%,0%,--,0%,0%,NE Revolution,New England Revolution,NE Revolution,+120,60%,47%,--,0%,0%,--,0%,0%
-Inter Miami,Inter Miami,Inter Miami,+270,53%,55%,--,0%,0%,--,0%,0%,PHI Union,Philadelphia Union,PHI Union,-115,47%,45%,--,0%,0%,--,0%,0%
-St Louis City SC,St. Louis City SC,St Louis City SC,+200,66%,30%,--,0%,0%,--,0%,0%,FC Dallas,FC Dallas,FC Dallas,+120,34%,70%,--,0%,0%,--,0%,0%
-Austin FC,Austin FC,Austin FC,+425,37%,24%,--,0%,0%,--,0%,0%,COL Rapids,Colorado Rapids,COL Rapids,-190,63%,76%,--,0%,0%,--,0%,0%
-FC Cincinnati,FC Cincinnati,FC Cincinnati,+150,98%,92%,--,0%,0%,--,0%,0%,SJ Earthquakes,San Jose Earthquakes,SJ Earthquakes,+155,2%,8%,--,0%,0%,--,0%,0%
-Minnesota Utd,Minnesota United,Minnesota Utd,+500,65%,30%,--,0%,0%,--,0%,0%,Seattle Sounders,Seattle Sounders,Seattle Sounders,-205,35%,70%,--,0%,0%,--,0%,0%
+Orlando City,Orlando City,Orlando City,+275,22%,21%,--,0%,0%,--,0%,0%,NYCFC,Unknown,NYCFC,-120,78%,79%,--,0%,0%,--,0%,0%
+St Louis City SC,St. Louis City SC,St Louis City SC,+280,50%,19%,--,0%,0%,--,0%,0%,Vancouver Whitecaps,Vancouver Whitecaps,Vancouver Whitecaps,-130,50%,81%,--,0%,0%,--,0%,0%
+Columbus Crew,Unknown,Columbus Crew,+110,79%,83%,--,0%,0%,--,0%,0%,NE Revolution,New England Revolution,NE Revolution,+190,21%,17%,--,0%,0%,--,0%,0%
+Minnesota Utd,Minnesota United,Minnesota Utd,+250,10%,24%,--,0%,0%,--,0%,0%,POR Timbers,Unknown,POR Timbers,-120,90%,76%,--,0%,0%,--,0%,0%
+DC Utd,DC United,DC Utd,+475,12%,4%,--,0%,0%,--,0%,0%,New York Red Bulls,New York Red Bulls,New York Red Bulls,-230,88%,96%,--,0%,0%,--,0%,0%
+Toronto FC,Toronto FC,Toronto FC,+295,70%,19%,--,0%,0%,--,0%,0%,Atlanta Utd,Atlanta United,Atlanta Utd,-145,30%,81%,--,0%,0%,--,0%,0%
+PHI Union,Philadelphia Union,PHI Union,+155,48%,49%,--,0%,0%,--,0%,0%,CF Montreal,CF Montréal,CF Montreal,+140,52%,51%,--,0%,0%,--,0%,0%
+Charlotte FC,Charlotte FC,Charlotte FC,+310,91%,35%,--,0%,0%,--,0%,0%,HOU Dynamo,Houston Dynamo,HOU Dynamo,-135,9%,65%,--,0%,0%,--,0%,0%
+Austin FC,Austin FC,Austin FC,+300,83%,43%,--,0%,0%,--,0%,0%,Sporting KC,Unknown,Sporting KC,-135,17%,57%,--,0%,0%,--,0%,0%
+FC Cincinnati,FC Cincinnati,FC Cincinnati,+160,90%,76%,--,0%,0%,--,0%,0%,FC Dallas,FC Dallas,FC Dallas,+140,10%,24%,--,0%,0%,--,0%,0%
+Inter Miami,Inter Miami,Inter Miami,+255,91%,64%,--,0%,0%,--,0%,0%,Nashville SC,Nashville SC,Nashville SC,-115,9%,36%,--,0%,0%,--,0%,0%
+LA Galaxy,Unknown,LA Galaxy,+135,99%,95%,--,0%,0%,--,0%,0%,SJ Earthquakes,San Jose Earthquakes,SJ Earthquakes,+145,1%,5%,--,0%,0%,--,0%,0%
+COL Rapids,Colorado Rapids,COL Rapids,+450,36%,7%,--,0%,0%,--,0%,0%,LAFC,Los Angeles FC,LAFC,-225,64%,93%,--,0%,0%,--,0%,0%
+St Louis City SC,St. Louis City SC,St Louis City SC,+280,50%,19%,--,0%,0%,--,0%,0%,Vancouver Whitecaps,Vancouver Whitecaps,Vancouver Whitecaps,-130,50%,81%,--,0%,0%,--,0%,0%
+Minnesota Utd,Minnesota United,Minnesota Utd,+250,10%,24%,--,0%,0%,--,0%,0%,POR Timbers,Unknown,POR Timbers,-120,90%,76%,--,0%,0%,--,0%,0%

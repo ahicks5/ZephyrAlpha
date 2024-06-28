@@ -1,0 +1,237 @@
+{
+    "leagues": [
+        {
+            "stats_league_long_name": "campeonato_brasileiro_série_a",
+            "bovada_league_name": "Brasileirão Série A",
+            "stats_league_short_name": "Serie-A",
+            "stats_league_code": "24",
+            "teams": {
+                "Vasco da Gama": {
+                    "bovada_name": "Vasco da Gama",
+                    "stats_name": "Vasco da Gama"
+                },
+                "São Paulo": {
+                    "bovada_name": "São Paulo",
+                    "stats_name": "São Paulo"
+                },
+                "Grêmio": {
+                    "bovada_name": "Grêmio",
+                    "stats_name": "Grêmio"
+                },
+                "Criciúma": {
+                    "bovada_name": "Criciúma SC",
+                    "stats_name": "Criciúma"
+                },
+                "Cuiabá": {
+                    "bovada_name": "Cuiabá",
+                    "stats_name": "Cuiabá"
+                },
+                "Atlético Mineiro": {
+                    "bovada_name": "Atlético Mineiro",
+                    "stats_name": "Atlético Mineiro"
+                },
+                "Fluminense": {
+                    "bovada_name": "Fluminense",
+                    "stats_name": "Fluminense"
+                },
+                "Vitória": {
+                    "bovada_name": "Vitória BA",
+                    "stats_name": "Vitória"
+                },
+                "Corinthians": {
+                    "bovada_name": "Corinthians",
+                    "stats_name": "Corinthians"
+                },
+                "Fortaleza": {
+                    "bovada_name": "Fortaleza",
+                    "stats_name": "Fortaleza"
+                },
+                "Palmeiras": {
+                    "bovada_name": "Palmeiras",
+                    "stats_name": "Palmeiras"
+                },
+                "Internacional": {
+                    "bovada_name": "Internacional",
+                    "stats_name": "Internacional"
+                },
+                "Flamengo": {
+                    "bovada_name": "Flamengo",
+                    "stats_name": "Flamengo"
+                },
+                "Athletico Paranaense": {
+                    "bovada_name": "Athletico Paranaense",
+                    "stats_name": "Athletico Paranaense"
+                },
+                "Cruzeiro": {
+                    "bovada_name": "Cruzeiro MG",
+                    "stats_name": "Cruzeiro"
+                },
+                "Red Bull Bragantino": {
+                    "bovada_name": "RB Bragantino",
+                    "stats_name": "Red Bull Bragantino"
+                },
+                "Botafogo": {
+                    "bovada_name": "Botafogo",
+                    "stats_name": "Botafogo (RJ)"
+                },
+                "Juventude": {
+                    "bovada_name": "Juventude",
+                    "stats_name": "Juventude"
+                },
+                "Atlético Goianiense": {
+                    "bovada_name": "Atlético Goianiense",
+                    "stats_name": "Atlético Goianiense"
+                },
+                "Bahia": {
+                    "bovada_name": "Bahia",
+                    "stats_name": "Bahia"
+                },
+                "Goiás": {
+                    "bovada_name": "Goiás",
+                    "stats_name": "Goiás"
+                },
+                "Chapecoense": {
+                    "bovada_name": "Chapecoense",
+                    "stats_name": "Chapecoense"
+                },
+                "Avaí": {
+                    "bovada_name": "Avaí",
+                    "stats_name": "Avaí"
+                }
+            }
+        },
+        {
+            "stats_league_long_name": "major_league_soccer",
+            "bovada_league_name": "MLS",
+            "stats_league_short_name": "Major-League-Soccer",
+            "stats_league_code": "22",
+            "teams": {
+                "DC United": {
+                    "bovada_name": "DC United",
+                    "stats_name": "D.C. United",
+                    "vsin_name": "DC Utd"
+                },
+                "New York City FC": {
+                    "bovada_name": "New York City FC",
+                    "stats_name": "New York City FC",
+                    "vsin_name": "NYCFC"
+                },
+                "Minnesota United": {
+                    "bovada_name": "Minnesota United",
+                    "stats_name": "Minnesota United",
+                    "vsin_name": "Minnesota Utd"
+                },
+                "Nashville SC": {
+                    "bovada_name": "Nashville SC",
+                    "stats_name": "Nashville SC",
+                    "vsin_name": "Nashville SC"
+                },
+                "Houston Dynamo": {
+                    "bovada_name": "Houston Dynamo",
+                    "stats_name": "Houston Dynamo",
+                    "vsin_name": "HOU Dynamo"
+                },
+                "Real Salt Lake": {
+                    "bovada_name": "Real Salt Lake",
+                    "stats_name": "Real Salt Lake",
+                    "vsin_name": "Real Salt Lake"
+                },
+                "Los Angeles FC": {
+                    "bovada_name": "Los Angeles FC",
+                    "stats_name": "Los Angeles FC",
+                    "vsin_name": "LAFC"
+                },
+                "Chicago Fire": {
+                    "bovada_name": "Chicago Fire",
+                    "stats_name": "Chicago Fire",
+                    "vsin_name": "CHI Fire"
+                },
+                "Vancouver Whitecaps": {
+                    "bovada_name": "Vancouver Whitecaps",
+                    "stats_name": "Vancouver Whitecaps FC",
+                    "vsin_name": "Vancouver Whitecaps"
+                },
+                "Inter Miami": {
+                    "bovada_name": "Inter Miami",
+                    "stats_name": "Inter Miami",
+                    "vsin_name": "Inter Miami"
+                },
+                "St. Louis City SC": {
+                    "bovada_name": "St. Louis City SC",
+                    "stats_name": "St. Louis City",
+                    "vsin_name": "St Louis City SC"
+                },
+                "Austin FC": {
+                    "bovada_name": "Austin FC",
+                    "stats_name": "Austin FC",
+                    "vsin_name": "Austin FC"
+                },
+                "FC Cincinnati": {
+                    "bovada_name": "FC Cincinnati",
+                    "stats_name": "FC Cincinnati",
+                    "vsin_name": "FC Cincinnati"
+                },
+                "Charlotte FC": {
+                    "bovada_name": "Charlotte FC",
+                    "stats_name": "Charlotte FC",
+                    "vsin_name": "Charlotte FC"
+                },
+                "Seattle Sounders": {
+                    "bovada_name": "Seattle Sounders",
+                    "stats_name": "Seattle Sounders FC",
+                    "vsin_name": "Seattle Sounders"
+                },
+                "New York Red Bulls": {
+                    "bovada_name": "New York Red Bulls",
+                    "stats_name": "New York Red Bulls",
+                    "vsin_name": "New York Red Bulls"
+                },
+                "Atlanta United": {
+                    "bovada_name": "Atlanta United",
+                    "stats_name": "Atlanta United",
+                    "vsin_name": "Atlanta Utd"
+                },
+                "CF Montréal": {
+                    "bovada_name": "CF Montréal",
+                    "stats_name": "CF Montréal",
+                    "vsin_name": "CF Montreal"
+                },
+                "Orlando City": {
+                    "bovada_name": "Orlando City",
+                    "stats_name": "Orlando City",
+                    "vsin_name": "Orlando City"
+                },
+                "Toronto FC": {
+                    "bovada_name": "Toronto FC",
+                    "stats_name": "Toronto FC",
+                    "vsin_name": "Toronto FC"
+                },
+                "New England Revolution": {
+                    "bovada_name": "New England Revolution",
+                    "stats_name": "New England Revolution",
+                    "vsin_name": "NE Revolution"
+                },
+                "Philadelphia Union": {
+                    "bovada_name": "Philadelphia Union",
+                    "stats_name": "Philadelphia Union",
+                    "vsin_name": "PHI Union"
+                },
+                "FC Dallas": {
+                    "bovada_name": "FC Dallas",
+                    "stats_name": "FC Dallas",
+                    "vsin_name": "FC Dallas"
+                },
+                "Colorado Rapids": {
+                    "bovada_name": "Colorado Rapids",
+                    "stats_name": "Colorado Rapids",
+                    "vsin_name": "COL Rapids"
+                },
+                "San Jose Earthquakes": {
+                    "bovada_name": "San Jose Earthquakes",
+                    "stats_name": "San Jose Earthquakes",
+                    "vsin_name": "SJ Earthquakes"
+                }
+            }
+        }
+    ]
+}

@@ -3,6 +3,23 @@ from bs4 import BeautifulSoup
 import csv
 from pull_vsin.vsin_match import team_mapping
 import pandas as pd
+import os
+
+# Function to determine the correct base path
+def determine_base_path():
+    paths = [
+        "/var/www/html/pull_vsin/",
+        "C:/Users/arhic/PycharmProjects/ZephyrAlpha//pull_vsin/"
+    ]
+
+    for path in paths:
+        if os.path.exists(path):
+            return path
+
+    raise FileNotFoundError("No valid base path found. Please check the paths.")
+
+# Set the base path dynamically
+base_path = determine_base_path()
 
 
 class WebScraper:
@@ -113,13 +130,14 @@ class WebScraper:
             print(f"Error saving to CSV: {e}")
 
 
-def get_vsin_data(home_team, away_team, csv_path):
+def get_vsin_data(home_team, away_team):
+    csv_path = os.path.join(base_path, 'mls_betting_splits.csv')
     try:
         df = pd.read_csv(csv_path, encoding='utf-8')
     except UnicodeDecodeError:
         df = pd.read_csv(csv_path, encoding='ISO-8859-1')
 
-    matching_row = df[(df['Clean Team 1'] == away_team) & (df['Clean Team 2'] == home_team)]
+    matching_row = df[(df['VSIN Team 1'] == away_team) & (df['VSIN Team 2'] == home_team)]
     if matching_row.empty:
         return None
     return matching_row.to_dict(orient='records')[0]
@@ -127,10 +145,19 @@ def get_vsin_data(home_team, away_team, csv_path):
 
 # Usage example
 if __name__ == "__main__":
-    url = 'https://data.vsin.com/draftkings/betting-splits/?view=soc661'
-    scraper = WebScraper(url)
-    table_rows = scraper.scrape_table()
+    #url = 'https://data.vsin.com/draftkings/betting-splits/?view=soc661'
+    #scraper = WebScraper(url)
+    #table_rows = scraper.scrape_table()
 
-    if table_rows:
-        parsed_data = scraper.parse_data(table_rows)
-        scraper.save_to_csv(parsed_data, f'mls_betting_splits.csv')
+    #if table_rows:
+    #    parsed_data = scraper.parse_data(table_rows)
+    #    scraper.save_to_csv(parsed_data, f'mls_betting_splits.csv')
+    import json
+
+    try:
+        vsin_data = get_vsin_data('NYCFC', 'Orlando City', 'mls_betting_splits.csv')
+        vsin_data = json.dumps({str(k): v for k, v in vsin_data.items()})  # Ensure all keys are strings
+        print(vsin_data)
+    except Exception as e:
+        print(f"Error loading VSIN data: {e}")
+

@@ -26,7 +26,7 @@ def create_app():
     # Initialize extensions with the app instance
     db.init_app(app)
     migrate.init_app(app, db)
-    socketio.init_app(app)
+    socketio.init_app(app, cors_allowed_origins="*")
     cache.init_app(app)
     login_manager.init_app(app)
 
