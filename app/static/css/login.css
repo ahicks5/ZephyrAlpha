@@ -1,0 +1,59 @@
+/* login.css */
+body {
+    background-color: #22276d;
+    color: #ffffff;
+}
+
+.header {
+    background-color: #22276d;
+    padding: 10px;
+}
+
+.logo {
+    height: 50px;
+}
+
+.card.game-card {
+    background-color: #2d3385;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.card-body h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    color: #ffffff;
+}
+
+.btn-primary {
+    background-color: #ffcd3d;
+    border-color: #ffcd3d;
+}
+
+.btn-secondary {
+    background-color: #383d7c;
+    border-color: #383d7c;
+}
+
+.btn-link {
+    color: #ffcd3d;
+}
+
+.btn-link:hover {
+    color: #ff9a00;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+    color: #ffffff;
+    border-color: #dc3545;
+}
+
+.text-center a {
+    margin: 5px 0;
+    display: block;
+}
