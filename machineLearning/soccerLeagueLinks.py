@@ -4,5 +4,8 @@ league_dict = {
             'league_code': '22'},
     'Brazil Serie A': {'league_name': 'Serie-A',
             'league_long_name': 'campeonato_brasileiro_série_a',
-            'league_code': '24'}
+            'league_code': '24'},
+    'WNBA': {'league_name': 'wnba',
+             'league_long_name': 'wnba'
+    }
 }
